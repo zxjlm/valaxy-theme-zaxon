@@ -6,24 +6,29 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 const siteConfig = useSiteConfig()
 const posts = usePostList()
 
-const devIcon = new URL('../assets/field-notes/icon-dev.png', import.meta.url).href
-const lifeIcon = new URL('../assets/field-notes/icon-life.png', import.meta.url).href
-const notebookIcon = new URL('../assets/field-notes/icon-notebook.png', import.meta.url).href
-const cameraIcon = new URL('../assets/field-notes/icon-camera.png', import.meta.url).href
-const compassIcon = new URL('../assets/field-notes/icon-compass.png', import.meta.url).href
-const flowerDecor = new URL('../assets/field-notes/decor-flower-a.png', import.meta.url).href
-const rockDecor = new URL('../assets/field-notes/decor-rocks.png', import.meta.url).href
-const thumbLake = new URL('../assets/field-notes/thumb-lake.png', import.meta.url).href
-const thumbCoffee = new URL('../assets/field-notes/thumb-coffee.png', import.meta.url).href
-const thumbCamp = new URL('../assets/field-notes/thumb-camp.png', import.meta.url).href
+import devIcon from '../assets/field-notes/icon-dev.png'
+import lifeIcon from '../assets/field-notes/icon-life.png'
+import notebookIcon from '../assets/field-notes/icon-notebook.png'
+import cameraIcon from '../assets/field-notes/icon-camera.png'
+import compassIcon from '../assets/field-notes/icon-compass.png'
+import flowerDecor from '../assets/field-notes/decor-flower-a.png'
+import rockDecor from '../assets/field-notes/decor-rocks.png'
+import thumbLake from '../assets/field-notes/thumb-lake.png'
+import thumbCoffee from '../assets/field-notes/thumb-coffee.png'
+import thumbCamp from '../assets/field-notes/thumb-camp.png'
+import heroFieldDesktopLight from '../assets/field-notes/hero-field-desktop-light.png'
+import heroFieldMobileLight from '../assets/field-notes/hero-field-mobile-light.png'
+import heroFieldDesktopDark from '../assets/field-notes/hero-field-desktop-dark.png'
+import heroFieldMobileDark from '../assets/field-notes/hero-field-mobile-dark.png'
+
 const heroImages = {
   light: {
-    desktop: new URL('../assets/field-notes/hero-field-desktop-light.png', import.meta.url).href,
-    mobile: new URL('../assets/field-notes/hero-field-mobile-light.png', import.meta.url).href,
+    desktop: heroFieldDesktopLight,
+    mobile: heroFieldMobileLight,
   },
   dark: {
-    desktop: new URL('../assets/field-notes/hero-field-desktop-dark.png', import.meta.url).href,
-    mobile: new URL('../assets/field-notes/hero-field-mobile-dark.png', import.meta.url).href,
+    desktop: heroFieldDesktopDark,
+    mobile: heroFieldMobileDark,
   },
 }
 

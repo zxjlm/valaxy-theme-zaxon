@@ -2,8 +2,8 @@
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const lostTraveler = new URL('../assets/field-notes/traveler-camera.png', import.meta.url).href
-const signpost = new URL('../assets/field-notes/signpost-two.png', import.meta.url).href
+import lostTraveler from '../assets/field-notes/traveler-camera.png'
+import signpost from '../assets/field-notes/signpost-two.png'
 </script>
 
 <template>

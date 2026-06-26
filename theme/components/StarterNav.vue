@@ -9,7 +9,7 @@ const siteConfig = useSiteConfig()
 const themeConfig = useThemeConfig()
 const menuOpen = ref(false)
 
-const brandSprite = new URL('../assets/field-notes/traveler-standing.png', import.meta.url).href
+import brandSprite from '../assets/field-notes/traveler-standing.png'
 
 const navItems = computed(() => {
   return themeConfig.value.nav?.length

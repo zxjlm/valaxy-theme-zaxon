@@ -6,9 +6,9 @@ const props = defineProps<{
   post: Post
 }>()
 
-const devIcon = new URL('../assets/field-notes/icon-dev.png', import.meta.url).href
-const noteIcon = new URL('../assets/field-notes/icon-notebook.png', import.meta.url).href
-const photoThumb = new URL('../assets/field-notes/thumb-lake.png', import.meta.url).href
+import devIcon from '../assets/field-notes/icon-dev.png'
+import noteIcon from '../assets/field-notes/icon-notebook.png'
+import photoThumb from '../assets/field-notes/thumb-lake.png'
 
 function asArray(value: unknown) {
   if (Array.isArray(value))

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-const flowerA = new URL('../assets/field-notes/decor-flower-a.png', import.meta.url).href
-const flowerB = new URL('../assets/field-notes/decor-flower-b.png', import.meta.url).href
-const lantern = new URL('../assets/field-notes/decor-lantern.png', import.meta.url).href
-const stars = new URL('../assets/field-notes/decor-stars.png', import.meta.url).href
+import flowerA from '../assets/field-notes/decor-flower-a.png'
+import flowerB from '../assets/field-notes/decor-flower-b.png'
+import lantern from '../assets/field-notes/decor-lantern.png'
+import stars from '../assets/field-notes/decor-stars.png'
 
 const windLines = [
   { top: '18%', delay: '-2s', duration: '18s', width: '118px' },

@@ -15,8 +15,8 @@ function findCurrentIndex() {
 
 const nextPost = computed(() => posts.value[findCurrentIndex() - 1])
 const prevPost = computed(() => posts.value[findCurrentIndex() + 1])
-const travelerWriting = new URL('../assets/field-notes/traveler-writing.png', import.meta.url).href
-const notebookIcon = new URL('../assets/field-notes/icon-notebook.png', import.meta.url).href
+import travelerWriting from '../assets/field-notes/traveler-writing.png'
+import notebookIcon from '../assets/field-notes/icon-notebook.png'
 </script>
 
 <template>
