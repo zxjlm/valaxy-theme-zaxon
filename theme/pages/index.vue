@@ -174,8 +174,8 @@ onBeforeUnmount(() => {
           在开发与生活之间，安放思考、记录与热爱。
         </p>
         <div class="field-hero__trail" aria-label="内容比例">
-          <span>DEV 70%</span>
-          <span>LIFE 30%</span>
+          <span>DEV</span>
+          <span>LIFE</span>
           <span>NOTES / PHOTOS / QUOTES</span>
         </div>
         <div class="field-hero__actions">
@@ -196,10 +196,10 @@ onBeforeUnmount(() => {
             World entries
           </p>
           <h2 id="field-log-gates-title" class="field-section__title">
-            开发与生活的两条路径
+            Balance
           </h2>
           <p class="field-section__summary">
-            一边沉淀工程实践，一边收集真实生活。入口清晰，但它们仍在同一份手册里。
+            技术 与 生活
           </p>
         </div>
       </div>
@@ -250,10 +250,10 @@ onBeforeUnmount(() => {
             Recent finds
           </p>
           <h2 id="field-finds-title" class="field-section__title">
-            最近收集的发现与灵感
+            Epiphany
           </h2>
           <p class="field-section__summary">
-            从文章、短记到照片，把最近值得回看的内容先摆在桌面上。
+            一些灵感
           </p>
         </div>
         <RouterLink class="field-section__more" to="/archives/">
@@ -299,10 +299,10 @@ onBeforeUnmount(() => {
             Latest articles
           </p>
           <h2 id="field-latest-title" class="field-section__title">
-            最新记录
+            Journal
           </h2>
           <p class="field-section__summary">
-            按时间继续往下读，像翻看一页页逐渐积累的田野记录。
+            我的冒险日志
           </p>
         </div>
       </div>
