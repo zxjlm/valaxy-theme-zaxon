@@ -15,54 +15,66 @@ function findCurrentIndex() {
 
 const nextPost = computed(() => posts.value[findCurrentIndex() - 1])
 const prevPost = computed(() => posts.value[findCurrentIndex() + 1])
+const travelerWriting = new URL('../assets/field-notes/traveler-writing.png', import.meta.url).href
+const notebookIcon = new URL('../assets/field-notes/icon-notebook.png', import.meta.url).href
 </script>
 
 <template>
-  <article class="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
-    <header class="pt-6 text-center space-y-1 xl:pb-10">
-      <StarterDate :date="frontmatter.date" />
-      <h1
-        class="st-text text-3xl font-extrabold leading-9 tracking-tight md:text-5xl sm:text-4xl md:leading-14 sm:leading-10"
-      >
+  <article class="field-post">
+    <header class="field-post__header">
+      <div class="field-post__sprite" aria-hidden="true">
+        <img :src="travelerWriting" alt="">
+      </div>
+      <p class="field-kicker">
+        Field entry
+      </p>
+      <h1 class="field-post__title">
         {{ frontmatter.title }}
       </h1>
+      <div class="field-post__meta">
+        <StarterDate :date="frontmatter.date" />
+        <span v-if="frontmatter.categories">{{ frontmatter.categories }}</span>
+      </div>
     </header>
 
-    <div
-      class="pb-16 xl:grid xl:grid-cols-4 xl:gap-x-10 divide-y divide-gray-200 xl:pb-20 xl:divide-y-0 dark:divide-gray-700"
-      style="grid-template-rows: auto 1fr"
-    >
-      <StarterAuthor v-if="frontmatter.author" :frontmatter="frontmatter" />
-      <div class="xl:col-span-3 xl:row-span-2 divide-y divide-gray-200 xl:pb-0 dark:divide-gray-700">
+    <div class="field-post__layout">
+      <aside class="field-post__aside">
+        <StarterAuthor v-if="frontmatter.author" :frontmatter="frontmatter" />
+        <div class="field-post__toc-card">
+          <img :src="notebookIcon" alt="" loading="lazy">
+          <span>READING NOTES</span>
+          <p>正文保持安静，代码、引用和图片使用统一的手帐边界。</p>
+        </div>
+      </aside>
+
+      <div class="field-post__content">
         <slot />
       </div>
 
-      <footer
-        class="text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2 divide-y divide-gray-200 dark:divide-gray-700"
-      >
-        <div v-if="nextPost && nextPost.path" class="py-8">
-          <h2 class="text-xs text-gray-500 tracking-wide uppercase">
+      <footer class="field-post__pager">
+        <div v-if="nextPost && nextPost.path" class="field-post__pager-item">
+          <h2>
             Next Article
           </h2>
-          <div class="link">
+          <div>
             <RouterLink :to="nextPost.path">
               {{ nextPost.title }}
             </RouterLink>
           </div>
         </div>
-        <div v-if="prevPost && prevPost.path" class="py-8">
-          <h2 class="text-xs text-gray-500 tracking-wide uppercase">
+        <div v-if="prevPost && prevPost.path" class="field-post__pager-item">
+          <h2>
             Previous Article
           </h2>
-          <div class="link">
+          <div>
             <RouterLink :to="prevPost.path">
               {{ prevPost.title }}
             </RouterLink>
           </div>
         </div>
-        <div class="pt-8">
-          <RouterLink class="link" to="/">
-            ← Back to the blog
+        <div class="field-post__pager-item">
+          <RouterLink to="/">
+            ← Back to field notes
           </RouterLink>
         </div>
       </footer>

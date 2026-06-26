@@ -10,11 +10,11 @@ const datetime = computed(() => formatDate(props.date || ''))
 </script>
 
 <template>
-  <dl>
+  <dl class="field-date">
     <dt class="sr-only">
       Published on
     </dt>
-    <dd class="text-base text-gray-500 font-medium leading-6">
+    <dd>
       <time :datetime="datetime">{{ datetime }}</time>
     </dd>
   </dl>

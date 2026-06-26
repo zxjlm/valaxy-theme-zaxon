@@ -1,10 +1,10 @@
 <template>
-  <div class="antialiased">
-    <div class="mx-auto max-w-3xl px-4 xl:max-w-5xl sm:px-6 xl:px-0">
+  <div class="field-shell antialiased">
+    <header class="field-nav">
       <StarterNav />
-    </div>
+    </header>
 
-    <main class="mx-auto max-w-3xl px-4 xl:max-w-5xl sm:px-6 xl:px-0">
+    <main id="main-content" class="field-main field-main-frame">
       <slot>
         <RouterView v-slot="{ Component }">
           <component :is="Component">

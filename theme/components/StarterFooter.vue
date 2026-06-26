@@ -23,14 +23,14 @@ const footerIcon = computed(() => themeConfig.value.footer.icon!)
 </script>
 
 <template>
-  <footer class="va-footer p-4" text="center sm" style="color:var(--va-c-text-light)">
-    <div v-if="themeConfig.footer.beian?.enable && themeConfig.footer.beian.icp" class="beian" m="y-2">
+  <footer class="field-footer">
+    <div v-if="themeConfig.footer.beian?.enable && themeConfig.footer.beian.icp" class="field-footer__beian">
       <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">
         {{ themeConfig.footer.beian.icp }}
       </a>
     </div>
 
-    <div class="copyright flex items-center justify-center" p="1">
+    <div class="field-footer__copyright">
       <span>
         &copy;
         <template v-if="!isThisYear">
@@ -39,14 +39,14 @@ const footerIcon = computed(() => themeConfig.value.footer.icon!)
         {{ year }}
       </span>
 
-      <a m="x-2" class="inline-flex animate-pulse" :href="footerIcon.url" target="_blank" :title="footerIcon.title">
+      <a class="field-footer__icon" :href="footerIcon.url" target="_blank" :title="footerIcon.title">
         <div :class="footerIcon.name" />
       </a>
 
       <span>{{ siteConfig.author.name }}</span>
     </div>
 
-    <div v-if="themeConfig.footer.powered" class="powered" m="2">
+    <div v-if="themeConfig.footer.powered" class="field-footer__powered">
       <span v-html="poweredHtml" /> | <span>{{ t('footer.theme') }} - <a :href="themeConfig.pkg.homepage" :title="`valaxy-theme-${config.theme}`" target="_blank">{{ capitalize(config.theme) }}</a> v{{ themeConfig.pkg.version }}</span>
     </div>
 

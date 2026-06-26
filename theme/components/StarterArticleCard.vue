@@ -1,31 +1,86 @@
 <script lang="ts" setup>
 import type { Post } from 'valaxy'
+import { computed } from 'vue'
 
-defineProps<{
+const props = defineProps<{
   post: Post
 }>()
+
+const devIcon = new URL('../assets/field-notes/icon-dev.png', import.meta.url).href
+const noteIcon = new URL('../assets/field-notes/icon-notebook.png', import.meta.url).href
+const photoThumb = new URL('../assets/field-notes/thumb-lake.png', import.meta.url).href
+
+function asArray(value: unknown) {
+  if (Array.isArray(value))
+    return value.map(item => String(item))
+  return value ? [String(value)] : []
+}
+
+const postText = computed(() => [
+  props.post.title,
+  props.post.excerpt,
+  ...asArray((props.post as any).tags),
+  ...asArray((props.post as any).categories),
+].join(' ').toLowerCase())
+
+const kind = computed(() => {
+  const text = postText.value
+  if (/photo|life|生活|旅行|摄影|阅读|随笔|音乐/.test(text))
+    return 'life'
+  if (/note|笔记|memo|i18n|test/.test(text))
+    return 'note'
+  return 'dev'
+})
+
+const kindLabel = computed(() => {
+  if (kind.value === 'life')
+    return 'LIFE'
+  if (kind.value === 'note')
+    return 'NOTE'
+  return 'DEV'
+})
+
+const icon = computed(() => {
+  if (kind.value === 'life')
+    return photoThumb
+  if (kind.value === 'note')
+    return noteIcon
+  return devIcon
+})
+
+const tags = computed(() => asArray((props.post as any).tags).slice(0, 3))
+const articleLabel = computed(() => String(props.post.title || 'Read article'))
 </script>
 
 <template>
-  <article class="xl:grid xl:grid-cols-4 xl:items-baseline space-y-2 xl:space-y-0">
-    <StarterDate :date="post.date" />
-    <div class="xl:col-span-3 space-y-5">
-      <div class="space-y-6">
-        <h2 class="text-2xl font-bold leading-8 tracking-tight">
-          <RouterLink class="st-text" :to="post.path || ''">
-            {{ post.title }}
-          </RouterLink>
-        </h2>
-        <div
-          v-if="post.excerpt"
-          class="max-w-none text-gray-500 prose dark:prose-invert"
-          v-html="post.excerpt"
-        />
+  <article class="field-article-card" :data-kind="kind">
+    <RouterLink class="field-article-card__link" :to="post.path || ''" :aria-label="articleLabel" />
+
+    <div class="field-article-card__icon" aria-hidden="true">
+      <img :src="icon" alt="" loading="lazy">
+    </div>
+
+    <div class="field-article-card__body">
+      <div class="field-article-card__meta">
+        <span class="field-chip" :data-kind="kind">{{ kindLabel }}</span>
+        <StarterDate :date="post.date" />
       </div>
-      <div class="text-base font-medium leading-6">
-        <RouterLink class="link" aria-label="read more" :to="post.path || ''">
-          Read more →
-        </RouterLink>
+
+      <h2 class="field-article-card__title">
+        {{ post.title }}
+      </h2>
+
+      <div
+        v-if="post.excerpt"
+        class="field-article-card__excerpt"
+        v-html="post.excerpt"
+      />
+
+      <div class="field-article-card__footer">
+        <div class="field-article-card__tags">
+          <span v-for="tag in tags" :key="tag" class="field-tag">{{ tag }}</span>
+        </div>
+        <span class="field-read-more">Read article <span aria-hidden="true">›</span></span>
       </div>
     </div>
   </article>

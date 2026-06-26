@@ -9,18 +9,15 @@
 @use 'valaxy/client/styles/components/custom-block.scss' as *;
 
 .markdown-body {
-  --c-toc-link: var(--va-c-text-light);
-}
-
-html.dark {
-  .markdown-body {
-    --c-toc-link: var(--va-c-text-dark);
-  }
+  --c-toc-link: var(--st-text-secondary);
 }
 
 .markdown-body {
-  padding-top: 0.5rem;
+  padding-top: 0;
   word-wrap: break-word;
+  color: var(--st-text-primary);
+  font-size: 17px;
+  line-height: 1.82;
 
   h1,
   h2,
@@ -28,8 +25,29 @@ html.dark {
   h4,
   h5,
   h6 {
-    font-family: var(--va-font-family-base);
-    font-weight: 900;
+    color: var(--st-text-primary);
+    font-family: var(--st-font-serif);
+    font-weight: 750;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  h2 {
+    margin-top: 2.15em;
+    border-bottom: 1px solid var(--st-border-default);
+    padding-bottom: 0.35em;
+  }
+
+  p {
+    margin: 0.85em 0;
+    color: var(--st-text-primary);
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--st-c-link);
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   ul {
@@ -39,20 +57,22 @@ html.dark {
   }
 
   blockquote {
-    margin: 16px 0;
-    border-left: 4px solid var(--va-c-divider);
-    padding-left: 12px;
-    transition: border-color 0.5s p {
+    margin: 28px 0;
+    border-left: 2px solid var(--st-accent-quote);
+    border-radius: var(--st-radius-md);
+    padding: 16px 18px;
+    background: color-mix(in srgb, var(--st-accent-quote) 10%, transparent);
+    color: var(--st-text-secondary);
+
+    p {
       margin: 0;
-      font-size: 16px;
-      color: var(--vp-c-text-2);
-      transition: color 0.5s;
+      color: var(--st-text-secondary);
     }
   }
 
   code:not(pre > code) {
-    color: var(--va-c-text-code);
-    background-color: var(--va-c-bg-mute);
+    color: var(--st-accent-lantern);
+    background-color: var(--st-bg-elevated);
     padding: 3px 6px;
     border-radius: 4px;
     font-weight: 500;
@@ -65,5 +85,24 @@ html.dark {
     &::after {
       content: none;
     }
+  }
+
+  pre,
+  div[class*='language-'] {
+    border: 1px solid var(--st-border-default);
+    border-radius: var(--st-radius-lg);
+    background: var(--st-bg-surface);
+  }
+
+  img {
+    border-radius: var(--st-radius-lg);
+    outline: 1px solid rgb(0 0 0 / 10%);
+    outline-offset: -1px;
+  }
+
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
   }
 }

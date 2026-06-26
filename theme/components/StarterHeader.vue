@@ -5,13 +5,13 @@ const siteConfig = useSiteConfig()
 </script>
 
 <template>
-  <div class="pb-8 pt-6 space-y-2 md:space-y-5">
+  <div class="field-page-header">
     <h1
-      class="st-text text-3xl font-extrabold leading-9 tracking-tight md:text-6xl sm:text-4xl md:leading-14 sm:leading-10"
+      class="field-page-header__title"
     >
       {{ siteConfig.title }}
     </h1>
-    <p class="text-lg text-gray-500 leading-7">
+    <p class="field-page-header__summary">
       {{ siteConfig.subtitle }}
     </p>
   </div>

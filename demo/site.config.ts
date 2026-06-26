@@ -2,13 +2,14 @@ import { defineSiteConfig } from 'valaxy'
 
 export default defineSiteConfig({
   lang: 'zh-CN',
-  title: 'Valaxy Theme Starter',
-  url: 'https://starter.valaxy.site/',
+  title: 'Harumonia',
+  subtitle: '代码、日常与旅途中的观察记录',
+  url: 'https://harumonia.example/',
   author: {
-    avatar: 'https://www.yunyoujun.cn/images/avatar.jpg',
-    name: '云游君',
+    avatar: '/pwa-192x192.png',
+    name: 'Harumonia',
   },
-  description: 'Valaxy Theme Starter Preview.',
+  description: '记录代码与生活，收集微小而确定的光。',
   social: [
     {
       name: 'RSS',

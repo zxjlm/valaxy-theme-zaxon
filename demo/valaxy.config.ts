@@ -15,20 +15,24 @@ export default defineConfig<ThemeConfig>({
 
     nav: [
       {
-        text: 'GitHub',
-        link: 'https://github.com/YunYouJun/valaxy-theme-starter',
+        text: '首页',
+        link: '/',
       },
       {
-        text: 'RSS',
-        link: 'https://starter.valaxy.site/atom.xml',
+        text: '开发',
+        link: '/categories/',
       },
       {
-        text: 'Discord',
-        link: 'https://discord.gg/sGe4U4p4CK',
+        text: '生活',
+        link: '/notes/',
       },
       {
-        text: 'Valaxy →',
-        link: 'https://github.com/YunYouJun/valaxy',
+        text: '归档',
+        link: '/archives/',
+      },
+      {
+        text: '关于',
+        link: '/about/',
       },
     ],
 

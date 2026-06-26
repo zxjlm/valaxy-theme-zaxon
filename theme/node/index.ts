@@ -8,20 +8,23 @@ import type { ThemeConfig } from '../types'
 export const defaultThemeConfig: ThemeConfig = {
   valaxyDarkOptions: {
     circleTransition: true,
+    useDarkOptions: {
+      initialValue: 'dark',
+    },
   },
 
   colors: {
-    primary: '#0078E7',
+    primary: '#5E918D',
   },
 
   footer: {
     since: 2022,
     icon: {
-      name: 'i-ri-cloud-line',
+      name: 'i-ri-seedling-line',
       animated: true,
-      color: 'var(--va-c-primary)',
-      url: 'https://sponsors.yunyoujun.cn',
-      title: 'Sponsor YunYouJun',
+      color: 'var(--st-accent-lantern)',
+      url: '/',
+      title: 'Harumonia',
     },
 
     powered: true,
