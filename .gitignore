@@ -60,6 +60,8 @@ build/
 
 # plugins
 .VSCodeCounter
+.vscode
+.pnpm-store
 
 design
 .codex-audit
