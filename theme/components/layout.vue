@@ -1,6 +1,11 @@
+<script lang="ts" setup>
+import FieldWind from './FieldWind.vue'
+</script>
+
 <template>
   <div class="field-shell antialiased">
     <a class="field-skip-link" href="#main-content">跳到正文</a>
+    <FieldWind />
 
     <header class="field-nav">
       <StarterNav />
