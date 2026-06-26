@@ -62,7 +62,7 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
-      valaxy-theme-starter:
+      valaxy-theme-zaxon:
         specifier: workspace:*
         version: link:theme
       vitest:
@@ -77,7 +77,7 @@ importers:
       valaxy:
         specifier: 'catalog:'
         version: 0.26.10(@babel/parser@7.28.5)(@types/markdown-it@14.1.2)(@types/node@24.5.2)(@vue/compiler-dom@3.5.25)(@vue/compiler-sfc@3.5.25)(axios@1.13.2)(change-case@5.4.4)(eslint@9.39.1(jiti@2.6.1))(postcss@8.5.6)(prettier@3.7.4)(rollup@4.52.0)(terser@5.44.0)(typescript@5.9.3)(yaml@2.8.2)
-      valaxy-theme-starter:
+      valaxy-theme-zaxon:
         specifier: workspace:*
         version: link:../theme
 

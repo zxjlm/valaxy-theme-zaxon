@@ -1,22 +1,22 @@
 {
-  "name": "valaxy-theme-starter",
+  "name": "valaxy-theme-zaxon",
   "type": "module",
   "version": "0.3.4",
   "packageManager": "pnpm@10.24.0",
   "author": {
-    "email": "me@yunyoujun.cn",
-    "name": "YunYouJun",
-    "url": "https://www.yunyoujun.cn"
+    "email": "me@harumonia.moe",
+    "name": "Harumonia",
+    "url": "https://blog.harumonia.moe"
   },
-  "homepage": "https://starter.valaxy.site",
+  "homepage": "https://blog.harumonia.moe",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YunYouJun/valaxy-theme-starter"
+    "url": "https://github.com/harumonia/valaxy-theme-zaxon"
   },
   "keywords": [
     "valaxy",
     "theme",
-    "starter",
+    "zaxon",
     "vue"
   ],
   "main": "client/index.ts",

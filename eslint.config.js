@@ -8,7 +8,11 @@ export default antfu(
   },
   {
     ignores: [
-      '**/*/.valaxy',
+      '**/.valaxy/**',
+      '**/dist/**',
+      'demo/public/atom.xml',
+      'demo/public/feed.*',
+      'demo/public/valaxy-fuse-list.json',
     ],
   },
 )

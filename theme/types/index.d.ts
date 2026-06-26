@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'valaxy'
 
-export namespace StarterTheme {
+export namespace ZaxonTheme {
   export type Config = ThemeConfig
   export type Sidebar = any
 }

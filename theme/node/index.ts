@@ -24,7 +24,7 @@ export const defaultThemeConfig: ThemeConfig = {
       animated: true,
       color: 'var(--st-accent-lantern)',
       url: '/',
-      title: 'Harumonia',
+      title: 'Zaxon',
     },
 
     powered: true,
@@ -44,7 +44,7 @@ export function themePlugin(options: ResolvedValaxyOptions<ThemeConfig>): Plugin
   const themeConfig = options.config.themeConfig || {}
 
   return {
-    name: 'valaxy-theme-starter',
+    name: 'valaxy-theme-zaxon',
 
     config() {
       return {

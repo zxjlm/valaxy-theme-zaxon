@@ -2,6 +2,7 @@
 title: Hello, Valaxy!
 date: 2022-03-22
 updated: 2022-03-23
+draft: true
 categories: Valaxy Notes
 tags:
   - valaxy
@@ -15,13 +16,11 @@ English
 **English Bold**
 
 ```ts
-import type { ThemeConfig } from 'valaxy-theme-starter'
+import type { ThemeConfig } from 'valaxy-theme-zaxon'
 import { defineConfig } from 'valaxy'
 
 export default defineConfig<ThemeConfig>({
-  // your theme name
-  // valaxy-theme-yun name is 'yun'
-  theme: 'starter',
+  theme: 'zaxon',
 
   themeConfig: {
     banner: {

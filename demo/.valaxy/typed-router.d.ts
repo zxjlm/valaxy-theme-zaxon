@@ -72,6 +72,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/edge-cache-field-note': RouteRecordInfo<
+      '/posts/edge-cache-field-note',
+      '/posts/edge-cache-field-note',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/hello-valaxy': RouteRecordInfo<
       '/posts/hello-valaxy',
       '/posts/hello-valaxy',
@@ -86,6 +93,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/lake-after-rain': RouteRecordInfo<
+      '/posts/lake-after-rain',
+      '/posts/lake-after-rain',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/markdown': RouteRecordInfo<
       '/posts/markdown',
       '/posts/markdown',
@@ -93,9 +107,23 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/quote-on-small-light': RouteRecordInfo<
+      '/posts/quote-on-small-light',
+      '/posts/quote-on-small-light',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/test': RouteRecordInfo<
       '/posts/test',
       '/posts/test',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/theme-state-note': RouteRecordInfo<
+      '/posts/theme-state-note',
+      '/posts/theme-state-note',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -162,6 +190,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/edge-cache-field-note.md': {
+      routes:
+        | '/posts/edge-cache-field-note'
+      views:
+        | never
+    }
     'pages/posts/hello-valaxy.md': {
       routes:
         | '/posts/hello-valaxy'
@@ -174,15 +208,33 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/lake-after-rain.md': {
+      routes:
+        | '/posts/lake-after-rain'
+      views:
+        | never
+    }
     'pages/posts/markdown.md': {
       routes:
         | '/posts/markdown'
       views:
         | never
     }
+    'pages/posts/quote-on-small-light.md': {
+      routes:
+        | '/posts/quote-on-small-light'
+      views:
+        | never
+    }
     'pages/posts/test.md': {
       routes:
         | '/posts/test'
+      views:
+        | never
+    }
+    'pages/posts/theme-state-note.md': {
+      routes:
+        | '/posts/theme-state-note'
       views:
         | never
     }

@@ -8,7 +8,7 @@
 
   @include set-css-var-from-map($common);
   @include set-css-var-from-map($z-index, 'z');
-  --field-hero-image: url('../assets/field-notes/hero-field-light.png');
+  --field-hero-image: none;
 }
 
 :root {
@@ -17,7 +17,6 @@
 
 html.dark {
   @include set-css-var-from-map($dark);
-  --field-hero-image: url('../assets/field-notes/hero-field-dark.png');
 }
 
 :root {

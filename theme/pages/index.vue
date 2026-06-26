@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Post } from 'valaxy'
 import { usePostList, useSiteConfig } from 'valaxy'
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const siteConfig = useSiteConfig()
 const posts = usePostList()
@@ -16,6 +16,20 @@ const rockDecor = new URL('../assets/field-notes/decor-rocks.png', import.meta.u
 const thumbLake = new URL('../assets/field-notes/thumb-lake.png', import.meta.url).href
 const thumbCoffee = new URL('../assets/field-notes/thumb-coffee.png', import.meta.url).href
 const thumbCamp = new URL('../assets/field-notes/thumb-camp.png', import.meta.url).href
+const heroImages = {
+  light: {
+    desktop: new URL('../assets/field-notes/hero-field-desktop-light.png', import.meta.url).href,
+    mobile: new URL('../assets/field-notes/hero-field-mobile-light.png', import.meta.url).href,
+  },
+  dark: {
+    desktop: new URL('../assets/field-notes/hero-field-desktop-dark.png', import.meta.url).href,
+    mobile: new URL('../assets/field-notes/hero-field-mobile-dark.png', import.meta.url).href,
+  },
+}
+
+const heroImage = ref('')
+let heroMediaQuery: MediaQueryList | undefined
+let themeObserver: MutationObserver | undefined
 
 function asArray(value: unknown) {
   if (Array.isArray(value))
@@ -23,17 +37,68 @@ function asArray(value: unknown) {
   return value ? [String(value)] : []
 }
 
+function fieldValue(post: Post, key: string) {
+  return (post as any)[key] ?? (post as any).frontmatter?.[key]
+}
+
 function postText(post: Post) {
   return [
     post.title,
     post.excerpt,
+    fieldValue(post, 'type'),
     ...asArray((post as any).tags),
     ...asArray((post as any).categories),
   ].join(' ').toLowerCase()
 }
 
+function entryKind(post: Post) {
+  const text = postText(post)
+
+  if (/photo|摄影|旅行|照片|胶片/.test(text))
+    return 'photo'
+  if (/quote|摘录|引用|句子/.test(text))
+    return 'quote'
+  if (/note|笔记|备忘|随记|灵感/.test(text))
+    return 'note'
+  if (/life|生活|阅读|音乐|咖啡/.test(text))
+    return 'life'
+
+  return 'article'
+}
+
+function entryLabel(post: Post) {
+  return {
+    article: 'ARTICLE',
+    life: 'LIFE',
+    note: 'NOTE',
+    photo: 'PHOTO',
+    quote: 'QUOTE',
+  }[entryKind(post)]
+}
+
 function isLife(post: Post) {
-  return /photo|life|生活|旅行|摄影|阅读|随笔|音乐/.test(postText(post))
+  return ['life', 'photo', 'quote'].includes(entryKind(post))
+}
+
+function plainText(value: unknown) {
+  return String(value || '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function postSummary(post: Post) {
+  const excerpt = plainText(post.excerpt)
+  if (excerpt)
+    return excerpt
+
+  return {
+    article: '整理一个具体问题的来路、取舍和最终实践。',
+    life: '把生活片段放回同一份长期可读的观察手册。',
+    note: '短一点的开发备忘，保留当时的判断和线索。',
+    photo: '用照片记下天气、路径和当时看见的光。',
+    quote: '摘下一句还值得反复咀嚼的话，留给之后的自己。',
+  }[entryKind(post)]
 }
 
 const visiblePosts = computed(() => posts.value.filter(post => !post.draft))
@@ -41,6 +106,9 @@ const devPosts = computed(() => visiblePosts.value.filter(post => !isLife(post))
 const lifePosts = computed(() => visiblePosts.value.filter(post => isLife(post)).slice(0, 3))
 const recentPosts = computed(() => visiblePosts.value.slice(0, 4))
 const latestPosts = computed(() => visiblePosts.value.slice(0, 5))
+const heroStyle = computed(() => ({
+  '--field-hero-image': heroImage.value ? `url(${heroImage.value})` : 'none',
+}))
 
 const fallbackFinds = [
   {
@@ -62,18 +130,42 @@ const fallbackFinds = [
     image: thumbCamp,
   },
 ]
+
+function syncHeroImage() {
+  const isDark = document.documentElement.classList.contains('dark')
+  const theme = isDark ? 'dark' : 'light'
+  const size = heroMediaQuery?.matches ? 'mobile' : 'desktop'
+  heroImage.value = heroImages[theme][size]
+}
+
+onMounted(() => {
+  heroMediaQuery = window.matchMedia('(max-width: 640px)')
+  syncHeroImage()
+
+  heroMediaQuery.addEventListener('change', syncHeroImage)
+  themeObserver = new MutationObserver(syncHeroImage)
+  themeObserver.observe(document.documentElement, {
+    attributeFilter: ['class', 'data-theme'],
+    attributes: true,
+  })
+})
+
+onBeforeUnmount(() => {
+  heroMediaQuery?.removeEventListener('change', syncHeroImage)
+  themeObserver?.disconnect()
+})
 </script>
 
 <template>
   <div class="field-home">
-    <section class="field-hero" aria-labelledby="field-hero-title">
+    <section class="field-hero" :style="heroStyle" aria-labelledby="field-hero-title">
       <div class="field-hero__overlay" />
       <div class="field-hero__content">
         <p class="field-kicker">
-          Field notes / personal worldview
+          Zaxon / field notes theme
         </p>
         <h1 id="field-hero-title" class="field-hero__title">
-          {{ siteConfig.title || 'Harumonia' }}
+          {{ siteConfig.title || 'Zaxon' }}
         </h1>
         <p class="field-hero__subtitle">
           {{ siteConfig.subtitle || '记录代码与生活，收集微小而确定的光。' }}
@@ -81,6 +173,11 @@ const fallbackFinds = [
         <p class="field-hero__copy">
           在开发与生活之间，安放思考、记录与热爱。
         </p>
+        <div class="field-hero__trail" aria-label="内容比例">
+          <span>DEV 70%</span>
+          <span>LIFE 30%</span>
+          <span>NOTES / PHOTOS / QUOTES</span>
+        </div>
         <div class="field-hero__actions">
           <RouterLink class="field-button field-button--dev" to="/categories/">
             DEV LOG
@@ -99,8 +196,11 @@ const fallbackFinds = [
             World entries
           </p>
           <h2 id="field-log-gates-title" class="field-section__title">
-            进入两条记录路径
+            开发与生活的两条路径
           </h2>
+          <p class="field-section__summary">
+            一边沉淀工程实践，一边收集真实生活。入口清晰，但它们仍在同一份手册里。
+          </p>
         </div>
       </div>
 
@@ -150,8 +250,11 @@ const fallbackFinds = [
             Recent finds
           </p>
           <h2 id="field-finds-title" class="field-section__title">
-            最近收集的一些发现与灵感
+            最近收集的发现与灵感
           </h2>
+          <p class="field-section__summary">
+            从文章、短记到照片，把最近值得回看的内容先摆在桌面上。
+          </p>
         </div>
         <RouterLink class="field-section__more" to="/archives/">
           查看全部 <span aria-hidden="true">→</span>
@@ -163,13 +266,16 @@ const fallbackFinds = [
           v-for="post in recentPosts"
           :key="post.path"
           class="field-find-card"
+          :data-kind="entryKind(post)"
           :to="post.path || ''"
         >
-          <span class="field-chip" :data-kind="isLife(post) ? 'life' : 'dev'">
-            {{ isLife(post) ? 'LIFE' : 'ARTICLE' }}
+          <span class="field-chip" :data-kind="entryKind(post)">
+            {{ entryLabel(post) }}
           </span>
           <h3>{{ post.title }}</h3>
-          <div v-if="post.excerpt" class="field-find-card__summary" v-html="post.excerpt" />
+          <p class="field-find-card__summary">
+            {{ postSummary(post) }}
+          </p>
           <StarterDate :date="post.date" />
         </RouterLink>
 
@@ -193,8 +299,11 @@ const fallbackFinds = [
             Latest articles
           </p>
           <h2 id="field-latest-title" class="field-section__title">
-            最新文章
+            最新记录
           </h2>
+          <p class="field-section__summary">
+            按时间继续往下读，像翻看一页页逐渐积累的田野记录。
+          </p>
         </div>
       </div>
 

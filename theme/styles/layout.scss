@@ -14,7 +14,7 @@ body {
   min-height: 100%;
   margin: 0;
   background:
-    radial-gradient(circle at 50% -10%, rgb(140 162 199 / 14%), transparent 38rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--st-accent-sky) 9%, transparent), transparent 32rem),
     linear-gradient(180deg, rgb(255 255 255 / 0%), var(--st-bg-canvas) 38rem);
   color: var(--st-text-primary);
   -webkit-font-smoothing: antialiased;
@@ -37,6 +37,25 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+.field-skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+  border-radius: var(--st-radius-md);
+  padding: 10px 12px;
+  background: var(--st-accent-lantern);
+  color: #071018;
+  font-size: 14px;
+  font-weight: 750;
+  transform: translateY(-140%);
+  transition: transform var(--st-duration-fast) var(--st-ease-enter);
+}
+
+.field-skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 .link {
   color: var(--st-c-link);
 }
@@ -57,10 +76,10 @@ button:focus-visible {
   z-index: -2;
   pointer-events: none;
   content: '';
-  background-image: var(--field-hero-image);
-  background-position: center top;
-  background-size: cover;
-  opacity: 0.1;
+  background:
+    radial-gradient(circle at 18% 8%, color-mix(in srgb, var(--st-accent-sky) 10%, transparent), transparent 20rem),
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--st-life-primary) 8%, transparent), transparent 18rem);
+  opacity: 0.62;
 }
 
 .field-shell::after {
@@ -93,7 +112,9 @@ html:not(.dark) .field-shell::after {
   top: 0;
   z-index: 30;
   border-bottom: 1px solid var(--st-border-default);
-  background: color-mix(in srgb, var(--st-bg-canvas) 88%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--st-bg-surface) 42%, transparent), transparent),
+    color-mix(in srgb, var(--st-bg-canvas) 90%, transparent);
 }
 
 @supports (backdrop-filter: blur(10px)) {
@@ -116,7 +137,7 @@ html:not(.dark) .field-shell::after {
   align-items: center;
   gap: 10px;
   font-family: var(--st-font-serif);
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.012em;
 }
@@ -177,10 +198,11 @@ html:not(.dark) .field-shell::after {
   height: 40px;
   place-items: center;
   border: 1px solid var(--st-border-default);
-  border-radius: 999px;
+  border-radius: var(--st-radius-md);
   background: color-mix(in srgb, var(--st-bg-surface) 82%, transparent);
   color: var(--st-text-secondary);
   transition:
+    background-color var(--st-duration-fast) var(--st-ease-standard),
     border-color var(--st-duration-fast) var(--st-ease-standard),
     color var(--st-duration-fast) var(--st-ease-standard),
     transform var(--st-duration-fast) var(--st-ease-standard);
@@ -197,6 +219,7 @@ html:not(.dark) .field-shell::after {
   }
 
   .field-icon-button:hover {
+    background: color-mix(in srgb, var(--st-bg-elevated) 88%, transparent);
     border-color: var(--st-border-strong);
     color: var(--st-text-primary);
   }
@@ -225,7 +248,7 @@ html:not(.dark) .field-shell::after {
 }
 
 .field-section + .field-section {
-  margin-top: clamp(44px, 7vw, 76px);
+  margin-top: clamp(56px, 8vw, 92px);
 }
 
 .field-section__head {
@@ -233,13 +256,14 @@ html:not(.dark) .field-shell::after {
   align-items: end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .field-kicker {
   color: var(--st-text-muted);
   font-family: var(--st-font-mono);
   font-size: 11px;
+  line-height: 1.4;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -254,11 +278,12 @@ html:not(.dark) .field-shell::after {
 }
 
 .field-section__summary {
-  max-width: 58ch;
-  margin: 6px 0 0;
+  max-width: 62ch;
+  margin: 8px 0 0;
   color: var(--st-text-secondary);
   font-size: 15px;
   line-height: 1.7;
+  text-wrap: pretty;
 }
 
 .field-button {
@@ -272,6 +297,7 @@ html:not(.dark) .field-shell::after {
   padding: 0 15px;
   background: var(--st-bg-surface);
   color: var(--st-text-primary);
+  box-shadow: 0 10px 22px rgb(0 0 0 / 12%);
   font-size: 14px;
   font-weight: 700;
   transition:
@@ -323,6 +349,10 @@ html:not(.dark) .field-shell::after {
     display: inline-grid;
   }
 
+  .field-nav__archive {
+    display: none;
+  }
+
   .field-nav__mobile {
     display: grid;
     grid-template-rows: 0fr;
@@ -352,67 +382,81 @@ html:not(.dark) .field-shell::after {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
+    animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 1ms !important;
   }
 }
 
 .field-hero {
   position: relative;
   display: grid;
-  min-height: clamp(560px, 72vh, 760px);
+  min-height: clamp(540px, 70vh, 720px);
   align-items: center;
   margin-top: -32px;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgb(8 19 32 / 26%), var(--st-bg-canvas) 100%),
-    var(--field-hero-image) center bottom / cover no-repeat;
+    linear-gradient(180deg, rgb(8 19 32 / 8%), var(--st-bg-canvas) 100%),
+    var(--field-hero-image, none) center bottom / cover no-repeat;
 }
 
 .field-hero__overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 38%, rgb(255 248 220 / 10%), transparent 22rem),
-    linear-gradient(90deg, rgb(8 19 32 / 34%), transparent 32%, transparent 70%, rgb(8 19 32 / 32%)),
-    linear-gradient(180deg, transparent 58%, var(--st-bg-canvas) 100%);
+    linear-gradient(90deg, rgb(8 19 32 / 24%), transparent 28%, transparent 72%, rgb(8 19 32 / 24%)),
+    linear-gradient(
+      180deg,
+      transparent 58%,
+      color-mix(in srgb, var(--st-bg-canvas) 86%, transparent) 92%,
+      var(--st-bg-canvas) 100%
+    ),
+    repeating-linear-gradient(0deg, rgb(255 255 255 / 2%) 0 1px, transparent 1px 5px);
 }
 
 html:not(.dark) .field-hero__overlay {
   background:
-    radial-gradient(circle at 50% 38%, rgb(255 253 247 / 42%), transparent 22rem),
-    linear-gradient(180deg, rgb(244 241 232 / 8%), var(--st-bg-canvas) 100%);
+    radial-gradient(circle at 50% 38%, rgb(255 253 247 / 28%), transparent 22rem),
+    linear-gradient(180deg, rgb(244 241 232 / 2%), var(--st-bg-canvas) 100%);
 }
 
 .field-hero__content {
   position: relative;
   z-index: 1;
-  width: min(100% - 36px, 900px);
+  width: min(100% - 36px, 1120px);
   margin: 0 auto;
-  padding: 92px 0 148px;
+  padding: 86px 0 128px;
   text-align: center;
 }
 
+.field-hero__content > * {
+  max-width: 650px;
+  margin-inline: auto;
+}
+
 .field-hero__title {
-  margin: 8px 0 10px;
+  margin: 8px auto 12px;
   color: #f4ecd9;
   font-family: var(--st-font-serif);
-  font-size: clamp(48px, 8vw, 86px);
+  font-size: clamp(48px, 7.4vw, 82px);
   font-weight: 780;
   line-height: 1.04;
   letter-spacing: -0.022em;
-  text-shadow: 0 5px 0 rgb(0 0 0 / 18%), 0 18px 45px rgb(0 0 0 / 38%);
+  text-shadow:
+    0 5px 0 rgb(0 0 0 / 18%),
+    0 18px 45px rgb(0 0 0 / 38%);
   text-wrap: balance;
 }
 
 html:not(.dark) .field-hero__title {
   color: #243039;
-  text-shadow: 0 2px 0 rgb(255 255 255 / 45%), 0 16px 36px rgb(89 102 109 / 22%);
+  text-shadow:
+    0 2px 0 rgb(255 255 255 / 45%),
+    0 16px 36px rgb(89 102 109 / 22%);
 }
 
 .field-hero__subtitle {
-  margin: 0;
+  margin: 0 auto;
   color: #f3ead8;
   font-size: clamp(19px, 2.4vw, 26px);
   font-weight: 650;
@@ -429,6 +473,35 @@ html:not(.dark) .field-hero__title {
   text-wrap: pretty;
 }
 
+.field-hero__trail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.field-hero__trail span {
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  border: 1px solid rgb(233 227 211 / 16%);
+  border-radius: var(--st-radius-sm);
+  padding: 3px 8px;
+  background: rgb(8 19 32 / 34%);
+  color: rgb(233 227 211 / 78%);
+  font-family: var(--st-font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+html:not(.dark) .field-hero__trail span {
+  border-color: rgb(36 48 57 / 16%);
+  background: rgb(255 253 247 / 54%);
+  color: #4f5960;
+}
+
 html:not(.dark) .field-hero__subtitle,
 html:not(.dark) .field-hero__copy {
   color: #243039;
@@ -439,34 +512,48 @@ html:not(.dark) .field-hero__copy {
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  margin-top: 26px;
+  margin-top: 22px;
 }
 
 .field-gate-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .field-gate {
   position: relative;
   display: grid;
-  grid-template-columns: 90px 1fr auto;
+  grid-template-columns: 78px 1fr auto;
   align-items: center;
-  gap: 20px;
-  min-height: 152px;
+  gap: 18px;
+  min-height: 164px;
   border: 1px solid var(--st-border-default);
   border-radius: var(--st-radius-scene);
-  padding: 22px 24px;
+  padding: 22px;
   overflow: hidden;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--gate-color) 18%, transparent), transparent 48%),
+    linear-gradient(135deg, color-mix(in srgb, var(--gate-color) 18%, transparent), transparent 46%),
+    linear-gradient(180deg, rgb(255 255 255 / 3%), transparent 58%),
     color-mix(in srgb, var(--st-bg-surface) 92%, transparent);
-  box-shadow: 0 14px 40px rgb(0 0 0 / 13%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 5%),
+    0 16px 42px rgb(0 0 0 / 14%);
   transition:
     border-color var(--st-duration-fast) var(--st-ease-standard),
     transform var(--st-duration-fast) var(--st-ease-standard),
     background-color var(--st-duration-fast) var(--st-ease-standard);
+}
+
+.field-gate::before {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  width: 34px;
+  height: 2px;
+  content: '';
+  background: var(--gate-color);
+  opacity: 0.72;
 }
 
 .field-gate--dev {
@@ -478,31 +565,31 @@ html:not(.dark) .field-hero__copy {
 }
 
 .field-gate__icon {
-  width: 76px;
-  height: 76px;
+  width: 68px;
+  height: 68px;
   object-fit: contain;
   image-rendering: pixelated;
 }
 
 .field-gate__eyebrow {
-  margin: 0 0 4px;
+  margin: 0 0 5px;
   color: var(--gate-color);
   font-family: var(--st-font-mono);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 }
 
 .field-gate h3 {
   margin: 0;
   color: var(--st-text-primary);
-  font-size: 24px;
+  font-size: 23px;
   line-height: 1.2;
   letter-spacing: -0.012em;
 }
 
 .field-gate p:not(.field-gate__eyebrow) {
   max-width: 38rem;
-  margin: 8px 0 0;
+  margin: 9px 0 0;
   color: var(--st-text-secondary);
   font-size: 15px;
   line-height: 1.65;
@@ -530,8 +617,9 @@ html:not(.dark) .field-hero__copy {
 
 .field-gate__arrow {
   color: var(--st-text-muted);
-  font-size: 52px;
+  font-size: 48px;
   line-height: 1;
+  transition: transform var(--st-duration-fast) var(--st-ease-standard);
 }
 
 @media (hover: hover) {
@@ -539,57 +627,94 @@ html:not(.dark) .field-hero__copy {
     transform: translateY(-2px);
     border-color: color-mix(in srgb, var(--gate-color) 54%, var(--st-border-strong));
   }
+
+  .field-gate:hover .field-gate__arrow {
+    transform: translateX(3px);
+  }
 }
 
 .field-section__more {
   display: inline-flex;
+  min-height: 36px;
   align-items: center;
   gap: 8px;
+  border-radius: var(--st-radius-md);
+  padding-inline: 10px;
   color: var(--st-text-secondary);
   font-size: 14px;
   font-weight: 700;
+  transition:
+    background-color var(--st-duration-fast) var(--st-ease-standard),
+    color var(--st-duration-fast) var(--st-ease-standard),
+    transform var(--st-duration-fast) var(--st-ease-standard);
+}
+
+@media (hover: hover) {
+  .field-section__more:hover {
+    background: var(--st-bg-surface);
+    color: var(--st-text-primary);
+    transform: translateY(-1px);
+  }
 }
 
 .field-finds-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .field-find-card {
   position: relative;
   display: flex;
-  min-height: 178px;
+  min-height: 218px;
   flex-direction: column;
   border: 1px solid var(--st-border-default);
   border-radius: var(--st-radius-lg);
-  padding: 16px;
+  padding: 18px;
   overflow: hidden;
   background:
-    linear-gradient(160deg, rgb(255 255 255 / 3%), transparent 55%),
-    var(--st-bg-surface);
-  box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
+    linear-gradient(160deg, rgb(255 255 255 / 4%), transparent 56%),
+    color-mix(in srgb, var(--st-bg-surface) 94%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 4%),
+    0 14px 34px rgb(0 0 0 / 11%);
   transition:
     border-color var(--st-duration-fast) var(--st-ease-standard),
     transform var(--st-duration-fast) var(--st-ease-standard);
 }
 
+.field-find-card:first-child {
+  grid-column: span 2;
+}
+
 .field-find-card::after {
   position: absolute;
-  right: -10px;
-  bottom: -18px;
-  width: 90px;
-  height: 80px;
+  right: -14px;
+  bottom: -20px;
+  width: 96px;
+  height: 86px;
   content: '';
   background: url('../assets/field-notes/decor-flower-b.png') center / contain no-repeat;
   image-rendering: pixelated;
-  opacity: 0.5;
+  opacity: 0.38;
+}
+
+.field-find-card[data-kind='photo']::after {
+  background-image: url('../assets/field-notes/icon-camera.png');
+}
+
+.field-find-card[data-kind='note']::after {
+  background-image: url('../assets/field-notes/badge-note.png');
+}
+
+.field-find-card[data-kind='quote']::after {
+  background-image: url('../assets/field-notes/badge-quote.png');
 }
 
 .field-find-card h3 {
   position: relative;
   z-index: 1;
-  margin: 14px 0 8px;
+  margin: 16px 0 9px;
   color: var(--st-text-primary);
   font-size: 18px;
   line-height: 1.45;
@@ -608,14 +733,14 @@ html:not(.dark) .field-hero__copy {
   font-size: 14px;
   line-height: 1.65;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
 }
 
 .field-find-card .field-date {
   position: relative;
   z-index: 1;
   margin-top: auto;
-  padding-top: 18px;
+  padding-top: 22px;
 }
 
 .field-find-card--photo img {
@@ -635,8 +760,11 @@ html:not(.dark) .field-hero__copy {
 .field-latest-panel {
   border: 1px solid var(--st-border-default);
   border-radius: var(--st-radius-lg);
-  background: color-mix(in srgb, var(--st-bg-surface) 92%, transparent);
   overflow: hidden;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 3%), transparent 120px),
+    color-mix(in srgb, var(--st-bg-surface) 92%, transparent);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
 }
 
 .field-latest-row {
@@ -644,13 +772,14 @@ html:not(.dark) .field-hero__copy {
   grid-template-columns: 40px auto minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 14px;
-  min-height: 66px;
+  min-height: 68px;
   border-bottom: 1px solid var(--st-border-default);
-  padding: 11px 14px;
+  padding: 12px 16px;
   color: var(--st-text-secondary);
   transition:
     background-color var(--st-duration-fast) var(--st-ease-standard),
-    color var(--st-duration-fast) var(--st-ease-standard);
+    color var(--st-duration-fast) var(--st-ease-standard),
+    transform var(--st-duration-fast) var(--st-ease-standard);
 }
 
 .field-latest-row:last-child {
@@ -678,6 +807,7 @@ html:not(.dark) .field-hero__copy {
   .field-latest-row:hover {
     background: var(--st-bg-elevated);
     color: var(--st-text-primary);
+    transform: translateX(2px);
   }
 }
 
@@ -692,14 +822,15 @@ html:not(.dark) .field-hero__copy {
   background: color-mix(in srgb, var(--chip-color) 16%, transparent);
   color: var(--chip-color);
   font-family: var(--st-font-mono);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
 }
 
 .field-chip,
-.field-chip[data-kind='dev'] {
+.field-chip[data-kind='dev'],
+.field-chip[data-kind='article'] {
   --chip-color: var(--st-dev-primary);
 }
 
@@ -735,8 +866,11 @@ html:not(.dark) .field-hero__copy {
   gap: 18px;
   border: 1px solid var(--st-border-default);
   border-radius: var(--st-radius-lg);
-  padding: 18px;
-  background: color-mix(in srgb, var(--st-bg-surface) 94%, transparent);
+  padding: 20px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--card-accent) 10%, transparent), transparent 42%),
+    color-mix(in srgb, var(--st-bg-surface) 94%, transparent);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
   transition:
     border-color var(--st-duration-fast) var(--st-ease-standard),
     transform var(--st-duration-fast) var(--st-ease-standard);
@@ -763,7 +897,9 @@ html:not(.dark) .field-hero__copy {
   height: 74px;
   place-items: center;
   border-radius: var(--st-radius-md);
-  background: color-mix(in srgb, var(--card-accent) 13%, var(--st-bg-elevated));
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 6%), transparent),
+    color-mix(in srgb, var(--card-accent) 13%, var(--st-bg-elevated));
 }
 
 .field-article-card__icon img {
@@ -892,13 +1028,54 @@ html:not(.dark) .field-hero__copy {
 }
 
 @media (max-width: 640px) {
+  .field-section + .field-section {
+    margin-top: 60px;
+  }
+
+  .field-section__head {
+    display: grid;
+    gap: 12px;
+  }
+
+  .field-section__more {
+    width: max-content;
+    padding-inline: 0;
+  }
+
   .field-hero {
-    min-height: 610px;
-    background-position: 58% bottom;
+    min-height: 560px;
+    background-position: center bottom;
   }
 
   .field-hero__content {
-    padding: 88px 0 220px;
+    padding: 78px 0 150px;
+    text-align: center;
+  }
+
+  .field-hero__content > * {
+    max-width: none;
+  }
+
+  .field-hero__title {
+    font-size: clamp(44px, 13vw, 54px);
+  }
+
+  .field-hero__subtitle {
+    font-size: 19px;
+  }
+
+  .field-hero__copy {
+    font-size: 15px;
+  }
+
+  .field-hero__trail {
+    max-width: 18rem;
+    margin-inline: auto;
+    justify-content: center;
+  }
+
+  .field-hero__actions {
+    justify-content: center;
   }
 
   .field-gate-grid,
@@ -906,22 +1083,51 @@ html:not(.dark) .field-hero__copy {
     grid-template-columns: 1fr;
   }
 
+  .field-find-card:first-child {
+    grid-column: auto;
+  }
+
   .field-gate {
-    grid-template-columns: 64px 1fr;
+    grid-template-columns: 58px 1fr;
+    align-items: start;
+    gap: 14px;
+    min-height: 0;
     padding: 18px;
   }
 
+  .field-gate::before {
+    top: 14px;
+    left: 18px;
+    width: 26px;
+  }
+
   .field-gate__icon {
-    width: 58px;
-    height: 58px;
+    width: 52px;
+    height: 52px;
+    margin-top: 18px;
+  }
+
+  .field-gate h3 {
+    font-size: 22px;
+  }
+
+  .field-gate p:not(.field-gate__eyebrow) {
+    font-size: 14px;
   }
 
   .field-gate__arrow {
     display: none;
   }
 
+  .field-find-card {
+    min-height: 190px;
+  }
+
   .field-latest-row {
     grid-template-columns: 36px auto minmax(0, 1fr);
+    min-height: 62px;
+    gap: 10px;
+    padding: 11px 12px;
   }
 
   .field-latest-row .field-date,

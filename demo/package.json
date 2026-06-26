@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "valaxy": "catalog:",
-    "valaxy-theme-starter": "workspace:*"
+    "valaxy-theme-zaxon": "workspace:*"
   }
 }

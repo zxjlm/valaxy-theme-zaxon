@@ -1,5 +1,7 @@
 <template>
   <div class="field-shell antialiased">
+    <a class="field-skip-link" href="#main-content">跳到正文</a>
+
     <header class="field-nav">
       <StarterNav />
     </header>

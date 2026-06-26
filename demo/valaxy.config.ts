@@ -1,4 +1,4 @@
-import type { ThemeConfig } from 'valaxy-theme-starter'
+import type { ThemeConfig } from 'valaxy-theme-zaxon'
 import { defineConfig } from 'valaxy'
 
 /**
@@ -6,7 +6,7 @@ import { defineConfig } from 'valaxy'
  * do not use export const config to avoid defu conflict
  */
 export default defineConfig<ThemeConfig>({
-  theme: 'starter',
+  theme: 'zaxon',
 
   themeConfig: {
     // colors: {

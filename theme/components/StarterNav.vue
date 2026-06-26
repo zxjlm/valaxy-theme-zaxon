@@ -28,29 +28,29 @@ const navItems = computed(() => {
   <nav class="field-nav-frame" :aria-label="siteConfig.title">
     <div class="field-nav__inner">
       <RouterLink class="field-brand" to="/" :aria-label="siteConfig.title">
-      <img
+        <img
           class="field-brand__sprite"
           alt=""
           :src="brandSprite"
-      >
+        >
         <span>{{ siteConfig.title }}</span>
       </RouterLink>
 
       <div class="field-nav__links">
         <template v-for="item in navItems" :key="item.link">
-        <AppLink
+          <AppLink
             class="field-nav__link"
-          :to="item.link"
-          rel="noopener"
-        >
-          {{ item.text }}
-        </AppLink>
-      </template>
+            :to="item.link"
+            rel="noopener"
+          >
+            {{ item.text }}
+          </AppLink>
+        </template>
       </div>
 
       <div class="field-nav__actions">
-        <RouterLink class="field-icon-button" to="/archives/" aria-label="搜索与归档">
-          <div i-ri-search-line />
+        <RouterLink class="field-icon-button field-nav__archive" to="/archives/" aria-label="查看归档">
+          <div i-ri-archive-line />
         </RouterLink>
 
         <button class="field-icon-button" type="button" aria-label="切换明暗主题" @click="appStore.toggleDarkWithTransition">

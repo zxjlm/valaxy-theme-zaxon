@@ -42,7 +42,7 @@ const notebookIcon = new URL('../assets/field-notes/icon-notebook.png', import.m
         <StarterAuthor v-if="frontmatter.author" :frontmatter="frontmatter" />
         <div class="field-post__toc-card">
           <img :src="notebookIcon" alt="" loading="lazy">
-          <span>READING NOTES</span>
+          <span>阅读札记</span>
           <p>正文保持安静，代码、引用和图片使用统一的手帐边界。</p>
         </div>
       </aside>
@@ -54,7 +54,7 @@ const notebookIcon = new URL('../assets/field-notes/icon-notebook.png', import.m
       <footer class="field-post__pager">
         <div v-if="nextPost && nextPost.path" class="field-post__pager-item">
           <h2>
-            Next Article
+            上一篇
           </h2>
           <div>
             <RouterLink :to="nextPost.path">
@@ -64,7 +64,7 @@ const notebookIcon = new URL('../assets/field-notes/icon-notebook.png', import.m
         </div>
         <div v-if="prevPost && prevPost.path" class="field-post__pager-item">
           <h2>
-            Previous Article
+            下一篇
           </h2>
           <div>
             <RouterLink :to="prevPost.path">
@@ -74,7 +74,7 @@ const notebookIcon = new URL('../assets/field-notes/icon-notebook.png', import.m
         </div>
         <div class="field-post__pager-item">
           <RouterLink to="/">
-            ← Back to field notes
+            ← 返回手记
           </RouterLink>
         </div>
       </footer>
