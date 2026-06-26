@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import FieldCompanions from './FieldCompanions.vue'
 import FieldWind from './FieldWind.vue'
 </script>
 
@@ -6,6 +7,7 @@ import FieldWind from './FieldWind.vue'
   <div class="field-shell antialiased">
     <a class="field-skip-link" href="#main-content">跳到正文</a>
     <FieldWind />
+    <FieldCompanions />
 
     <header class="field-nav">
       <StarterNav />
