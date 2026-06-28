@@ -2,24 +2,26 @@
 import type { Post } from 'valaxy'
 import { usePostList, useSiteConfig } from 'valaxy'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import flowerDecor from '../assets/field-notes/decor-flower-a.png'
 
-const siteConfig = useSiteConfig()
-const posts = usePostList()
-
+import rockDecor from '../assets/field-notes/decor-rocks.png'
+import heroFieldDesktopDark from '../assets/field-notes/hero-field-desktop-dark.png'
+import heroFieldDesktopLight from '../assets/field-notes/hero-field-desktop-light.png'
+import heroFieldMobileDark from '../assets/field-notes/hero-field-mobile-dark.png'
+import heroFieldMobileLight from '../assets/field-notes/hero-field-mobile-light.png'
+import cameraIcon from '../assets/field-notes/icon-camera.png'
+import compassIcon from '../assets/field-notes/icon-compass.png'
 import devIcon from '../assets/field-notes/icon-dev.png'
 import lifeIcon from '../assets/field-notes/icon-life.png'
 import notebookIcon from '../assets/field-notes/icon-notebook.png'
-import cameraIcon from '../assets/field-notes/icon-camera.png'
-import compassIcon from '../assets/field-notes/icon-compass.png'
-import flowerDecor from '../assets/field-notes/decor-flower-a.png'
-import rockDecor from '../assets/field-notes/decor-rocks.png'
-import thumbLake from '../assets/field-notes/thumb-lake.png'
-import thumbCoffee from '../assets/field-notes/thumb-coffee.png'
 import thumbCamp from '../assets/field-notes/thumb-camp.png'
-import heroFieldDesktopLight from '../assets/field-notes/hero-field-desktop-light.png'
-import heroFieldMobileLight from '../assets/field-notes/hero-field-mobile-light.png'
-import heroFieldDesktopDark from '../assets/field-notes/hero-field-desktop-dark.png'
-import heroFieldMobileDark from '../assets/field-notes/hero-field-mobile-dark.png'
+import thumbCoffee from '../assets/field-notes/thumb-coffee.png'
+import thumbLake from '../assets/field-notes/thumb-lake.png'
+import { entryKind, entryLabel, useFieldEntries } from '../composables'
+
+const siteConfig = useSiteConfig()
+const posts = usePostList()
+const { isLife } = useFieldEntries()
 
 const heroImages = {
   light: {
@@ -35,55 +37,6 @@ const heroImages = {
 const heroImage = ref('')
 let heroMediaQuery: MediaQueryList | undefined
 let themeObserver: MutationObserver | undefined
-
-function asArray(value: unknown) {
-  if (Array.isArray(value))
-    return value.map(item => String(item))
-  return value ? [String(value)] : []
-}
-
-function fieldValue(post: Post, key: string) {
-  return (post as any)[key] ?? (post as any).frontmatter?.[key]
-}
-
-function postText(post: Post) {
-  return [
-    post.title,
-    post.excerpt,
-    fieldValue(post, 'type'),
-    ...asArray((post as any).tags),
-    ...asArray((post as any).categories),
-  ].join(' ').toLowerCase()
-}
-
-function entryKind(post: Post) {
-  const text = postText(post)
-
-  if (/photo|摄影|旅行|照片|胶片/.test(text))
-    return 'photo'
-  if (/quote|摘录|引用|句子/.test(text))
-    return 'quote'
-  if (/note|笔记|备忘|随记|灵感/.test(text))
-    return 'note'
-  if (/life|生活|阅读|音乐|咖啡/.test(text))
-    return 'life'
-
-  return 'article'
-}
-
-function entryLabel(post: Post) {
-  return {
-    article: 'ARTICLE',
-    life: 'LIFE',
-    note: 'NOTE',
-    photo: 'PHOTO',
-    quote: 'QUOTE',
-  }[entryKind(post)]
-}
-
-function isLife(post: Post) {
-  return ['life', 'photo', 'quote'].includes(entryKind(post))
-}
 
 function plainText(value: unknown) {
   return String(value || '')
@@ -107,8 +60,8 @@ function postSummary(post: Post) {
 }
 
 const visiblePosts = computed(() => posts.value.filter(post => !post.draft))
-const devPosts = computed(() => visiblePosts.value.filter(post => !isLife(post)).slice(0, 3))
-const lifePosts = computed(() => visiblePosts.value.filter(post => isLife(post)).slice(0, 3))
+const devPosts = computed(() => visiblePosts.value.filter(post => !isLife(post)))
+const lifePosts = computed(() => visiblePosts.value.filter(post => isLife(post)))
 const recentPosts = computed(() => visiblePosts.value.slice(0, 4))
 const latestPosts = computed(() => visiblePosts.value.slice(0, 5))
 const heroStyle = computed(() => ({
