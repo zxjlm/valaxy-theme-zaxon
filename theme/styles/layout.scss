@@ -1491,6 +1491,35 @@ html:not(.dark) .field-hero__copy {
   min-width: 0;
 }
 
+.field-ai-disclosure {
+  margin: 0 0 30px;
+  border: 1px solid color-mix(in srgb, var(--st-accent-quote) 38%, var(--st-border-default));
+  border-left: 3px solid var(--st-accent-quote);
+  border-radius: var(--st-radius-lg);
+  padding: 18px 20px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--st-accent-quote) 10%, transparent), transparent),
+    color-mix(in srgb, var(--st-bg-surface) 88%, transparent);
+  color: var(--st-text-secondary);
+}
+
+.field-ai-disclosure p {
+  margin: 0;
+  color: var(--st-text-secondary);
+  line-height: 1.78;
+}
+
+.field-ai-disclosure ol {
+  margin: 12px 0 0;
+  padding-left: 1.35em;
+}
+
+.field-ai-disclosure li {
+  margin-top: 8px;
+  color: var(--st-text-secondary);
+  line-height: 1.72;
+}
+
 .field-post__pager {
   grid-column: 1 / -1;
   display: grid;

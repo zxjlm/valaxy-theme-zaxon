@@ -7,6 +7,7 @@ tags:
   - Cloudflare
   - 缓存
   - 排障
+  - ai-assisted
 type: article
 excerpt: 一次静态资源没有按预期刷新的排查，从响应头、构建产物到缓存规则，把问题拆回可以验证的几步。
 ---
