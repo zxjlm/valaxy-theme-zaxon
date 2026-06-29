@@ -25,7 +25,7 @@ export default defineConfig<ThemeConfig>({
   themeConfig: {
     banner: {
       enable: true,
-      title: '云游君的小站',
+      title: 'Harumonia',
     },
   },
 })
