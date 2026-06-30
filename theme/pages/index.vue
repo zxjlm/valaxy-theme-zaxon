@@ -129,7 +129,7 @@ onBeforeUnmount(() => {
           {{ siteConfig.subtitle || '记录代码与生活，收集微小而确定的光。' }}
         </p>
         <p class="field-hero__copy">
-          在开发与生活之间，安放思考、记录与热爱。
+          思考、记录、无限进步。
         </p>
         <div class="field-hero__trail" aria-label="内容比例">
           <span>DEV</span>
@@ -170,7 +170,7 @@ onBeforeUnmount(() => {
               DEV LOG
             </p>
             <h3>开发记录</h3>
-            <p>记录技术探索、开发心得与工具实践，让想法落地，让知识沉淀。</p>
+            <p>记录技术探索、开发心得与工具实践</p>
             <div class="field-gate__tags">
               <span>代码</span>
               <span>架构</span>
@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
               LIFE LOG
             </p>
             <h3>生活记录</h3>
-            <p>收集照片、阅读、音乐与旅途中的片段，把微小瞬间妥帖保存。</p>
+            <p>收集照片、阅读、音乐与旅途中的片段</p>
             <div class="field-gate__tags">
               <span>随笔</span>
               <span>旅行</span>
