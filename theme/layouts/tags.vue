@@ -8,7 +8,9 @@ const tags = useTags()
   <Layout>
     <div class="field-catalog">
       <div class="field-catalog__header">
-        <p class="field-kicker">Field Index</p>
+        <p class="field-kicker">
+          Field Index
+        </p>
         <h1 class="field-catalog__title">
           标签
         </h1>

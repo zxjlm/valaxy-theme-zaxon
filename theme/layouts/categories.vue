@@ -8,7 +8,9 @@ const categories = useCategories()
   <Layout>
     <div class="field-catalog">
       <div class="field-catalog__header">
-        <p class="field-kicker">Field Catalog</p>
+        <p class="field-kicker">
+          Field Catalog
+        </p>
         <h1 class="field-catalog__title">
           分类
         </h1>

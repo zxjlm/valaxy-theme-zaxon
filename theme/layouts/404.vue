@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
+import signpost from '../assets/field-notes/signpost-two.png'
+import lostTraveler from '../assets/field-notes/traveler-camera.png'
 
 const router = useRouter()
-import lostTraveler from '../assets/field-notes/traveler-camera.png'
-import signpost from '../assets/field-notes/signpost-two.png'
 </script>
 
 <template>

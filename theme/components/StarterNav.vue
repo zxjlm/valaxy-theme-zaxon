@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { useAppStore, useSiteConfig } from 'valaxy'
 import { computed, ref } from 'vue'
+import brandSprite from '../assets/field-notes/traveler-standing.png'
+
 import { useThemeConfig } from '../composables'
 
 const appStore = useAppStore()
@@ -8,8 +10,6 @@ const appStore = useAppStore()
 const siteConfig = useSiteConfig()
 const themeConfig = useThemeConfig()
 const menuOpen = ref(false)
-
-import brandSprite from '../assets/field-notes/traveler-standing.png'
 
 const navItems = computed(() => {
   return themeConfig.value.nav?.length

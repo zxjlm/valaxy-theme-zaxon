@@ -2,13 +2,13 @@
 import type { Post } from 'valaxy'
 import { computed } from 'vue'
 
-const props = defineProps<{
-  post: Post
-}>()
-
 import devIcon from '../assets/field-notes/icon-dev.png'
 import noteIcon from '../assets/field-notes/icon-notebook.png'
 import photoThumb from '../assets/field-notes/thumb-lake.png'
+
+const props = defineProps<{
+  post: Post
+}>()
 
 function asArray(value: unknown) {
   if (Array.isArray(value))

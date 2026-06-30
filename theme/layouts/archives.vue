@@ -29,7 +29,9 @@ function formatDate(date: string | number | Date) {
   <Layout>
     <div class="field-catalog">
       <div class="field-catalog__header">
-        <p class="field-kicker">Field Archive</p>
+        <p class="field-kicker">
+          Field Archive
+        </p>
         <h1 class="field-catalog__title">
           归档
         </h1>

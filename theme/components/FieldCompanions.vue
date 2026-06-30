@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import notebook from '../assets/field-notes/icon-notebook.png'
 import travelerStanding from '../assets/field-notes/traveler-standing.png'
 import travelerWriting from '../assets/field-notes/traveler-writing.png'
-import notebook from '../assets/field-notes/icon-notebook.png'
 </script>
 
 <template>

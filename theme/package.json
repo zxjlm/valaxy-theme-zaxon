@@ -8,12 +8,12 @@
     "name": "Harumonia",
     "url": "https://blog.harumonia.moe"
   },
+  "license": "MIT",
   "homepage": "https://blog.harumonia.moe",
   "repository": {
     "type": "git",
     "url": "https://github.com/zxjlm/valaxy-theme-zaxon"
   },
-  "license": "MIT",
   "keywords": [
     "valaxy",
     "theme",
