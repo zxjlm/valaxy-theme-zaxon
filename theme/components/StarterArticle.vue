@@ -5,6 +5,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import notebookIcon from '../assets/field-notes/icon-notebook.png'
 import travelerWriting from '../assets/field-notes/traveler-writing.png'
+import { markdownPathForRoute } from '../composables'
 
 const frontmatter = useFrontmatter()
 
@@ -35,6 +36,7 @@ const hasAiDisclosure = computed(() => {
   return normalizeTags(frontmatter.value.tags).some(tag => aiDisclosureTags.has(tag))
 })
 
+const markdownUrl = computed(() => markdownPathForRoute(route.path))
 const nextPost = computed(() => posts.value[findCurrentIndex() - 1])
 const prevPost = computed(() => posts.value[findCurrentIndex() + 1])
 </script>
@@ -80,6 +82,12 @@ const prevPost = computed(() => posts.value[findCurrentIndex() + 1])
         </blockquote>
 
         <slot />
+
+        <div class="field-post__markdown-action">
+          <a class="field-markdown-link" :href="markdownUrl">
+            view as markdown
+          </a>
+        </div>
       </div>
 
       <footer class="field-post__pager">
