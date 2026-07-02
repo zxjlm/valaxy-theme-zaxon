@@ -1,7 +1,7 @@
 {
   "name": "valaxy-theme-zaxon",
   "type": "module",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "packageManager": "pnpm@10.24.0",
   "author": {
     "email": "me@harumonia.moe",
