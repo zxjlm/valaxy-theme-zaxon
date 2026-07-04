@@ -3,13 +3,22 @@ import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import ArgusAlbumGrid from '../components/ArgusAlbumGrid.vue'
 import ArgusAlbumLightbox from '../components/ArgusAlbumLightbox.vue'
-import { useAlbumDetail } from '../composables'
+import { resolveAlbumManifestPath, useAlbumDetail, useAlbumIndex } from '../composables'
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug || route.path.split('/').filter(Boolean).at(-1) || ''))
-const albumState = useAlbumDetail(slug)
+const albumIndexState = useAlbumIndex()
+const manifestPath = computed(() => {
+  const albums = albumIndexState.value.data
+  if (!albums)
+    return undefined
+  return resolveAlbumManifestPath(slug.value, albums)
+})
+const albumState = useAlbumDetail(slug, manifestPath)
 const album = computed(() => albumState.value.data)
 const activeIndex = ref(-1)
+const isPending = computed(() => albumIndexState.value.pending || albumState.value.pending)
+const loadError = computed(() => albumIndexState.value.error || albumState.value.error)
 
 function formatDate(value: string) {
   if (!value)
@@ -24,14 +33,14 @@ function formatDate(value: string) {
 <template>
   <Layout>
     <article class="field-catalog argus-album-detail">
-      <RouterLink class="argus-album-detail__back" to="/albums/">
+      <RouterLink class="argus-album-detail__back" to="/albums">
         ← 返回相册
       </RouterLink>
 
-      <p v-if="albumState.pending" class="argus-album-empty">
+      <p v-if="isPending" class="argus-album-empty">
         正在装入相册。
       </p>
-      <p v-else-if="albumState.error" class="argus-album-empty">
+      <p v-else-if="loadError" class="argus-album-empty">
         这本相册暂时无法显示。
       </p>
 

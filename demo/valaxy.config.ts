@@ -28,7 +28,7 @@ export default defineConfig<ThemeConfig>({
       },
       {
         text: '相册',
-        link: '/albums/',
+        link: '/albums',
       },
       {
         text: '归档',
@@ -42,7 +42,7 @@ export default defineConfig<ThemeConfig>({
 
     albums: {
       enable: true,
-      indexPath: '/albums/index.json',
+      indexPath: '/argus-albums/index.json',
       title: '相册',
       description: '从 Argus 发布的照片记录。',
       featured: {

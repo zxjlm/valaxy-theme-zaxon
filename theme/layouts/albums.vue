@@ -46,7 +46,7 @@ function formatDate(value: string) {
 
       <div v-else class="argus-albums__list">
         <article v-for="album in albums" :key="album.id" class="argus-album-card">
-          <RouterLink class="argus-album-card__link" :to="`/albums/${album.slug}/`" :aria-label="`打开相册 ${album.title}`" />
+          <RouterLink class="argus-album-card__link" :to="`/albums/${album.slug}`" :aria-label="`打开相册 ${album.title}`" />
           <div class="argus-album-card__cover">
             <img v-if="album.cover" :src="album.cover" :alt="album.title" loading="lazy">
           </div>

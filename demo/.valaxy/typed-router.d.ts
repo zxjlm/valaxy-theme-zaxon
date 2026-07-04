@@ -44,6 +44,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/albums/': RouteRecordInfo<
+      '/albums/',
+      '/albums',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/albums/kyoto-walk': RouteRecordInfo<
+      '/albums/kyoto-walk',
+      '/albums/kyoto-walk',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/archives/': RouteRecordInfo<
       '/archives/',
       '/archives',
@@ -163,6 +177,18 @@ declare module 'vue-router/auto-routes' {
     'pages/about.md': {
       routes:
         | '/about'
+      views:
+        | never
+    }
+    'pages/albums/index.md': {
+      routes:
+        | '/albums/'
+      views:
+        | never
+    }
+    'pages/albums/kyoto-walk.md': {
+      routes:
+        | '/albums/kyoto-walk'
       views:
         | never
     }

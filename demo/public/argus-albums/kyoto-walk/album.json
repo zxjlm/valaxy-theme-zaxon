@@ -19,8 +19,8 @@
       "lens_model": "Prime 35",
       "ai_tags": ["travel", "rain"],
       "manual_tags": ["published"],
-      "preview_path": "/albums/kyoto-walk/preview/0001-rain-lane.svg",
-      "thumbnail_path": "/albums/kyoto-walk/thumbnail/0001-rain-lane.svg",
+      "preview_path": "/argus-albums/kyoto-walk/preview/0001-rain-lane.svg",
+      "thumbnail_path": "/argus-albums/kyoto-walk/thumbnail/0001-rain-lane.svg",
       "featured": false,
       "featured_order": null,
       "journal_excerpt": "Rain left the stone lane bright enough to hold the morning."
@@ -37,8 +37,8 @@
       "lens_model": "Prime 35",
       "ai_tags": ["tea", "window"],
       "manual_tags": ["published"],
-      "preview_path": "/albums/kyoto-walk/preview/0002-tea-window.svg",
-      "thumbnail_path": "/albums/kyoto-walk/thumbnail/0002-tea-window.svg",
+      "preview_path": "/argus-albums/kyoto-walk/preview/0002-tea-window.svg",
+      "thumbnail_path": "/argus-albums/kyoto-walk/thumbnail/0002-tea-window.svg",
       "featured": true,
       "featured_order": 1,
       "journal_excerpt": "A window seat, a warm cup, and a street still waking up."
@@ -55,8 +55,8 @@
       "lens_model": "Prime 35",
       "ai_tags": ["garden"],
       "manual_tags": ["published"],
-      "preview_path": "/albums/kyoto-walk/preview/0003-stone-path.svg",
-      "thumbnail_path": "/albums/kyoto-walk/thumbnail/0003-stone-path.svg",
+      "preview_path": "/argus-albums/kyoto-walk/preview/0003-stone-path.svg",
+      "thumbnail_path": "/argus-albums/kyoto-walk/thumbnail/0003-stone-path.svg",
       "featured": false,
       "featured_order": null,
       "journal_excerpt": null

@@ -214,13 +214,21 @@ export function useAlbumIndex() {
   }))
 }
 
-export function useAlbumDetail(slug: MaybeRef<string>, manifestPath?: MaybeRef<string>) {
+export function useAlbumDetail(slug: MaybeRef<string>, manifestPath?: MaybeRef<string | undefined>) {
   const data = ref<ArgusAlbumDetail | null>(null)
   const pending = ref(false)
   const error = ref('')
   let requestId = 0
+  const shouldWaitForManifestPath = manifestPath !== undefined
 
   async function loadAlbumDetail(currentSlug: string, currentManifestPath?: string) {
+    if (!currentSlug || (shouldWaitForManifestPath && currentManifestPath === undefined)) {
+      data.value = null
+      pending.value = false
+      error.value = ''
+      return
+    }
+
     const currentRequestId = ++requestId
 
     pending.value = true
