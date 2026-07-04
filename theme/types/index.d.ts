@@ -1,3 +1,4 @@
+import type { ArgusAlbumsConfig } from './albums'
 import type { DefaultTheme } from 'valaxy'
 
 export namespace ZaxonTheme {
@@ -82,6 +83,11 @@ export interface ThemeConfig extends DefaultTheme.Config {
      */
     devCategories: string[]
   }>
+
+  /**
+   * Argus static album publishing integration.
+   */
+  albums?: Partial<ArgusAlbumsConfig>
 }
 
 export interface NavItem {
