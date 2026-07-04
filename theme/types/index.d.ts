@@ -1,5 +1,5 @@
-import type { ArgusAlbumsConfig } from './albums'
 import type { DefaultTheme } from 'valaxy'
+import type { ArgusAlbumsConfig } from './albums'
 
 export namespace ZaxonTheme {
   export type Config = ThemeConfig
