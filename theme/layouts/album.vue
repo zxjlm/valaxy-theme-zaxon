@@ -7,14 +7,17 @@ import { useAlbumDetail } from '../composables'
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug || route.path.split('/').filter(Boolean).at(-1) || ''))
-const albumState = useAlbumDetail(slug.value)
+const albumState = useAlbumDetail(slug)
 const album = computed(() => albumState.value.data)
 const activeIndex = ref(-1)
 
 function formatDate(value: string) {
   if (!value)
     return ''
-  return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(new Date(value))
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime()))
+    return ''
+  return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(date)
 }
 </script>
 
@@ -44,7 +47,7 @@ function formatDate(value: string) {
             {{ album.description }}
           </p>
           <p class="field-catalog__count">
-            {{ album.photos.length }} photos<span v-if="album.updatedAt"> · {{ formatDate(album.updatedAt) }}</span>
+            {{ album.photos.length }} photos<time v-if="album.updatedAt" :datetime="album.updatedAt"> · {{ formatDate(album.updatedAt) }}</time>
           </p>
         </header>
 

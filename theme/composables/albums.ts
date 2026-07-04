@@ -1,3 +1,4 @@
+import type { MaybeRef } from 'vue'
 import type {
   ArgusAlbumDetail,
   ArgusAlbumIndexManifest,
@@ -9,7 +10,7 @@ import type {
   ArgusAlbumSummary,
   ArgusAlbumSummaryManifest,
 } from '../types/albums'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, toValue, watch } from 'vue'
 import { useThemeConfig } from './config'
 
 export const defaultAlbumsConfig: ArgusAlbumsConfig = {
@@ -213,25 +214,41 @@ export function useAlbumIndex() {
   }))
 }
 
-export function useAlbumDetail(slug: string, manifestPath?: string) {
+export function useAlbumDetail(slug: MaybeRef<string>, manifestPath?: MaybeRef<string>) {
   const data = ref<ArgusAlbumDetail | null>(null)
   const pending = ref(false)
   const error = ref('')
+  let requestId = 0
 
-  onMounted(async () => {
+  async function loadAlbumDetail(currentSlug: string, currentManifestPath?: string) {
+    const currentRequestId = ++requestId
+
     pending.value = true
     error.value = ''
 
     try {
-      data.value = normalizeAlbumDetail(await fetchJson(manifestPath ?? `/albums/${slug}/album.json`))
+      const albumDetail = normalizeAlbumDetail(await fetchJson(currentManifestPath ?? `/albums/${currentSlug}/album.json`))
+      if (currentRequestId === requestId)
+        data.value = albumDetail
     }
     catch (err) {
-      error.value = err instanceof Error ? err.message : 'Failed to load album detail'
-      data.value = null
+      if (currentRequestId === requestId) {
+        error.value = err instanceof Error ? err.message : 'Failed to load album detail'
+        data.value = null
+      }
     }
     finally {
-      pending.value = false
+      if (currentRequestId === requestId)
+        pending.value = false
     }
+  }
+
+  onMounted(() => {
+    watch(
+      () => [toValue(slug), toValue(manifestPath)] as const,
+      ([currentSlug, currentManifestPath]) => loadAlbumDetail(currentSlug, currentManifestPath),
+      { immediate: true },
+    )
   })
 
   return computed<ArgusAlbumsState<ArgusAlbumDetail>>(() => ({

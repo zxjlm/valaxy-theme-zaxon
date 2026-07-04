@@ -9,7 +9,10 @@ const albums = computed(() => albumState.value.data || [])
 function formatDate(value: string) {
   if (!value)
     return ''
-  return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(new Date(value))
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime()))
+    return ''
+  return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(date)
 }
 </script>
 
@@ -35,7 +38,7 @@ function formatDate(value: string) {
         正在整理相册。
       </p>
       <p v-else-if="albumState.error" class="argus-album-empty">
-        暂时没有可展示的相册。
+        相册列表暂时无法加载。
       </p>
       <p v-else-if="!albums.length" class="argus-album-empty">
         这里还没有公开相册。
@@ -56,7 +59,7 @@ function formatDate(value: string) {
             <p v-if="album.description">
               {{ album.description }}
             </p>
-            <time v-if="album.publishedAt || album.updatedAt">
+            <time v-if="album.publishedAt || album.updatedAt" :datetime="album.publishedAt || album.updatedAt">
               {{ formatDate(album.publishedAt || album.updatedAt) }}
             </time>
           </div>
