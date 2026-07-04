@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { createRenderer, nextTick } from 'vue'
 
 import {
   defaultAlbumsConfig,
@@ -6,9 +7,38 @@ import {
   normalizeAlbumDetail,
   normalizeAlbumIndex,
   resolveAlbumManifestPath,
+  useAlbumDetail,
 } from './albums'
 
+function mountComposable(setup: () => void) {
+  const renderer = createRenderer<any, { children: any[] }>({
+    createComment: () => ({}),
+    createElement: () => ({ children: [] }),
+    createText: () => ({}),
+    insert: (child, parent) => parent.children.push(child),
+    nextSibling: () => null,
+    parentNode: () => null,
+    patchProp: () => {},
+    remove: () => {},
+    setElementText: () => {},
+    setText: () => {},
+  })
+  const app = renderer.createApp({
+    setup,
+    render: () => null,
+  })
+  const root = { children: [] as any[] }
+
+  app.mount(root)
+
+  return () => app.unmount()
+}
+
 describe('album manifest composable', () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
   it('normalizes and sorts album index manifests', () => {
     expect(normalizeAlbumIndex({
       schema_version: 1,
@@ -275,5 +305,29 @@ describe('album manifest composable', () => {
     ]
 
     expect(featuredPhotos(albums, 2).map(photo => photo.id)).toEqual(['first', 'second'])
+  })
+
+  it('preserves an explicit empty album detail manifest path', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        schema_version: 1,
+        album_id: 'empty',
+        slug: 'empty-path',
+        title: 'Empty Path',
+        photos: [],
+      }),
+    } as Response)
+
+    const unmount = mountComposable(() => {
+      useAlbumDetail('empty-path', '')
+    })
+
+    await nextTick()
+    await Promise.resolve()
+
+    expect(fetchMock).toHaveBeenCalledWith('')
+
+    unmount()
   })
 })

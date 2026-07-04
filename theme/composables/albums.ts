@@ -223,7 +223,7 @@ export function useAlbumDetail(slug: string, manifestPath?: string) {
     error.value = ''
 
     try {
-      data.value = normalizeAlbumDetail(await fetchJson(manifestPath || `/albums/${slug}/album.json`))
+      data.value = normalizeAlbumDetail(await fetchJson(manifestPath ?? `/albums/${slug}/album.json`))
     }
     catch (err) {
       error.value = err instanceof Error ? err.message : 'Failed to load album detail'
