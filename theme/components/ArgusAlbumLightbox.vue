@@ -78,6 +78,14 @@ function getFocusableElements() {
   ).filter(element => !element.hasAttribute('disabled') && element.tabIndex >= 0)
 }
 
+function restoreFocus() {
+  if (typeof document === 'undefined')
+    return
+
+  previousFocusedElement?.focus()
+  previousFocusedElement = null
+}
+
 function syncFocus(open: boolean) {
   if (typeof document === 'undefined')
     return
@@ -98,8 +106,7 @@ function syncFocus(open: boolean) {
     return
   }
 
-  previousFocusedElement?.focus()
-  previousFocusedElement = null
+  restoreFocus()
 }
 
 function trapFocus(event: KeyboardEvent) {
@@ -145,6 +152,8 @@ if (typeof window !== 'undefined')
   window.addEventListener('keydown', onKeydown)
 
 onBeforeUnmount(() => {
+  if (isOpen.value)
+    restoreFocus()
   if (typeof document !== 'undefined')
     document.body.classList.remove('argus-lightbox-open')
   if (typeof window !== 'undefined')
@@ -163,7 +172,7 @@ onBeforeUnmount(() => {
       aria-label="照片预览"
       tabindex="-1"
     >
-      <button class="argus-lightbox__backdrop" type="button" aria-label="关闭照片预览" @click="emit('close')" />
+      <button class="argus-lightbox__backdrop" type="button" tabindex="-1" aria-label="关闭照片预览" @click="emit('close')" />
 
       <figure class="argus-lightbox__figure">
         <button class="argus-lightbox__close" type="button" aria-label="关闭照片预览" @click="emit('close')">
