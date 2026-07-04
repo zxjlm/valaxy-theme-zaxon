@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-label="Tea window">
+  <rect width="1600" height="1200" fill="#25313a"/>
+  <rect x="190" y="150" width="1220" height="690" rx="18" fill="#d7caa8"/>
+  <rect x="250" y="210" width="510" height="560" fill="#91aaa3"/>
+  <rect x="840" y="210" width="510" height="560" fill="#78908d"/>
+  <rect y="820" width="1600" height="380" fill="#6d5947"/>
+  <rect x="590" y="720" width="420" height="180" rx="24" fill="#b68a61"/>
+  <circle cx="800" cy="750" r="68" fill="#f1dfba"/>
+  <path d="M735 745 C780 710 840 710 880 745" fill="none" stroke="#6b7d72" stroke-width="20" stroke-linecap="round"/>
+  <path d="M440 320 C560 250 660 290 720 360" fill="none" stroke="#49685c" stroke-width="18" stroke-linecap="round"/>
+  <path d="M940 360 C1050 270 1200 310 1280 410" fill="none" stroke="#405d56" stroke-width="18" stroke-linecap="round"/>
+</svg>

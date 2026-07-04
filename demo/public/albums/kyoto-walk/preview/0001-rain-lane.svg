@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-label="Rain lane">
+  <rect width="1600" height="1200" fill="#1d2730"/>
+  <rect y="760" width="1600" height="440" fill="#4b5a59"/>
+  <path d="M0 930 C260 830 430 860 650 790 C900 710 1120 760 1600 620 L1600 1200 L0 1200 Z" fill="#7f9388"/>
+  <path d="M260 1200 L760 620 L960 620 L1260 1200 Z" fill="#c7bfa8"/>
+  <path d="M360 1200 L805 640" stroke="#5e675d" stroke-width="18"/>
+  <path d="M1160 1200 L920 640" stroke="#5e675d" stroke-width="18"/>
+  <circle cx="1220" cy="210" r="96" fill="#f4d58d" opacity=".75"/>
+  <g stroke="#d9e2df" stroke-width="5" opacity=".42">
+    <path d="M180 80 L120 230"/><path d="M390 40 L330 200"/><path d="M620 100 L560 260"/><path d="M860 60 L800 230"/><path d="M1120 120 L1060 290"/><path d="M1390 70 L1330 250"/>
+  </g>
+</svg>

@@ -27,6 +27,10 @@ export default defineConfig<ThemeConfig>({
         link: '/notes/',
       },
       {
+        text: '相册',
+        link: '/albums/',
+      },
+      {
         text: '归档',
         link: '/archives/',
       },
@@ -35,6 +39,17 @@ export default defineConfig<ThemeConfig>({
         link: '/about/',
       },
     ],
+
+    albums: {
+      enable: true,
+      indexPath: '/albums/index.json',
+      title: '相册',
+      description: '从 Argus 发布的照片记录。',
+      featured: {
+        enable: false,
+        limit: 6,
+      },
+    },
 
     footer: {
       since: 2016,

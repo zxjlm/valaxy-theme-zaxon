@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-label="Stone path">
+  <rect width="1600" height="1200" fill="#24302b"/>
+  <rect y="680" width="1600" height="520" fill="#60715f"/>
+  <path d="M680 1200 C630 980 720 820 790 650 C850 800 990 960 1060 1200 Z" fill="#cfc7b0"/>
+  <g fill="#8c8879">
+    <ellipse cx="805" cy="790" rx="70" ry="38"/>
+    <ellipse cx="760" cy="900" rx="88" ry="44"/>
+    <ellipse cx="880" cy="1020" rx="106" ry="52"/>
+    <ellipse cx="810" cy="1140" rx="130" ry="58"/>
+  </g>
+  <g fill="#d9b56f" opacity=".78">
+    <circle cx="250" cy="520" r="18"/><circle cx="330" cy="610" r="14"/><circle cx="1220" cy="560" r="20"/><circle cx="1320" cy="660" r="13"/>
+  </g>
+  <path d="M190 690 C290 520 390 460 560 430" fill="none" stroke="#88a06f" stroke-width="32" stroke-linecap="round"/>
+  <path d="M1040 410 C1200 460 1330 540 1430 700" fill="none" stroke="#7d9669" stroke-width="32" stroke-linecap="round"/>
+</svg>

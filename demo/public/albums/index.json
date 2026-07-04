@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-04T00:00:00Z",
+  "albums": [
+    {
+      "id": "demo-kyoto-walk",
+      "slug": "kyoto-walk",
+      "title": "Kyoto Walk",
+      "description": "A quiet walk after rain.",
+      "cover": "/albums/kyoto-walk/thumbnail/0001-rain-lane.svg",
+      "photo_count": 3,
+      "updated_at": "2026-07-04T00:00:00Z",
+      "published_at": "2026-07-04T00:00:00Z",
+      "sort_order": 10,
+      "manifest_path": "/albums/kyoto-walk/album.json"
+    }
+  ]
+}
