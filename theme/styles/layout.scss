@@ -1914,6 +1914,277 @@ html:not(.dark) .field-hero__copy {
   gap: 10px;
 }
 
+.argus-albums__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 18px;
+  padding-bottom: 72px;
+}
+
+.argus-album-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-lg);
+  background: color-mix(in srgb, var(--st-bg-surface) 94%, transparent);
+  transition:
+    border-color var(--st-duration-fast) var(--st-ease-standard),
+    transform var(--st-duration-fast) var(--st-ease-standard);
+}
+
+.argus-album-card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.argus-album-card__cover {
+  display: grid;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--st-life-primary) 18%, transparent), transparent 48%),
+    var(--st-bg-soft);
+}
+
+.argus-album-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.argus-album-card__body {
+  padding: 16px;
+}
+
+.argus-album-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--st-text-muted);
+  font-family: var(--st-font-mono);
+  font-size: 12px;
+}
+
+.argus-album-card h2 {
+  margin: 12px 0 8px;
+  color: var(--st-text-primary);
+  font-size: 22px;
+  line-height: 1.28;
+}
+
+.argus-album-card p {
+  margin: 0;
+  color: var(--st-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.argus-album-card time {
+  display: block;
+  margin-top: 14px;
+  color: var(--st-text-muted);
+  font-family: var(--st-font-mono);
+  font-size: 12px;
+}
+
+.argus-album-empty {
+  border: 1px dashed var(--st-border-default);
+  border-radius: var(--st-radius-lg);
+  padding: 22px;
+  background: var(--st-bg-surface);
+  color: var(--st-text-secondary);
+  line-height: 1.7;
+}
+
+.argus-album-detail__back {
+  display: inline-flex;
+  margin-top: 16px;
+  color: var(--st-text-muted);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.argus-album-detail__description {
+  max-width: 720px;
+  margin: 14px 0 0;
+  color: var(--st-text-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.argus-album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 10px;
+  padding-bottom: 72px;
+}
+
+.argus-album-grid__item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  padding: 0;
+  background: var(--st-bg-soft);
+  color: inherit;
+  cursor: zoom-in;
+}
+
+.argus-album-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--st-duration-fast) var(--st-ease-standard);
+}
+
+.argus-album-grid__caption {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  border-radius: var(--st-radius-sm);
+  padding: 5px 7px;
+  background: rgb(7 16 24 / 68%);
+  color: white;
+  font-family: var(--st-font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.argus-lightbox-open {
+  overflow: hidden;
+}
+
+.argus-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 4vw, 34px);
+}
+
+.argus-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgb(4 10 16 / 86%);
+}
+
+.argus-lightbox__figure {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(100%, 1100px);
+  max-height: calc(100vh - 32px);
+  grid-template-rows: minmax(0, 1fr) auto;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: var(--st-radius-lg);
+  background: var(--st-bg-canvas);
+}
+
+.argus-lightbox__figure img {
+  width: 100%;
+  max-height: calc(100vh - 190px);
+  object-fit: contain;
+  background: #050b12;
+}
+
+.argus-lightbox__caption {
+  padding: 14px 16px 16px;
+}
+
+.argus-lightbox__excerpt {
+  margin: 0 0 12px;
+  color: var(--st-text-primary);
+  line-height: 1.7;
+}
+
+.argus-lightbox__meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 12px;
+  margin: 0;
+  color: var(--st-text-secondary);
+  font-size: 13px;
+}
+
+.argus-lightbox__meta dt {
+  color: var(--st-text-muted);
+  font-family: var(--st-font-mono);
+}
+
+.argus-lightbox__meta dd {
+  margin: 0;
+}
+
+.argus-lightbox__close,
+.argus-lightbox__nav {
+  position: absolute;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: var(--st-radius-md);
+  background: rgb(7 16 24 / 72%);
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.argus-lightbox__close {
+  top: 12px;
+  right: 12px;
+}
+
+.argus-lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.argus-lightbox__nav--prev {
+  left: 12px;
+}
+
+.argus-lightbox__nav--next {
+  right: 12px;
+}
+
+@media (hover: hover) {
+  .argus-album-card:hover,
+  .argus-album-grid__item:hover {
+    border-color: color-mix(in srgb, var(--st-life-primary) 55%, var(--st-border-strong));
+    transform: translateY(-2px);
+  }
+
+  .argus-album-grid__item:hover img {
+    transform: scale(1.035);
+  }
+}
+
+@media (max-width: 640px) {
+  .argus-lightbox {
+    padding: 0;
+  }
+
+  .argus-lightbox__figure {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .argus-lightbox__figure img {
+    max-height: calc(100vh - 210px);
+  }
+}
+
 /* ── end collection pages ── */
 
 @keyframes field-wind-cross {
