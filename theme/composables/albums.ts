@@ -152,7 +152,9 @@ export function normalizeAlbumDetail(input: unknown): ArgusAlbumDetail {
 }
 
 export function resolveAlbumManifestPath(slug: string, albums: ArgusAlbumSummary[]): string {
-  return albums.find(album => album.slug === slug)?.manifestPath || `/albums/${slug}/album.json`
+  const album = albums.find(album => album.slug === slug)
+
+  return album ? album.manifestPath : `/albums/${slug}/album.json`
 }
 
 export function featuredPhotos(

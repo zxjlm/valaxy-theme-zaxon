@@ -215,10 +215,18 @@ describe('album manifest composable', () => {
           photo_count: 1,
           manifest_path: '/custom/field.json',
         },
+        {
+          id: 'empty',
+          slug: 'empty-path',
+          title: 'Empty Path',
+          photo_count: 1,
+          manifest_path: null,
+        },
       ],
     })
 
     expect(resolveAlbumManifestPath('field-notes', albums)).toBe('/custom/field.json')
+    expect(resolveAlbumManifestPath('empty-path', albums)).toBe('')
     expect(resolveAlbumManifestPath('missing', albums)).toBe('/albums/missing/album.json')
   })
 
