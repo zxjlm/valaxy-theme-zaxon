@@ -22,6 +22,7 @@ Zaxon 是 [Valaxy](https://valaxy.site) 自定义主题。它的视觉核心是�
 - 对带有 `ai-assisted` 或 `ai-use` 标签的文章自动展示 AI 辅助说明。
 - 内置归档、分类、标签与生活记录页面，采用 field catalog / timeline 风格。
 - `/notes/` 生活流支持通过配置将生活类文章与开发类文章分离。
+- 支持 Argus 静态相册：通过隐私安全的 JSON manifest 和本地缩略图 / 预览图渲染 `/albums/` 与 `/albums/<slug>/`。
 - 页脚支持版权年份、图标、Powered by 信息与可选 ICP 备案号。
 - 从 `valaxy-theme-zaxon` 导出 TypeScript 主题配置类型。
 
@@ -100,6 +101,7 @@ export default defineConfig<ThemeConfig>({
       { text: '首页', link: '/' },
       { text: '开发', link: '/categories/' },
       { text: '生活', link: '/notes/' },
+      { text: '相册', link: '/albums' },
       { text: '归档', link: '/archives/' },
       { text: '关于', link: '/about/' },
     ],
@@ -107,6 +109,17 @@ export default defineConfig<ThemeConfig>({
     content: {
       lifeCategories: ['生活', '旅行', '阅读'],
       devCategories: ['Dev Log', '工程'],
+    },
+
+    albums: {
+      enable: true,
+      indexPath: '/albums/index.json',
+      title: '相册',
+      description: '从 Argus 发布的照片记录。',
+      featured: {
+        enable: false,
+        limit: 6,
+      },
     },
 
     footer: {
@@ -136,6 +149,12 @@ export default defineConfig<ThemeConfig>({
 | `nav` | `{ text: string, link: string, icon?: string }[]` | 内置首页 / 开发 / 生活 / 归档 / 关于 | 主导航项目。目前界面会渲染 `text` 与 `link`。 |
 | `content.lifeCategories` | `string[]` | `[]` | 归入 `/notes/` 生活流的分类名。 |
 | `content.devCategories` | `string[]` | `[]` | 归为开发内容的分类名，用于避免进入 `/notes/`。 |
+| `albums.enable` | `boolean` | `true` | 是否启用 Argus 静态相册路由。关闭后，相册 composable 不会加载 manifest。 |
+| `albums.indexPath` | `string` | `/albums/index.json` | Argus 生成的相册索引 manifest 的公开路径。 |
+| `albums.title` | `string` | `相册` | `/albums/` 页面的标题。 |
+| `albums.description` | `string` | `从 Argus 发布的照片记录。` | 相册标题下方的说明文字。 |
+| `albums.featured.enable` | `boolean` | `false` | 为未来的精选照片入口预留；Phase 1 不会在首页或 `/notes/` 渲染精选照片。 |
+| `albums.featured.limit` | `number` | `6` | 为未来精选照片入口预留的数量上限。 |
 | `footer.since` | `number` | `2022` | 版权起始年份。 |
 | `footer.icon.name` | `string` | `i-ri-seedling-line` | 年份与作者之间展示的 Iconify / UnoCSS 图标类名。 |
 | `footer.icon.animated` | `boolean` | `true` | 为动态图标预留的配置项。 |
@@ -145,6 +164,100 @@ export default defineConfig<ThemeConfig>({
 | `footer.powered` | `boolean` | `true` | 是否展示 Valaxy 与主题 Powered by 信息。 |
 | `footer.beian.enable` | `boolean` | `false` | 是否在页脚展示 ICP 备案号。 |
 | `footer.beian.icp` | `string` | `''` | ICP 备案号文本。 |
+
+## Argus 静态相册
+
+Zaxon 在 Valaxy 构建期和浏览器运行时都不会调用 Argus API。两者的边界是一份由 Argus 生成、复制进 Valaxy 站点的静态发布包。Argus 负责私有相册管理、发布决策、读取派生图和隐私过滤；Zaxon 只负责渲染公开包。
+
+一个发布包应包含：
+
+```text
+public/albums/index.json
+public/albums/<slug>/album.json
+public/albums/<slug>/preview/<ordered-photo-name>.<ext>
+public/albums/<slug>/thumbnail/<ordered-photo-name>.<ext>
+pages/albums/index.md
+pages/albums/<slug>.md
+```
+
+Markdown 文件只是路由入口。索引页使用 `layout: albums`，详情页使用 `layout: album`，由主题接管相册列表、照片网格和键盘可访问的 lightbox。
+
+```md
+---
+title: 相册
+layout: albums
+nav: false
+comment: false
+---
+```
+
+```md
+---
+title: Kyoto Walk
+layout: album
+nav: false
+comment: false
+---
+```
+
+`public/albums/index.json` 是相册列表，每个条目指向对应的详情 manifest：
+
+```json
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-04T00:00:00Z",
+  "albums": [
+    {
+      "id": "album-id",
+      "slug": "kyoto-walk",
+      "title": "Kyoto Walk",
+      "description": "A quiet walk after rain.",
+      "cover": "/albums/kyoto-walk/thumbnail/0001-photo.webp",
+      "photo_count": 24,
+      "updated_at": "2026-07-04T00:00:00Z",
+      "published_at": "2026-07-04T00:00:00Z",
+      "sort_order": 10,
+      "manifest_path": "/albums/kyoto-walk/album.json"
+    }
+  ]
+}
+```
+
+`public/albums/<slug>/album.json` 是照片网格和 lightbox 使用的公开照片数据。可选字段为空时，主题会直接省略对应元信息。
+
+```json
+{
+  "schema_version": 1,
+  "album_id": "album-id",
+  "slug": "kyoto-walk",
+  "title": "Kyoto Walk",
+  "description": "A quiet walk after rain.",
+  "cover_photo_id": "photo-id",
+  "updated_at": "2026-07-04T00:00:00Z",
+  "photos": [
+    {
+      "id": "photo-id",
+      "original_filename": "DSC0001.jpg",
+      "width": 1600,
+      "height": 1200,
+      "captured_at": "2026-07-04T00:00:00Z",
+      "city": "Kyoto",
+      "camera_make": "Argus Camera",
+      "camera_model": "A1",
+      "lens_model": "Prime",
+      "ai_tags": ["travel"],
+      "manual_tags": ["published"],
+      "preview_path": "/albums/kyoto-walk/preview/0001-photo.webp",
+      "thumbnail_path": "/albums/kyoto-walk/thumbnail/0001-photo.webp",
+      "featured": false,
+      "featured_order": null,
+      "journal_excerpt": null
+    }
+  ]
+}
+```
+
+请只发布白名单字段。静态 manifest 不应包含原图、精确 GPS、完整 EXIF、存储 key、云厂商标识、凭据、工作流状态、评分或失败详情。
 
 ## 内容约定
 
