@@ -44,12 +44,16 @@ function formatDate(value: string) {
         这里还没有公开相册。
       </p>
 
-      <div v-else class="argus-albums__list">
+      <div v-else class="argus-albums__list" :data-count="albums.length">
         <article v-for="album in albums" :key="album.id" class="argus-album-card">
           <RouterLink class="argus-album-card__link" :to="`/albums/${album.slug}`" :aria-label="`打开相册 ${album.title}`" />
-          <div class="argus-album-card__cover">
-            <img v-if="album.cover" :src="album.cover" :alt="album.title" loading="lazy">
+
+          <div class="argus-album-card__sheet" aria-hidden="true">
+            <span v-for="slot in 6" :key="slot" class="argus-album-card__frame">
+              <img v-if="slot === 1 && album.cover" :src="album.cover" :alt="album.title" loading="lazy">
+            </span>
           </div>
+
           <div class="argus-album-card__body">
             <div class="argus-album-card__meta">
               <span class="field-chip" data-kind="life">Album</span>
