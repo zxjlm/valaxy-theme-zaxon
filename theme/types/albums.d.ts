@@ -10,6 +10,7 @@ export interface ArgusAlbumSummaryManifest {
   title: string
   description?: string | null
   cover?: string | null
+  preview_thumbnails?: Array<string | null>
   photo_count: number
   updated_at?: string | null
   published_at?: string | null
@@ -57,6 +58,7 @@ export interface ArgusAlbumSummary {
   title: string
   description: string
   cover: string
+  previewThumbnails: string[]
   photoCount: number
   updatedAt: string
   publishedAt: string

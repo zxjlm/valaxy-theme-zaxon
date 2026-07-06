@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ArgusAlbumSummary } from '../types/albums'
 import { computed } from 'vue'
 import { useAlbumIndex, useAlbumsConfig } from '../composables'
 
@@ -13,6 +14,14 @@ function formatDate(value: string) {
   if (Number.isNaN(date.getTime()))
     return ''
   return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(date)
+}
+
+function albumPreviewThumbnails(album: ArgusAlbumSummary) {
+  return album.previewThumbnails.length ? album.previewThumbnails : [album.cover].filter(Boolean)
+}
+
+function albumPreviewThumbnail(album: ArgusAlbumSummary, slot: number) {
+  return albumPreviewThumbnails(album)[slot - 1] || ''
 }
 </script>
 
@@ -50,7 +59,7 @@ function formatDate(value: string) {
 
           <div class="argus-album-card__sheet" aria-hidden="true">
             <span v-for="slot in 6" :key="slot" class="argus-album-card__frame">
-              <img v-if="slot === 1 && album.cover" :src="album.cover" :alt="album.title" loading="lazy">
+              <img v-if="albumPreviewThumbnail(album, slot)" :src="albumPreviewThumbnail(album, slot)" :alt="album.title" loading="lazy">
             </span>
           </div>
 

@@ -54,6 +54,12 @@ function normalizeTags(photo: ArgusAlbumPhotoManifest): string[] {
   return tags
 }
 
+function normalizeStringList(value: unknown): string[] {
+  return asArray(value)
+    .map(item => asString(item))
+    .filter(Boolean)
+}
+
 function normalizeAlbumSummary(album: ArgusAlbumSummaryManifest): ArgusAlbumSummary {
   return {
     id: asString(album.id),
@@ -61,6 +67,7 @@ function normalizeAlbumSummary(album: ArgusAlbumSummaryManifest): ArgusAlbumSumm
     title: asString(album.title),
     description: asString(album.description),
     cover: asString(album.cover),
+    previewThumbnails: normalizeStringList(album.preview_thumbnails),
     photoCount: asNumber(album.photo_count) ?? 0,
     updatedAt: asString(album.updated_at),
     publishedAt: asString(album.published_at),

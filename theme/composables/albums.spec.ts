@@ -61,6 +61,12 @@ describe('album manifest composable', () => {
           title: 'Spring Field',
           description: 'Field walk',
           cover: '/albums/spring/cover.jpg',
+          preview_thumbnails: [
+            '/albums/spring/thumb-1.jpg',
+            '',
+            null,
+            '/albums/spring/thumb-2.jpg',
+          ],
           photo_count: 4,
           updated_at: '2026-03-01T00:00:00.000Z',
           published_at: '2026-04-02T00:00:00.000Z',
@@ -90,30 +96,38 @@ describe('album manifest composable', () => {
       slug: album.slug,
       description: album.description,
       cover: album.cover,
+      previewThumbnails: album.previewThumbnails,
       updatedAt: album.updatedAt,
     }))).toEqual([
       {
         slug: 'a-title',
         description: '',
         cover: '',
+        previewThumbnails: [],
         updatedAt: '',
       },
       {
         slug: 'rain-map',
         description: '',
         cover: '',
+        previewThumbnails: [],
         updatedAt: '',
       },
       {
         slug: 'spring-field',
         description: 'Field walk',
         cover: '/albums/spring/cover.jpg',
+        previewThumbnails: [
+          '/albums/spring/thumb-1.jpg',
+          '/albums/spring/thumb-2.jpg',
+        ],
         updatedAt: '2026-03-01T00:00:00.000Z',
       },
       {
         slug: 'autumn-notes',
         description: '',
         cover: '',
+        previewThumbnails: [],
         updatedAt: '',
       },
     ])

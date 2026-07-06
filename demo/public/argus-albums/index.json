@@ -8,6 +8,11 @@
       "title": "Kyoto Walk",
       "description": "A quiet walk after rain.",
       "cover": "/argus-albums/kyoto-walk/thumbnail/0001-rain-lane.svg",
+      "preview_thumbnails": [
+        "/argus-albums/kyoto-walk/thumbnail/0001-rain-lane.svg",
+        "/argus-albums/kyoto-walk/thumbnail/0002-tea-window.svg",
+        "/argus-albums/kyoto-walk/thumbnail/0003-stone-path.svg"
+      ],
       "photo_count": 3,
       "updated_at": "2026-07-04T00:00:00Z",
       "published_at": "2026-07-04T00:00:00Z",
