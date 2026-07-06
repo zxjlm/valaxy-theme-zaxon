@@ -10,7 +10,7 @@
     "dev": "npm run demo",
     "demo": "npm -C demo run dev",
     "lint": "eslint .",
-    "release": "cd theme && git add -A && bumpp --all",
+    "release": "git add -A && cd theme && pnpm exec bumpp --all",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "devDependencies": {
