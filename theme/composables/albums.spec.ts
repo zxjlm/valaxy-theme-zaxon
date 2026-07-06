@@ -150,6 +150,14 @@ describe('album manifest composable', () => {
           camera_make: 'Ricoh',
           camera_model: 'GR III',
           lens_model: null,
+          focal_length: '28mm',
+          aperture: 'f/5.6',
+          shutter_speed: '1/250',
+          iso: 200,
+          latitude: 35.0116,
+          longitude: 135.7681,
+          raw_exif: { LensModel: 'Private raw value' },
+          source_storage_key: 'private/originals/photo-1.raf',
           ai_tags: ['field', 'light', 'field'],
           manual_tags: ['light', 'journal'],
           preview_path: '/albums/field/photo-1.jpg',
@@ -190,6 +198,10 @@ describe('album manifest composable', () => {
           city: '',
           camera: 'Ricoh GR III',
           lens: '',
+          focalLength: '28mm',
+          aperture: 'f/5.6',
+          shutterSpeed: '1/250',
+          iso: '200',
           tags: ['field', 'light', 'journal'],
           previewPath: '/albums/field/photo-1.jpg',
           thumbnailPath: '/albums/field/photo-1.jpg',
@@ -206,6 +218,10 @@ describe('album manifest composable', () => {
           city: '',
           camera: 'Fujifilm',
           lens: '',
+          focalLength: '',
+          aperture: '',
+          shutterSpeed: '',
+          iso: '',
           tags: ['green'],
           previewPath: '/albums/field/photo-2.jpg',
           thumbnailPath: '/albums/field/thumb-2.jpg',
@@ -215,6 +231,11 @@ describe('album manifest composable', () => {
         },
       ],
     })
+
+    expect(detail.photos[0]).not.toHaveProperty('latitude')
+    expect(detail.photos[0]).not.toHaveProperty('longitude')
+    expect(detail.photos[0]).not.toHaveProperty('rawExif')
+    expect(detail.photos[0]).not.toHaveProperty('sourceStorageKey')
   })
 
   it('rejects unsupported album detail schema and missing photos', () => {

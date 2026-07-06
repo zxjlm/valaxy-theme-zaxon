@@ -38,6 +38,10 @@ export interface ArgusAlbumPhotoManifest {
   camera_make?: string | null
   camera_model?: string | null
   lens_model?: string | null
+  focal_length?: string | number | null
+  aperture?: string | number | null
+  shutter_speed?: string | number | null
+  iso?: string | number | null
   ai_tags?: string[]
   manual_tags?: string[]
   preview_path: string
@@ -69,6 +73,10 @@ export interface ArgusAlbumPhoto {
   city: string
   camera: string
   lens: string
+  focalLength: string
+  aperture: string
+  shutterSpeed: string
+  iso: string
   tags: string[]
   previewPath: string
   thumbnailPath: string
