@@ -19,6 +19,28 @@ const album = computed(() => albumState.value.data)
 const activeIndex = ref(-1)
 const isPending = computed(() => albumIndexState.value.pending || albumState.value.pending)
 const loadError = computed(() => albumIndexState.value.error || albumState.value.error)
+const capturedDates = computed(() => album.value?.photos
+  .map(photo => photo.capturedAt.slice(0, 10))
+  .filter(Boolean)
+  .sort() ?? [])
+
+const dateSummary = computed(() => {
+  const dates = capturedDates.value
+  if (!dates.length)
+    return album.value?.updatedAt ? formatDate(album.value.updatedAt) : ''
+
+  const firstDate = dates[0]
+  const lastDate = dates[dates.length - 1]
+  if (firstDate === lastDate)
+    return formatDate(firstDate)
+
+  return `${formatDate(firstDate)} - ${formatDate(lastDate)}`
+})
+
+const placeSummary = computed(() => {
+  const places = new Set(album.value?.photos.map(photo => photo.city).filter(Boolean))
+  return Array.from(places).join(' / ')
+})
 
 function formatDate(value: string) {
   if (!value)
@@ -55,8 +77,10 @@ function formatDate(value: string) {
           <p v-if="album.description" class="argus-album-detail__description">
             {{ album.description }}
           </p>
-          <p class="field-catalog__count">
-            {{ album.photos.length }} photos<time v-if="album.updatedAt" :datetime="album.updatedAt"> · {{ formatDate(album.updatedAt) }}</time>
+          <p class="field-catalog__count argus-album-detail__facts">
+            <span>{{ album.photos.length }} photos</span>
+            <span v-if="dateSummary">{{ dateSummary }}</span>
+            <span v-if="placeSummary">{{ placeSummary }}</span>
           </p>
         </header>
 

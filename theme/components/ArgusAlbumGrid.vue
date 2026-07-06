@@ -14,6 +14,11 @@ function aspectStyle(photo: ArgusAlbumPhoto) {
     return { aspectRatio: `${photo.width} / ${photo.height}` }
   return { aspectRatio: '4 / 3' }
 }
+
+function captionParts(photo: ArgusAlbumPhoto) {
+  return [photo.city, photo.capturedAt.slice(0, 10), photo.camera, photo.focalLength]
+    .filter(Boolean)
+}
 </script>
 
 <template>
@@ -32,8 +37,8 @@ function aspectStyle(photo: ArgusAlbumPhoto) {
       @click="emit('select', index)"
     >
       <img :src="photo.thumbnailPath" :alt="photo.originalFilename || `Album photo ${index + 1}`" loading="lazy">
-      <span v-if="photo.city || photo.capturedAt" class="argus-album-grid__caption">
-        {{ [photo.city, photo.capturedAt.slice(0, 10)].filter(Boolean).join(' · ') }}
+      <span v-if="captionParts(photo).length" class="argus-album-grid__caption">
+        {{ captionParts(photo).join(' · ') }}
       </span>
     </button>
   </div>
