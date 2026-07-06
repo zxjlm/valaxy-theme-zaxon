@@ -24,9 +24,13 @@ const metadata = computed(() => {
 
   return [
     ['Date', current.capturedAt.slice(0, 10)],
-    ['City', current.city],
+    ['Place', current.city],
     ['Camera', current.camera],
     ['Lens', current.lens],
+    ['Focal length', current.focalLength],
+    ['Aperture', current.aperture],
+    ['Shutter', current.shutterSpeed],
+    ['ISO', current.iso],
     ['Tags', current.tags.join(', ')],
   ].filter((item): item is [string, string] => Boolean(item[1]))
 })
@@ -179,9 +183,15 @@ onBeforeUnmount(() => {
           ×
         </button>
 
-        <img :src="photo.previewPath" :alt="photo.originalFilename || 'Album photo'">
+        <div class="argus-lightbox__image">
+          <img :src="photo.previewPath" :alt="photo.originalFilename || 'Album photo'">
+        </div>
 
         <figcaption class="argus-lightbox__caption">
+          <p class="argus-lightbox__eyebrow">
+            Field note
+          </p>
+
           <p v-if="photo.journalExcerpt" class="argus-lightbox__excerpt">
             {{ photo.journalExcerpt }}
           </p>

@@ -2130,9 +2130,9 @@ html:not(.dark) .field-hero__copy {
   position: relative;
   z-index: 1;
   display: grid;
-  width: min(100%, 1100px);
+  width: min(100%, 1180px);
   max-height: calc(100vh - 32px);
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
   margin: 0;
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 16%);
@@ -2140,27 +2140,52 @@ html:not(.dark) .field-hero__copy {
   background: var(--st-bg-canvas);
 }
 
-.argus-lightbox__figure img {
-  width: 100%;
-  max-height: calc(100vh - 190px);
-  object-fit: contain;
+.argus-lightbox__image {
+  display: grid;
+  min-height: 0;
+  place-items: center;
   background: #050b12;
 }
 
+.argus-lightbox__image img {
+  width: 100%;
+  max-height: calc(100vh - 72px);
+  object-fit: contain;
+}
+
 .argus-lightbox__caption {
-  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  padding: 20px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--st-bg-surface) 96%, transparent), var(--st-bg-surface)),
+    var(--st-bg-soft);
+}
+
+.argus-lightbox__eyebrow {
+  margin: 0;
+  color: var(--st-text-muted);
+  font-family: var(--st-font-mono);
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .argus-lightbox__excerpt {
-  margin: 0 0 12px;
+  margin: 0;
   color: var(--st-text-primary);
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.75;
 }
 
 .argus-lightbox__meta {
   display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 6px 12px;
+  grid-template-columns: minmax(82px, max-content) 1fr;
+  gap: 7px 12px;
   margin: 0;
   color: var(--st-text-secondary);
   font-size: 13px;
@@ -2172,7 +2197,9 @@ html:not(.dark) .field-hero__copy {
 }
 
 .argus-lightbox__meta dd {
+  min-width: 0;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .argus-lightbox__close,
@@ -2220,7 +2247,7 @@ html:not(.dark) .field-hero__copy {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .argus-lightbox {
     padding: 0;
   }
@@ -2229,11 +2256,18 @@ html:not(.dark) .field-hero__copy {
     width: 100%;
     height: 100%;
     max-height: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
     border-radius: 0;
   }
 
-  .argus-lightbox__figure img {
-    max-height: calc(100vh - 210px);
+  .argus-lightbox__image img {
+    max-height: calc(100vh - 270px);
+  }
+
+  .argus-lightbox__caption {
+    max-height: 270px;
+    overflow: auto;
   }
 }
 
