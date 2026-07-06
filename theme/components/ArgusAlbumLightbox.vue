@@ -17,6 +17,16 @@ const photo = computed(() => isOpen.value ? props.photos[props.activeIndex] : nu
 const dialog = ref<HTMLElement | null>(null)
 let previousFocusedElement: HTMLElement | null = null
 
+const imageStyle = computed(() => {
+  const current = photo.value
+  if (!current?.width || !current.height)
+    return {}
+
+  return {
+    aspectRatio: `${current.width} / ${current.height}`,
+  }
+})
+
 const metadata = computed(() => {
   const current = photo.value
   if (!current)
@@ -180,11 +190,20 @@ onBeforeUnmount(() => {
 
       <figure class="argus-lightbox__figure">
         <button class="argus-lightbox__close" type="button" aria-label="关闭照片预览" @click="emit('close')">
-          ×
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
         </button>
 
         <div class="argus-lightbox__image">
-          <img :src="photo.previewPath" :alt="photo.originalFilename || 'Album photo'">
+          <div class="argus-lightbox__image-frame" :style="imageStyle">
+            <img
+              :src="photo.previewPath"
+              :alt="photo.originalFilename || 'Album photo'"
+              :width="photo.width"
+              :height="photo.height"
+            >
+          </div>
         </div>
 
         <figcaption class="argus-lightbox__caption">
@@ -205,10 +224,14 @@ onBeforeUnmount(() => {
         </figcaption>
 
         <button class="argus-lightbox__nav argus-lightbox__nav--prev" type="button" aria-label="上一张照片" @click="previous">
-          ‹
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18 9 12l6-6" />
+          </svg>
         </button>
         <button class="argus-lightbox__nav argus-lightbox__nav--next" type="button" aria-label="下一张照片" @click="next">
-          ›
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
         </button>
       </figure>
     </div>
