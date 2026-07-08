@@ -16,12 +16,8 @@ function formatDate(value: string) {
   return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium' }).format(date)
 }
 
-function albumPreviewThumbnails(album: ArgusAlbumSummary) {
-  return album.previewThumbnails.length ? album.previewThumbnails : [album.cover].filter(Boolean)
-}
-
-function albumPreviewThumbnail(album: ArgusAlbumSummary, slot: number) {
-  return albumPreviewThumbnails(album)[slot - 1] || ''
+function albumCover(album: ArgusAlbumSummary) {
+  return album.cover || album.previewThumbnails[0] || ''
 }
 </script>
 
@@ -57,10 +53,14 @@ function albumPreviewThumbnail(album: ArgusAlbumSummary, slot: number) {
         <article v-for="album in albums" :key="album.id" class="argus-album-card">
           <RouterLink class="argus-album-card__link" :to="`/albums/${album.slug}`" :aria-label="`打开相册 ${album.title}`" />
 
-          <div class="argus-album-card__sheet" aria-hidden="true">
-            <span v-for="slot in 6" :key="slot" class="argus-album-card__frame">
-              <img v-if="albumPreviewThumbnail(album, slot)" :src="albumPreviewThumbnail(album, slot)" :alt="album.title" loading="lazy">
-            </span>
+          <div class="argus-album-card__sheet">
+            <img
+              v-if="albumCover(album)"
+              class="argus-album-card__cover"
+              :src="albumCover(album)"
+              :alt="album.title"
+              loading="lazy"
+            >
           </div>
 
           <div class="argus-album-card__body">

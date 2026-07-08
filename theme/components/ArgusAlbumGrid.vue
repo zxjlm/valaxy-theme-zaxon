@@ -15,9 +15,10 @@ function aspectStyle(photo: ArgusAlbumPhoto) {
   return { aspectRatio: '4 / 3' }
 }
 
-function captionParts(photo: ArgusAlbumPhoto) {
-  return [photo.city, photo.capturedAt.slice(0, 10), photo.camera, photo.focalLength]
+function photoLabel(photo: ArgusAlbumPhoto, index: number) {
+  return [photo.originalFilename || `照片 ${index + 1}`, photo.city, photo.capturedAt.slice(0, 10)]
     .filter(Boolean)
+    .join(' · ')
 }
 </script>
 
@@ -33,13 +34,10 @@ function captionParts(photo: ArgusAlbumPhoto) {
       class="argus-album-grid__item"
       type="button"
       :style="aspectStyle(photo)"
-      :aria-label="`打开照片 ${index + 1}`"
+      :aria-label="`打开${photoLabel(photo, index)}`"
       @click="emit('select', index)"
     >
       <img :src="photo.thumbnailPath" :alt="photo.originalFilename || `Album photo ${index + 1}`" loading="lazy">
-      <span v-if="captionParts(photo).length" class="argus-album-grid__caption">
-        {{ captionParts(photo).join(' · ') }}
-      </span>
     </button>
   </div>
 </template>
