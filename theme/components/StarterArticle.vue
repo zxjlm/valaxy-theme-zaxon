@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useFrontmatter, usePostList } from 'valaxy'
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 
 import { useRoute } from 'vue-router'
 import notebookIcon from '../assets/field-notes/icon-notebook.png'
@@ -34,6 +34,11 @@ function normalizeTags(tags: unknown) {
 
 const hasAiDisclosure = computed(() => {
   return normalizeTags(frontmatter.value.tags).some(tag => aiDisclosureTags.has(tag))
+})
+
+watchEffect(() => {
+  if (frontmatter.value.katex)
+    void import('katex/dist/katex.css')
 })
 
 const markdownUrl = computed(() => markdownPathForRoute(route.path))

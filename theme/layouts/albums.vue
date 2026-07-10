@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import type { ArgusAlbumSummary } from '../types/albums'
+import { useHead } from '@unhead/vue'
 import { computed } from 'vue'
 import { useAlbumIndex, useAlbumsConfig } from '../composables'
 
 const config = useAlbumsConfig()
 const albumState = useAlbumIndex()
 const albums = computed(() => albumState.value.data || [])
+
+useHead({
+  link: [
+    {
+      rel: 'preconnect',
+      href: 'https://pic.harumonia.moe',
+      crossorigin: '',
+    },
+    {
+      rel: 'dns-prefetch',
+      href: 'https://pic.harumonia.moe',
+    },
+  ],
+})
 
 function formatDate(value: string) {
   if (!value)
@@ -50,7 +65,7 @@ function albumCover(album: ArgusAlbumSummary) {
       </p>
 
       <div v-else class="argus-albums__list" :data-count="albums.length">
-        <article v-for="album in albums" :key="album.id" class="argus-album-card">
+        <article v-for="(album, index) in albums" :key="album.id" class="argus-album-card">
           <RouterLink class="argus-album-card__link" :to="`/albums/${album.slug}`" :aria-label="`打开相册 ${album.title}`" />
 
           <div class="argus-album-card__sheet">
@@ -59,7 +74,9 @@ function albumCover(album: ArgusAlbumSummary) {
               class="argus-album-card__cover"
               :src="albumCover(album)"
               :alt="album.title"
-              loading="lazy"
+              :loading="index < 2 ? 'eager' : 'lazy'"
+              decoding="async"
+              :fetchpriority="index < 2 ? 'high' : 'auto'"
             >
           </div>
 

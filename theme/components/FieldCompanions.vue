@@ -7,8 +7,8 @@ import travelerWriting from '../assets/field-notes/traveler-writing.png'
 <template>
   <div class="field-companions" aria-hidden="true">
     <div class="field-companion field-companion--traveler">
-      <img class="field-companion__pose field-companion__pose--standing" :src="travelerStanding" alt="">
-      <img class="field-companion__pose field-companion__pose--writing" :src="travelerWriting" alt="">
+      <img class="field-companion__pose field-companion__pose--standing" :src="travelerStanding" alt="" loading="lazy" decoding="async">
+      <img class="field-companion__pose field-companion__pose--writing" :src="travelerWriting" alt="" loading="lazy" decoding="async">
     </div>
 
     <span

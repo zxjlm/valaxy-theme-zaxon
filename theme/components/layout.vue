@@ -1,13 +1,34 @@
 <script lang="ts" setup>
-import FieldCompanions from './FieldCompanions.vue'
-import FieldWind from './FieldWind.vue'
+import { defineAsyncComponent, onMounted, ref } from 'vue'
+
+const FieldCompanions = defineAsyncComponent(() => import('./FieldCompanions.vue'))
+const FieldWind = defineAsyncComponent(() => import('./FieldWind.vue'))
+
+const showAmbientLayers = ref(false)
+
+function runWhenIdle(callback: () => void) {
+  if (typeof globalThis.requestIdleCallback === 'function') {
+    globalThis.requestIdleCallback(callback, { timeout: 1600 })
+    return
+  }
+
+  globalThis.setTimeout(callback, 600)
+}
+
+onMounted(() => {
+  runWhenIdle(() => {
+    showAmbientLayers.value = true
+  })
+})
 </script>
 
 <template>
   <div class="field-shell antialiased">
     <a class="field-skip-link" href="#main-content">跳到正文</a>
-    <FieldWind />
-    <FieldCompanions />
+    <template v-if="showAmbientLayers">
+      <FieldWind />
+      <FieldCompanions />
+    </template>
 
     <header class="field-nav">
       <StarterNav />
