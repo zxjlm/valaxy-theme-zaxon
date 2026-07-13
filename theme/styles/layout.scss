@@ -558,7 +558,7 @@ html:not(.dark) .field-companion--notebook {
     display: none;
   }
 
-  .field-hero::before,
+  .field-hero__image,
   .field-find-card::after,
   .field-camp-strip img,
   .field-companion,
@@ -583,14 +583,31 @@ html:not(.dark) .field-companion--notebook {
   background: linear-gradient(180deg, rgb(8 19 32 / 8%), var(--st-bg-canvas) 100%), var(--st-bg-canvas);
 }
 
-.field-hero::before {
+.field-hero__image {
   position: absolute;
   inset: -18px;
   z-index: 0;
-  content: '';
-  background: var(--field-hero-image, none) center bottom / cover no-repeat;
+  width: calc(100% + 36px);
+  height: calc(100% + 36px);
+  object-fit: cover;
+  object-position: center bottom;
   transform: translate3d(0, 0, 0) scale(1.01);
   animation: field-hero-breeze 18s var(--st-ease-standard) infinite;
+}
+
+.field-hero__image--full {
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.field-hero__image--full.field-hero__image--ready {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field-hero__image--full {
+    transition: none;
+  }
 }
 
 .field-hero__overlay {

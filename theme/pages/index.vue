@@ -1,13 +1,18 @@
 <script lang="ts" setup>
 import type { Post } from 'valaxy'
+import type { ConnectionInfo } from '../composables'
 import { usePostList, useSiteConfig } from 'valaxy'
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import flowerDecor from '../assets/field-notes/decor-flower-a.png'
 
 import rockDecor from '../assets/field-notes/decor-rocks.png'
+import heroFieldDesktopDarkLow from '../assets/field-notes/hero-field-desktop-dark-low.webp'
 import heroFieldDesktopDark from '../assets/field-notes/hero-field-desktop-dark.png'
+import heroFieldDesktopLightLow from '../assets/field-notes/hero-field-desktop-light-low.webp'
 import heroFieldDesktopLight from '../assets/field-notes/hero-field-desktop-light.png'
+import heroFieldMobileDarkLow from '../assets/field-notes/hero-field-mobile-dark-low.webp'
 import heroFieldMobileDark from '../assets/field-notes/hero-field-mobile-dark.png'
+import heroFieldMobileLightLow from '../assets/field-notes/hero-field-mobile-light-low.webp'
 import heroFieldMobileLight from '../assets/field-notes/hero-field-mobile-light.png'
 import cameraIcon from '../assets/field-notes/icon-camera.png'
 import compassIcon from '../assets/field-notes/icon-compass.png'
@@ -17,13 +22,20 @@ import notebookIcon from '../assets/field-notes/icon-notebook.png'
 import thumbCamp from '../assets/field-notes/thumb-camp.png'
 import thumbCoffee from '../assets/field-notes/thumb-coffee.png'
 import thumbLake from '../assets/field-notes/thumb-lake.png'
-import { entryKind, entryLabel, useFieldEntries } from '../composables'
+import {
+  entryKind,
+  entryLabel,
+  heroVariant,
+  isCurrentHeroRequest,
+  shouldLoadHeroQuality,
+  useFieldEntries,
+} from '../composables'
 
 const siteConfig = useSiteConfig()
 const posts = usePostList()
 const { isLife } = useFieldEntries()
 
-const heroImages = {
+const heroFullImages = {
   light: {
     desktop: heroFieldDesktopLight,
     mobile: heroFieldMobileLight,
@@ -34,9 +46,23 @@ const heroImages = {
   },
 }
 
-const heroImage = ref('')
+const heroPreviewImages = {
+  light: {
+    desktop: heroFieldDesktopLightLow,
+    mobile: heroFieldMobileLightLow,
+  },
+  dark: {
+    desktop: heroFieldDesktopDarkLow,
+    mobile: heroFieldMobileDarkLow,
+  },
+}
+
+const previewHeroImage = ref(heroFieldDesktopDarkLow)
+const fullHeroImage = ref('')
+const isHeroFullReady = ref(false)
 let heroMediaQuery: MediaQueryList | undefined
 let themeObserver: MutationObserver | undefined
+let heroRequest = 0
 
 function plainText(value: unknown) {
   return String(value || '')
@@ -64,10 +90,6 @@ const devPosts = computed(() => visiblePosts.value.filter(post => !isLife(post))
 const lifePosts = computed(() => visiblePosts.value.filter(post => isLife(post)))
 const recentPosts = computed(() => visiblePosts.value.slice(0, 4))
 const latestPosts = computed(() => visiblePosts.value.slice(0, 5))
-const heroStyle = computed(() => ({
-  '--field-hero-image': heroImage.value ? `url(${heroImage.value})` : 'none',
-}))
-
 const fallbackFinds = [
   {
     label: 'PHOTO',
@@ -89,19 +111,58 @@ const fallbackFinds = [
   },
 ]
 
-function syncHeroImage() {
-  const isDark = document.documentElement.classList.contains('dark')
-  const theme = isDark ? 'dark' : 'light'
-  const size = heroMediaQuery?.matches ? 'mobile' : 'desktop'
-  heroImage.value = heroImages[theme][size]
+function connectionInfo(): ConnectionInfo | undefined {
+  return (navigator as Navigator & { connection?: ConnectionInfo }).connection
+}
+
+function scheduleFullHeroLoad(src: string, request: number) {
+  const load = async () => {
+    const image = new Image()
+    image.src = src
+
+    try {
+      await image.decode()
+      if (!isCurrentHeroRequest(heroRequest, request))
+        return
+
+      fullHeroImage.value = src
+      await nextTick()
+      window.requestAnimationFrame(() => {
+        if (isCurrentHeroRequest(heroRequest, request) && fullHeroImage.value === src)
+          isHeroFullReady.value = true
+      })
+    }
+    catch {
+      // Keep the preview visible if the full-resolution image cannot load or decode.
+    }
+  }
+
+  if (typeof window.requestIdleCallback === 'function')
+    window.requestIdleCallback(load, { timeout: 1500 })
+  else
+    window.setTimeout(load, 0)
+}
+
+function syncHeroImages() {
+  const variant = heroVariant(
+    document.documentElement.classList.contains('dark'),
+    Boolean(heroMediaQuery?.matches),
+  )
+  previewHeroImage.value = heroPreviewImages[variant.theme][variant.viewport]
+  fullHeroImage.value = ''
+  isHeroFullReady.value = false
+
+  const request = ++heroRequest
+  if (shouldLoadHeroQuality(connectionInfo()))
+    scheduleFullHeroLoad(heroFullImages[variant.theme][variant.viewport], request)
 }
 
 onMounted(() => {
   heroMediaQuery = window.matchMedia('(max-width: 640px)')
-  syncHeroImage()
+  syncHeroImages()
 
-  heroMediaQuery.addEventListener('change', syncHeroImage)
-  themeObserver = new MutationObserver(syncHeroImage)
+  heroMediaQuery.addEventListener('change', syncHeroImages)
+  themeObserver = new MutationObserver(syncHeroImages)
   themeObserver.observe(document.documentElement, {
     attributeFilter: ['class', 'data-theme'],
     attributes: true,
@@ -109,14 +170,23 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  heroMediaQuery?.removeEventListener('change', syncHeroImage)
+  heroMediaQuery?.removeEventListener('change', syncHeroImages)
   themeObserver?.disconnect()
 })
 </script>
 
 <template>
   <div class="field-home">
-    <section class="field-hero" :style="heroStyle" aria-labelledby="field-hero-title">
+    <section class="field-hero" aria-labelledby="field-hero-title">
+      <img class="field-hero__image field-hero__image--preview" :src="previewHeroImage" alt="" aria-hidden="true">
+      <img
+        v-if="fullHeroImage"
+        class="field-hero__image field-hero__image--full"
+        :class="{ 'field-hero__image--ready': isHeroFullReady }"
+        :src="fullHeroImage"
+        alt=""
+        aria-hidden="true"
+      >
       <div class="field-hero__overlay" />
       <div class="field-hero__content">
         <p class="field-kicker">
