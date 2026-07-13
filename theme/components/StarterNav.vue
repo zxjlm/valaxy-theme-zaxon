@@ -49,6 +49,10 @@ const navItems = computed(() => {
       </div>
 
       <div class="field-nav__actions">
+        <a class="field-icon-button" href="/feed.xml" aria-label="订阅 RSS 更新">
+          <div i-ri-rss-line />
+        </a>
+
         <RouterLink class="field-icon-button field-nav__archive" to="/archives/" aria-label="查看归档">
           <div i-ri-archive-line />
         </RouterLink>
