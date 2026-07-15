@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import type { Post } from 'valaxy'
-import type { ConnectionInfo } from '../composables'
+import type { AlbumPreviewPhoto, ConnectionInfo } from '../composables'
 import { usePostList, useSiteConfig } from 'valaxy'
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import flowerDecor from '../assets/field-notes/decor-flower-a.png'
 
 import rockDecor from '../assets/field-notes/decor-rocks.png'
@@ -19,21 +18,20 @@ import compassIcon from '../assets/field-notes/icon-compass.png'
 import devIcon from '../assets/field-notes/icon-dev.png'
 import lifeIcon from '../assets/field-notes/icon-life.png'
 import notebookIcon from '../assets/field-notes/icon-notebook.png'
-import thumbCamp from '../assets/field-notes/thumb-camp.png'
-import thumbCoffee from '../assets/field-notes/thumb-coffee.png'
-import thumbLake from '../assets/field-notes/thumb-lake.png'
 import {
-  entryKind,
-  entryLabel,
+  albumPreviewPhotos,
   heroVariant,
   isCurrentHeroRequest,
+  pickRandomItems,
   shouldLoadHeroQuality,
+  useAlbumIndex,
   useFieldEntries,
 } from '../composables'
 
 const siteConfig = useSiteConfig()
 const posts = usePostList()
 const { isLife } = useFieldEntries()
+const albumState = useAlbumIndex()
 
 const heroFullImages = {
   light: {
@@ -64,52 +62,16 @@ let heroMediaQuery: MediaQueryList | undefined
 let themeObserver: MutationObserver | undefined
 let heroRequest = 0
 
-function plainText(value: unknown) {
-  return String(value || '')
-    .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-function postSummary(post: Post) {
-  const excerpt = plainText(post.excerpt)
-  if (excerpt)
-    return excerpt
-
-  return {
-    article: '整理一个具体问题的来路、取舍和最终实践。',
-    life: '把生活片段放回同一份长期可读的观察手册。',
-    note: '短一点的开发备忘，保留当时的判断和线索。',
-    photo: '用照片记下天气、路径和当时看见的光。',
-    quote: '摘下一句还值得反复咀嚼的话，留给之后的自己。',
-  }[entryKind(post)]
-}
-
 const visiblePosts = computed(() => posts.value.filter(post => !post.draft))
 const devPosts = computed(() => visiblePosts.value.filter(post => !isLife(post)))
 const lifePosts = computed(() => visiblePosts.value.filter(post => isLife(post)))
-const recentPosts = computed(() => visiblePosts.value.slice(0, 4))
 const latestPosts = computed(() => visiblePosts.value.slice(0, 5))
-const fallbackFinds = [
-  {
-    label: 'PHOTO',
-    title: '雨后湖边',
-    summary: '旅行随拍，保留真实照片的安静质感。',
-    image: thumbLake,
-  },
-  {
-    label: 'NOTE',
-    title: '一杯平静的时间',
-    summary: '用短句记录当下正在使用的工具与阅读。',
-    image: thumbCoffee,
-  },
-  {
-    label: 'LIFE',
-    title: '夜间营地记录',
-    summary: '把生活片段放回同一个长期可读的世界。',
-    image: thumbCamp,
-  },
-]
+const albumPhotos = computed(() => albumPreviewPhotos(albumState.value.data || []))
+const epiphanyPhotos = ref<AlbumPreviewPhoto[]>([])
+
+watch(albumPhotos, (photos) => {
+  epiphanyPhotos.value = pickRandomItems(photos, 2)
+}, { immediate: true })
 
 function connectionInfo(): ConnectionInfo | undefined {
   return (navigator as Navigator & { connection?: ConnectionInfo }).connection
@@ -207,7 +169,7 @@ onBeforeUnmount(() => {
           <span>NOTES / PHOTOS / QUOTES</span>
         </div>
         <div class="field-hero__actions">
-          <RouterLink class="field-button field-button--dev" to="/categories/">
+          <RouterLink class="field-button field-button--dev" to="/tech/">
             DEV LOG
           </RouterLink>
           <RouterLink class="field-button field-button--life" to="/notes/">
@@ -233,7 +195,7 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="field-gate-grid">
-        <RouterLink class="field-gate field-gate--dev" to="/categories/">
+        <RouterLink class="field-gate field-gate--dev" to="/tech/">
           <img class="field-gate__icon" :src="devIcon" alt="" loading="lazy">
           <div>
             <p class="field-gate__eyebrow">
@@ -275,48 +237,43 @@ onBeforeUnmount(() => {
       <div class="field-section__head">
         <div>
           <p class="field-kicker">
-            Recent finds
+            Album finds
           </p>
           <h2 id="field-finds-title" class="field-section__title">
             Epiphany
           </h2>
           <p class="field-section__summary">
-            一些灵感
+            相册里的随机拾光
           </p>
         </div>
-        <RouterLink class="field-section__more" to="/archives/">
+        <RouterLink class="field-section__more" to="/albums/">
           查看全部 <span aria-hidden="true">→</span>
         </RouterLink>
       </div>
 
-      <div class="field-finds-grid">
-        <RouterLink
-          v-for="post in recentPosts"
-          :key="post.path"
-          class="field-find-card"
-          :data-kind="entryKind(post)"
-          :to="post.path || ''"
-        >
-          <span class="field-chip" :data-kind="entryKind(post)">
-            {{ entryLabel(post) }}
-          </span>
-          <h3>{{ post.title }}</h3>
-          <p class="field-find-card__summary">
-            {{ postSummary(post) }}
-          </p>
-          <StarterDate :date="post.date" />
-        </RouterLink>
+      <p v-if="albumState.pending" class="field-epiphany__status">
+        正在挑选两张照片。
+      </p>
+      <p v-else-if="albumState.error || !epiphanyPhotos.length" class="field-epiphany__status">
+        相册暂时还没有可展示的照片。
+      </p>
 
-        <div
-          v-for="item in recentPosts.length ? [] : fallbackFinds"
-          :key="item.title"
-          class="field-find-card field-find-card--photo"
+      <div v-else class="field-epiphany-grid">
+        <RouterLink
+          v-for="(photo, index) in epiphanyPhotos"
+          :key="photo.src"
+          class="field-epiphany-card"
+          :data-featured="index === 0"
+          :to="`/albums/${photo.albumSlug}`"
         >
-          <img :src="item.image" alt="" loading="lazy">
-          <span class="field-chip" data-kind="life">{{ item.label }}</span>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.summary }}</p>
-        </div>
+          <img :src="photo.src" :alt="`${photo.albumTitle} 相册照片`" :loading="index === 0 ? 'eager' : 'lazy'" decoding="async">
+          <span class="field-epiphany-card__shade" aria-hidden="true" />
+          <span class="field-epiphany-card__body">
+            <span class="field-chip" data-kind="life">Photo</span>
+            <strong>{{ photo.albumTitle }}</strong>
+            <span>打开相册 <span aria-hidden="true">→</span></span>
+          </span>
+        </RouterLink>
       </div>
     </section>
 

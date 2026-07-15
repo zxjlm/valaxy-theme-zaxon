@@ -16,12 +16,18 @@ const navItems = computed(() => {
     ? themeConfig.value.nav
     : [
         { text: '首页', link: '/' },
-        { text: '开发', link: '/categories/' },
+        { text: '技术', link: '/tech/' },
         { text: '生活', link: '/notes/' },
-        { text: '归档', link: '/archives/' },
+        { text: '相册', link: '/albums/' },
         { text: '关于', link: '/about/' },
       ]
 })
+
+const moreNavItems = [
+  { text: '归档', link: '/archives/' },
+  { text: '分类', link: '/categories/' },
+  { text: '标签', link: '/tags/' },
+]
 </script>
 
 <template>
@@ -46,6 +52,22 @@ const navItems = computed(() => {
             {{ item.text }}
           </AppLink>
         </template>
+        <details class="field-nav__more">
+          <summary class="field-nav__link">
+            其他 <span aria-hidden="true" i-ri-arrow-down-s-line />
+          </summary>
+          <div class="field-nav__more-menu">
+            <AppLink
+              v-for="item in moreNavItems"
+              :key="item.link"
+              class="field-nav__more-link"
+              :to="item.link"
+              rel="noopener"
+            >
+              {{ item.text }}
+            </AppLink>
+          </div>
+        </details>
       </div>
 
       <div class="field-nav__actions">
@@ -83,6 +105,21 @@ const navItems = computed(() => {
             {{ item.text }}
           </AppLink>
         </template>
+        <details class="field-nav__mobile-more">
+          <summary>其他 <span aria-hidden="true" i-ri-arrow-down-s-line /></summary>
+          <div>
+            <AppLink
+              v-for="item in moreNavItems"
+              :key="`mobile-${item.link}`"
+              class="field-nav__link"
+              :to="item.link"
+              rel="noopener"
+              @click="menuOpen = false"
+            >
+              {{ item.text }}
+            </AppLink>
+          </div>
+        </details>
       </div>
     </div>
   </nav>

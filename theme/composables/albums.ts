@@ -180,6 +180,46 @@ export function featuredPhotos(
     .slice(0, limit)
 }
 
+export interface AlbumPreviewPhoto {
+  albumTitle: string
+  albumSlug: string
+  src: string
+}
+
+/**
+ * Builds the lightweight photo pool exposed by the album index. This avoids
+ * fetching every album manifest on the homepage just to select a photo.
+ */
+export function albumPreviewPhotos(albums: ArgusAlbumSummary[]): AlbumPreviewPhoto[] {
+  const seen = new Set<string>()
+
+  return albums.flatMap((album) => {
+    const sources = [album.cover, ...album.previewThumbnails].filter(Boolean)
+
+    return sources.flatMap((src) => {
+      if (seen.has(src))
+        return []
+
+      seen.add(src)
+      return [{ albumTitle: album.title, albumSlug: album.slug, src }]
+    })
+  })
+}
+
+export function pickRandomItems<T>(items: T[], limit: number, random = Math.random): T[] {
+  const pool = [...items]
+  const count = Math.min(Math.max(limit, 0), pool.length)
+
+  for (let index = 0; index < count; index++) {
+    const candidateIndex = index + Math.floor(random() * (pool.length - index))
+    const candidate = pool[candidateIndex]
+    pool[candidateIndex] = pool[index]
+    pool[index] = candidate
+  }
+
+  return pool.slice(0, count)
+}
+
 export function useAlbumsConfig() {
   const themeConfig = useThemeConfig()
 

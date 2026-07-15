@@ -347,6 +347,71 @@ html:not(.dark) .field-companion--notebook {
   box-shadow: 0 0 12px rgb(255 184 77 / 45%);
 }
 
+.field-nav__more {
+  position: relative;
+}
+
+.field-nav__more summary,
+.field-nav__mobile-more summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.field-nav__more summary::-webkit-details-marker,
+.field-nav__mobile-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.field-nav__more summary span,
+.field-nav__mobile-more summary span {
+  margin-left: 2px;
+  transition: transform var(--st-duration-fast) var(--st-ease-standard);
+}
+
+.field-nav__more[open] summary {
+  color: var(--st-text-primary);
+}
+
+.field-nav__more[open] summary span,
+.field-nav__mobile-more[open] summary span {
+  transform: rotate(180deg);
+}
+
+.field-nav__more-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  min-width: 112px;
+  gap: 2px;
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-md);
+  padding: 6px;
+  background: var(--st-bg-elevated);
+  box-shadow: 0 18px 42px rgb(0 0 0 / 18%);
+  transform: translateX(-50%);
+}
+
+.field-nav__more-link {
+  min-height: 36px;
+  padding: 0 10px;
+  border-radius: var(--st-radius-sm);
+  color: var(--st-text-secondary);
+  font-size: 14px;
+  line-height: 36px;
+  transition:
+    background-color var(--st-duration-fast) var(--st-ease-standard),
+    color var(--st-duration-fast) var(--st-ease-standard);
+}
+
+@media (hover: hover) {
+  .field-nav__more-link:hover {
+    background: color-mix(in srgb, var(--st-bg-soft) 74%, transparent);
+    color: var(--st-text-primary);
+  }
+}
+
 .field-nav__actions {
   display: inline-flex;
   align-items: center;
@@ -541,6 +606,25 @@ html:not(.dark) .field-companion--notebook {
   .field-nav__mobile .field-nav__link {
     min-height: 42px;
     border-top: 1px solid var(--st-border-default);
+  }
+
+  .field-nav__mobile-more {
+    border-top: 1px solid var(--st-border-default);
+  }
+
+  .field-nav__mobile-more summary {
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--st-text-secondary);
+    font-size: 15px;
+    font-weight: 650;
+  }
+
+  .field-nav__mobile-more > div {
+    display: grid;
+    padding: 0 0 4px 14px;
   }
 }
 
@@ -872,6 +956,94 @@ html:not(.dark) .field-hero__copy {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
+}
+
+.field-epiphany__status {
+  margin: 0;
+  border: 1px dashed var(--st-border-default);
+  border-radius: var(--st-radius-lg);
+  padding: 22px;
+  color: var(--st-text-secondary);
+  line-height: 1.7;
+}
+
+.field-epiphany-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.9fr);
+  gap: 18px;
+}
+
+.field-epiphany-card {
+  position: relative;
+  display: block;
+  min-height: 288px;
+  overflow: hidden;
+  border: 1px solid var(--st-border-default);
+  border-radius: var(--st-radius-lg);
+  background: var(--st-bg-soft);
+  box-shadow: 0 16px 38px rgb(0 0 0 / 14%);
+}
+
+.field-epiphany-card[data-featured='true'] {
+  min-height: 360px;
+}
+
+.field-epiphany-card img,
+.field-epiphany-card__shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.field-epiphany-card img {
+  object-fit: cover;
+  outline: 1px solid rgb(255 255 255 / 10%);
+  outline-offset: -1px;
+  transition: transform var(--st-duration-normal) var(--st-ease-enter);
+}
+
+.field-epiphany-card__shade {
+  background:
+    linear-gradient(180deg, rgb(6 15 23 / 5%) 18%, rgb(6 15 23 / 76%) 100%),
+    linear-gradient(90deg, rgb(6 15 23 / 28%), transparent 62%);
+}
+
+.field-epiphany-card__body {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  left: 20px;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  color: rgb(255 252 242 / 88%);
+}
+
+.field-epiphany-card__body strong {
+  color: #fffaf0;
+  font-family: var(--st-font-serif);
+  font-size: clamp(21px, 2.5vw, 30px);
+  font-weight: 720;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.field-epiphany-card__body > span:last-child {
+  color: rgb(255 252 242 / 72%);
+  font-family: var(--st-font-mono);
+  font-size: 11px;
+}
+
+@media (hover: hover) {
+  .field-epiphany-card:hover {
+    border-color: color-mix(in srgb, var(--st-life-primary) 58%, var(--st-border-strong));
+  }
+
+  .field-epiphany-card:hover img {
+    transform: scale(1.035);
+  }
 }
 
 .field-find-card {
@@ -1248,6 +1420,14 @@ html:not(.dark) .field-hero__copy {
   .field-finds-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .field-epiphany-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field-epiphany-card[data-featured='true'] {
+    min-height: 310px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1316,6 +1496,15 @@ html:not(.dark) .field-hero__copy {
   .field-gate-grid,
   .field-finds-grid {
     grid-template-columns: 1fr;
+  }
+
+  .field-epiphany-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-epiphany-card,
+  .field-epiphany-card[data-featured='true'] {
+    min-height: 300px;
   }
 
   .field-find-card:first-child {

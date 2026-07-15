@@ -2,10 +2,12 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { createRenderer, nextTick } from 'vue'
 
 import {
+  albumPreviewPhotos,
   defaultAlbumsConfig,
   featuredPhotos,
   normalizeAlbumDetail,
   normalizeAlbumIndex,
+  pickRandomItems,
   resolveAlbumManifestPath,
   useAlbumDetail,
 } from './albums'
@@ -340,6 +342,40 @@ describe('album manifest composable', () => {
     ]
 
     expect(featuredPhotos(albums, 2).map(photo => photo.id)).toEqual(['first', 'second'])
+  })
+
+  it('builds a deduplicated, index-only pool and picks a bounded random sample', () => {
+    const photos = albumPreviewPhotos(normalizeAlbumIndex({
+      schema_version: 1,
+      albums: [
+        {
+          id: 'field',
+          slug: 'field-notes',
+          title: 'Field Notes',
+          cover: '/photos/cover.jpg',
+          preview_thumbnails: ['/photos/cover.jpg', '/photos/one.jpg'],
+          photo_count: 2,
+          manifest_path: '/albums/field-notes/album.json',
+        },
+        {
+          id: 'rain',
+          slug: 'rain-map',
+          title: 'Rain Map',
+          preview_thumbnails: ['/photos/two.jpg'],
+          photo_count: 1,
+          manifest_path: '/albums/rain-map/album.json',
+        },
+      ],
+    }))
+
+    expect(photos).toEqual([
+      { albumTitle: 'Field Notes', albumSlug: 'field-notes', src: '/photos/cover.jpg' },
+      { albumTitle: 'Field Notes', albumSlug: 'field-notes', src: '/photos/one.jpg' },
+      { albumTitle: 'Rain Map', albumSlug: 'rain-map', src: '/photos/two.jpg' },
+    ])
+    expect(pickRandomItems(photos, 2, () => 0.99).map(photo => photo.src))
+      .toEqual(['/photos/two.jpg', '/photos/cover.jpg'])
+    expect(pickRandomItems(photos, 8)).toHaveLength(3)
   })
 
   it('preserves an explicit empty album detail manifest path', async () => {

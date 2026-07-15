@@ -19,8 +19,8 @@ export default defineConfig<ThemeConfig>({
         link: '/',
       },
       {
-        text: '开发',
-        link: '/categories/',
+        text: '技术',
+        link: '/tech/',
       },
       {
         text: '生活',
@@ -29,10 +29,6 @@ export default defineConfig<ThemeConfig>({
       {
         text: '相册',
         link: '/albums',
-      },
-      {
-        text: '归档',
-        link: '/archives/',
       },
       {
         text: '关于',
