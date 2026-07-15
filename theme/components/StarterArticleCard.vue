@@ -3,10 +3,6 @@ import type { Post } from 'valaxy'
 import { formatDate } from 'valaxy'
 import { computed } from 'vue'
 
-import devIcon from '../assets/field-notes/icon-dev.png'
-import noteIcon from '../assets/field-notes/icon-notebook.png'
-import photoThumb from '../assets/field-notes/thumb-lake.png'
-
 const props = defineProps<{
   post: Post
 }>()
@@ -41,14 +37,6 @@ const kindLabel = computed(() => {
   return 'DEV'
 })
 
-const icon = computed(() => {
-  if (kind.value === 'life')
-    return photoThumb
-  if (kind.value === 'note')
-    return noteIcon
-  return devIcon
-})
-
 const tags = computed(() => asArray((props.post as any).tags).slice(0, 3))
 const articleLabel = computed(() => String(props.post.title || 'Read article'))
 const createdAt = computed(() => props.post.date ? formatDate(props.post.date) : '')
@@ -58,10 +46,6 @@ const updatedAt = computed(() => props.post.updated ? formatDate(props.post.upda
 <template>
   <article class="field-article-card" :data-kind="kind">
     <RouterLink class="field-article-card__link" :to="post.path || ''" :aria-label="articleLabel" />
-
-    <div class="field-article-card__icon" aria-hidden="true">
-      <img :src="icon" alt="" loading="lazy">
-    </div>
 
     <div class="field-article-card__body">
       <div class="field-article-card__meta">
