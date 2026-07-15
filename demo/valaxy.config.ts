@@ -13,6 +13,11 @@ export default defineConfig<ThemeConfig>({
     //   primary: 'red',
     // },
 
+    content: {
+      lifeCategories: ['Life Log'],
+      devCategories: ['Dev Log'],
+    },
+
     nav: [
       {
         text: '首页',

@@ -189,7 +189,7 @@ onBeforeUnmount(() => {
             Balance
           </h2>
           <p class="field-section__summary">
-            技术 与 生活
+            均衡
           </p>
         </div>
       </div>
@@ -243,7 +243,7 @@ onBeforeUnmount(() => {
             Epiphany
           </h2>
           <p class="field-section__summary">
-            相册里的随机拾光
+            相册拾光
           </p>
         </div>
         <RouterLink class="field-section__more" to="/albums/">
@@ -287,7 +287,7 @@ onBeforeUnmount(() => {
             Journal
           </h2>
           <p class="field-section__summary">
-            我的冒险日志
+            冒险日志
           </p>
         </div>
       </div>

@@ -1302,6 +1302,37 @@ html:not(.dark) .field-hero__copy {
   gap: 10px;
 }
 
+.field-article-card__dates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 0;
+  color: var(--st-text-muted);
+  font-family: var(--st-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.field-article-card__dates > div {
+  display: flex;
+  gap: 4px;
+}
+
+.field-article-card__dates dt,
+.field-article-card__dates dd {
+  margin: 0;
+}
+
+.field-article-card__dates dt {
+  color: var(--st-text-muted);
+}
+
+.field-article-card__dates dd {
+  color: var(--st-text-secondary);
+}
+
 .field-date {
   margin: 0;
   color: var(--st-text-muted);
@@ -1566,6 +1597,10 @@ html:not(.dark) .field-hero__copy {
   .field-article-card__icon {
     width: 58px;
     height: 58px;
+  }
+
+  .field-article-card__dates {
+    justify-content: flex-start;
   }
 }
 

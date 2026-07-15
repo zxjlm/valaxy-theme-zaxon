@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Post } from 'valaxy'
+import { formatDate } from 'valaxy'
 import { computed } from 'vue'
 
 import devIcon from '../assets/field-notes/icon-dev.png'
@@ -50,6 +51,8 @@ const icon = computed(() => {
 
 const tags = computed(() => asArray((props.post as any).tags).slice(0, 3))
 const articleLabel = computed(() => String(props.post.title || 'Read article'))
+const createdAt = computed(() => props.post.date ? formatDate(props.post.date) : '')
+const updatedAt = computed(() => props.post.updated ? formatDate(props.post.updated) : '')
 </script>
 
 <template>
@@ -63,7 +66,16 @@ const articleLabel = computed(() => String(props.post.title || 'Read article'))
     <div class="field-article-card__body">
       <div class="field-article-card__meta">
         <span class="field-chip" :data-kind="kind">{{ kindLabel }}</span>
-        <StarterDate :date="post.date" />
+        <dl class="field-article-card__dates">
+          <div v-if="createdAt">
+            <dt>创建时间</dt>
+            <dd><time :datetime="createdAt">{{ createdAt }}</time></dd>
+          </div>
+          <div v-if="updatedAt">
+            <dt>更新时间</dt>
+            <dd><time :datetime="updatedAt">{{ updatedAt }}</time></dd>
+          </div>
+        </dl>
       </div>
 
       <h2 class="field-article-card__title">
