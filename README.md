@@ -109,6 +109,18 @@ export default defineConfig<ThemeConfig>({
       devCategories: ['Dev Log', 'Engineering'],
     },
 
+    hero: {
+      desktopLight: 'https://cdn.example.com/hero-desktop-light.png',
+      desktopDark: 'https://cdn.example.com/hero-desktop-dark.png',
+      mobileLight: 'https://cdn.example.com/hero-mobile-light.png',
+      mobileDark: 'https://cdn.example.com/hero-mobile-dark.png',
+      // Optional: displayed before its matching full-resolution image.
+      desktopLightPreview: 'https://cdn.example.com/hero-desktop-light-low.webp',
+      desktopDarkPreview: 'https://cdn.example.com/hero-desktop-dark-low.webp',
+      mobileLightPreview: 'https://cdn.example.com/hero-mobile-light-low.webp',
+      mobileDarkPreview: 'https://cdn.example.com/hero-mobile-dark-low.webp',
+    },
+
     albums: {
       enable: true,
       indexPath: '/albums/index.json',
@@ -147,6 +159,14 @@ export default defineConfig<ThemeConfig>({
 | `nav` | `{ text: string, link: string, icon?: string }[]` | Built-in Home / Development / Life / Archive / About links | Main navigation items. The current UI renders `text` and `link`. |
 | `content.lifeCategories` | `string[]` | `[]` | Category names treated as life entries for `/notes/`. |
 | `content.devCategories` | `string[]` | `[]` | Category names treated as development entries, preventing them from appearing in `/notes/`. |
+| `hero.desktopLight` | `string` | Built-in GitHub Raw URL | Required full-resolution image for desktop light mode. |
+| `hero.desktopDark` | `string` | Built-in GitHub Raw URL | Required full-resolution image for desktop dark mode. |
+| `hero.mobileLight` | `string` | Built-in GitHub Raw URL | Required full-resolution image for mobile light mode. |
+| `hero.mobileDark` | `string` | Built-in GitHub Raw URL | Required full-resolution image for mobile dark mode. |
+| `hero.desktopLightPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
+| `hero.desktopDarkPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
+| `hero.mobileLightPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
+| `hero.mobileDarkPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
 | `albums.enable` | `boolean` | `true` | Enable the Argus static album routes. When disabled, the composables skip loading album manifests. |
 | `albums.indexPath` | `string` | `/albums/index.json` | Public URL of the generated album index manifest. |
 | `albums.title` | `string` | `相册` | Heading shown on `/albums/`. |

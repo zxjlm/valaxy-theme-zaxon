@@ -111,6 +111,18 @@ export default defineConfig<ThemeConfig>({
       devCategories: ['Dev Log', '工程'],
     },
 
+    hero: {
+      desktopLight: 'https://cdn.example.com/hero-desktop-light.png',
+      desktopDark: 'https://cdn.example.com/hero-desktop-dark.png',
+      mobileLight: 'https://cdn.example.com/hero-mobile-light.png',
+      mobileDark: 'https://cdn.example.com/hero-mobile-dark.png',
+      // 可选：先显示 WebP 预览图，再加载对应高清图。
+      desktopLightPreview: 'https://cdn.example.com/hero-desktop-light-low.webp',
+      desktopDarkPreview: 'https://cdn.example.com/hero-desktop-dark-low.webp',
+      mobileLightPreview: 'https://cdn.example.com/hero-mobile-light-low.webp',
+      mobileDarkPreview: 'https://cdn.example.com/hero-mobile-dark-low.webp',
+    },
+
     albums: {
       enable: true,
       indexPath: '/albums/index.json',
@@ -149,6 +161,14 @@ export default defineConfig<ThemeConfig>({
 | `nav` | `{ text: string, link: string, icon?: string }[]` | 内置首页 / 开发 / 生活 / 归档 / 关于 | 主导航项目。目前界面会渲染 `text` 与 `link`。 |
 | `content.lifeCategories` | `string[]` | `[]` | 归入 `/notes/` 生活流的分类名。 |
 | `content.devCategories` | `string[]` | `[]` | 归为开发内容的分类名，用于避免进入 `/notes/`。 |
+| `hero.desktopLight` | `string` | 内置 GitHub Raw 地址 | 桌面端浅色模式的必填高清图。 |
+| `hero.desktopDark` | `string` | 内置 GitHub Raw 地址 | 桌面端深色模式的必填高清图。 |
+| `hero.mobileLight` | `string` | 内置 GitHub Raw 地址 | 移动端浅色模式的必填高清图。 |
+| `hero.mobileDark` | `string` | 内置 GitHub Raw 地址 | 移动端深色模式的必填高清图。 |
+| `hero.desktopLightPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
+| `hero.desktopDarkPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
+| `hero.mobileLightPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
+| `hero.mobileDarkPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
 | `albums.enable` | `boolean` | `true` | 是否启用 Argus 静态相册路由。关闭后，相册 composable 不会加载 manifest。 |
 | `albums.indexPath` | `string` | `/albums/index.json` | Argus 生成的相册索引 manifest 的公开路径。 |
 | `albums.title` | `string` | `相册` | `/albums/` 页面的标题。 |

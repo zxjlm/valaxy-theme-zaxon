@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { heroVariant, isCurrentHeroRequest, shouldLoadHeroQuality } from './hero-background'
+import { heroPreviewUrl, heroVariant, isCurrentHeroRequest, shouldLoadHeroQuality } from './hero-background'
 
 describe('hero background policy', () => {
   it.each([
@@ -25,5 +25,11 @@ describe('hero background policy', () => {
   it('rejects a stale completion', () => {
     expect(isCurrentHeroRequest(3, 2)).toBe(false)
     expect(isCurrentHeroRequest(3, 3)).toBe(true)
+  })
+
+  it('uses no preview when its URL is omitted or blank', () => {
+    expect(heroPreviewUrl()).toBeUndefined()
+    expect(heroPreviewUrl('   ')).toBeUndefined()
+    expect(heroPreviewUrl('https://example.com/preview.webp')).toBe('https://example.com/preview.webp')
   })
 })

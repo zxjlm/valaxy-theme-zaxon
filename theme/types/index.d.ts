@@ -19,6 +19,11 @@ export interface ThemeConfig extends DefaultTheme.Config {
   }
 
   /**
+   * 首页 Hero 图片。高清图为必填；对应的 Preview 图可选，未设置时直接显示高清图。
+   */
+  hero: HeroConfig
+
+  /**
    * footer
    */
   footer: Partial<{
@@ -88,6 +93,26 @@ export interface ThemeConfig extends DefaultTheme.Config {
    * Argus static album publishing integration.
    */
   albums?: Partial<ArgusAlbumsConfig>
+}
+
+export interface HeroConfig {
+  /** Desktop light-mode full-resolution image URL. */
+  desktopLight: string
+  /** Desktop dark-mode full-resolution image URL. */
+  desktopDark: string
+  /** Mobile light-mode full-resolution image URL. */
+  mobileLight: string
+  /** Mobile dark-mode full-resolution image URL. */
+  mobileDark: string
+
+  /** Optional desktop light-mode preview image URL, normally WebP. */
+  desktopLightPreview?: string
+  /** Optional desktop dark-mode preview image URL, normally WebP. */
+  desktopDarkPreview?: string
+  /** Optional mobile light-mode preview image URL, normally WebP. */
+  mobileLightPreview?: string
+  /** Optional mobile dark-mode preview image URL, normally WebP. */
+  mobileDarkPreview?: string
 }
 
 export interface NavItem {

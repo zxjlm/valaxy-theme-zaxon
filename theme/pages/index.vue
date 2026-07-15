@@ -5,14 +5,6 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import flowerDecor from '../assets/field-notes/decor-flower-a.png'
 
 import rockDecor from '../assets/field-notes/decor-rocks.png'
-import heroFieldDesktopDarkLow from '../assets/field-notes/hero-field-desktop-dark-low.webp'
-import heroFieldDesktopDark from '../assets/field-notes/hero-field-desktop-dark.png'
-import heroFieldDesktopLightLow from '../assets/field-notes/hero-field-desktop-light-low.webp'
-import heroFieldDesktopLight from '../assets/field-notes/hero-field-desktop-light.png'
-import heroFieldMobileDarkLow from '../assets/field-notes/hero-field-mobile-dark-low.webp'
-import heroFieldMobileDark from '../assets/field-notes/hero-field-mobile-dark.png'
-import heroFieldMobileLightLow from '../assets/field-notes/hero-field-mobile-light-low.webp'
-import heroFieldMobileLight from '../assets/field-notes/hero-field-mobile-light.png'
 import cameraIcon from '../assets/field-notes/icon-camera.png'
 import compassIcon from '../assets/field-notes/icon-compass.png'
 import devIcon from '../assets/field-notes/icon-dev.png'
@@ -21,41 +13,22 @@ import notebookIcon from '../assets/field-notes/icon-notebook.png'
 import {
   albumPreviewPhotos,
   heroVariant,
+  heroPreviewUrl,
   isCurrentHeroRequest,
   pickRandomItems,
   shouldLoadHeroQuality,
   useAlbumIndex,
   useFieldEntries,
+  useThemeConfig,
 } from '../composables'
 
 const siteConfig = useSiteConfig()
+const themeConfig = useThemeConfig()
 const posts = usePostList()
 const { isLife } = useFieldEntries()
 const albumState = useAlbumIndex()
 
-const heroFullImages = {
-  light: {
-    desktop: heroFieldDesktopLight,
-    mobile: heroFieldMobileLight,
-  },
-  dark: {
-    desktop: heroFieldDesktopDark,
-    mobile: heroFieldMobileDark,
-  },
-}
-
-const heroPreviewImages = {
-  light: {
-    desktop: heroFieldDesktopLightLow,
-    mobile: heroFieldMobileLightLow,
-  },
-  dark: {
-    desktop: heroFieldDesktopDarkLow,
-    mobile: heroFieldMobileDarkLow,
-  },
-}
-
-const previewHeroImage = ref(heroFieldDesktopDarkLow)
+const previewHeroImage = ref('')
 const fullHeroImage = ref('')
 const isHeroFullReady = ref(false)
 let heroMediaQuery: MediaQueryList | undefined
@@ -110,13 +83,23 @@ function syncHeroImages() {
     document.documentElement.classList.contains('dark'),
     Boolean(heroMediaQuery?.matches),
   )
-  previewHeroImage.value = heroPreviewImages[variant.theme][variant.viewport]
+  const images = themeConfig.value.hero
+  const key = `${variant.viewport}${variant.theme === 'light' ? 'Light' : 'Dark'}` as const
+  const fullImage = images[key]
+  const previewImage = heroPreviewUrl(images[`${key}Preview`])
+
+  previewHeroImage.value = previewImage || ''
   fullHeroImage.value = ''
   isHeroFullReady.value = false
 
   const request = ++heroRequest
-  if (shouldLoadHeroQuality(connectionInfo()))
-    scheduleFullHeroLoad(heroFullImages[variant.theme][variant.viewport], request)
+  if (!previewImage) {
+    fullHeroImage.value = fullImage
+    isHeroFullReady.value = true
+  }
+  else if (shouldLoadHeroQuality(connectionInfo())) {
+    scheduleFullHeroLoad(fullImage, request)
+  }
 }
 
 onMounted(() => {
@@ -140,7 +123,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="field-home">
     <section class="field-hero" aria-labelledby="field-hero-title">
-      <img class="field-hero__image field-hero__image--preview" :src="previewHeroImage" alt="" aria-hidden="true">
+      <img v-if="previewHeroImage" class="field-hero__image field-hero__image--preview" :src="previewHeroImage" alt="" aria-hidden="true">
       <img
         v-if="fullHeroImage"
         class="field-hero__image field-hero__image--full"

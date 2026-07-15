@@ -18,6 +18,17 @@ export default defineConfig<ThemeConfig>({
       devCategories: ['Dev Log'],
     },
 
+    hero: {
+      desktopLight: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-desktop-light.png',
+      desktopDark: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-desktop-dark.png',
+      mobileLight: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-mobile-light.png',
+      mobileDark: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-mobile-dark.png',
+      desktopLightPreview: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-desktop-light-low.webp',
+      desktopDarkPreview: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-desktop-dark-low.webp',
+      mobileLightPreview: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-mobile-light-low.webp',
+      mobileDarkPreview: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-mobile-dark-low.webp',
+    },
+
     nav: [
       {
         text: '首页',
