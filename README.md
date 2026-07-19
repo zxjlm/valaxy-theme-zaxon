@@ -109,6 +109,12 @@ export default defineConfig<ThemeConfig>({
       devCategories: ['Dev Log', 'Engineering'],
     },
 
+    // Daytime snowlin easter egg. `low` is reader-first, `high` is more playful.
+    snowlin: {
+      enable: true,
+      frequency: 'normal', // 'low' | 'normal' | 'high'
+    },
+
     hero: {
       desktopLight: 'https://cdn.example.com/hero-desktop-light.png',
       desktopDark: 'https://cdn.example.com/hero-desktop-dark.png',

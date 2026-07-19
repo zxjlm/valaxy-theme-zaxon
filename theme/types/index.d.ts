@@ -90,6 +90,17 @@ export interface ThemeConfig extends DefaultTheme.Config {
   }>
 
   /**
+   * 日间飞行雪绒彩蛋。
+   * `frequency` 只影响随机的环境演出，功能指路仍在页面稳定后按需执行。
+   */
+  snowlin?: Partial<{
+    /** 是否启用雪绒彩蛋与功能指路。 @default true */
+    enable: boolean
+    /** 随机环境演出的频率。 @default 'normal' */
+    frequency: 'low' | 'normal' | 'high'
+  }>
+
+  /**
    * Argus static album publishing integration.
    */
   albums?: Partial<ArgusAlbumsConfig>

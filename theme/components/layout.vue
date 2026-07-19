@@ -2,6 +2,8 @@
 import { defineAsyncComponent, onMounted, ref } from 'vue'
 
 const FieldCompanions = defineAsyncComponent(() => import('./FieldCompanions.vue'))
+const FieldFeatureGuide = defineAsyncComponent(() => import('./FieldFeatureGuide.vue'))
+const FieldSnowlin = defineAsyncComponent(() => import('./FieldSnowlin.vue'))
 const FieldWind = defineAsyncComponent(() => import('./FieldWind.vue'))
 
 const showAmbientLayers = ref(false)
@@ -28,6 +30,8 @@ onMounted(() => {
     <template v-if="showAmbientLayers">
       <FieldWind />
       <FieldCompanions />
+      <FieldSnowlin />
+      <FieldFeatureGuide />
     </template>
 
     <header class="field-nav">

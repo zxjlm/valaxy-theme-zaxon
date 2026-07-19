@@ -201,6 +201,73 @@ html:not(.dark) .field-wind__firefly {
   display: none;
 }
 
+.field-snowlin,
+.field-feature-guide {
+  position: fixed;
+  z-index: 5;
+  width: 112px;
+  height: 112px;
+  pointer-events: none;
+}
+
+.field-snowlin img,
+.field-feature-guide img {
+  position: absolute;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.field-snowlin--peek-left {
+  top: 34%;
+  left: -64px;
+}
+
+.field-snowlin--peek-right {
+  top: 56%;
+  right: -60px;
+}
+
+.field-snowlin--peek-bottom {
+  right: clamp(16px, 8vw, 112px);
+  bottom: -62px;
+}
+
+.field-snowlin--fly-by {
+  top: clamp(112px, 24vh, 248px);
+  left: -120px;
+  animation: field-snowlin-fly-by 3.6s linear both;
+}
+
+.field-snowlin--teleport {
+  top: clamp(144px, 38vh, 420px);
+  left: clamp(20px, 66vw, calc(100vw - 142px));
+}
+
+.field-snowlin--rest {
+  right: clamp(12px, 4vw, 62px);
+  bottom: clamp(22px, 6vh, 72px);
+  width: 142px;
+  height: 142px;
+  animation: field-snowlin-rest 5.2s var(--st-ease-standard) both;
+}
+
+.field-feature-guide {
+  left: 0;
+  top: 0;
+  animation: field-feature-guide-route 2.05s var(--st-ease-enter) both;
+}
+
+[data-field-guide-active='true'] {
+  outline: 2px solid color-mix(in srgb, var(--st-accent-sky) 62%, transparent);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--st-accent-sky) 14%, transparent);
+}
+
+html.dark .field-snowlin,
+html.dark .field-feature-guide {
+  display: none;
+}
+
 .field-companions {
   position: fixed;
   inset: 0;
@@ -1712,6 +1779,51 @@ html:not(.dark) .field-hero__copy {
   line-height: 1.6;
 }
 
+.field-post__toc {
+  display: grid;
+  gap: 2px;
+  max-height: min(38vh, 320px);
+  margin-top: 15px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-top: 1px dashed var(--st-border-default);
+  border-bottom: 1px dashed var(--st-border-default);
+  padding: 10px 0;
+}
+
+.field-post__toc-link {
+  overflow: hidden;
+  padding: 5px 4px;
+  color: var(--st-text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition:
+    color var(--st-duration-fast) var(--st-ease-standard),
+    transform var(--st-duration-fast) var(--st-ease-standard);
+}
+
+.field-post__toc-link--level-3 {
+  padding-left: 14px;
+}
+
+.field-post__toc-link--level-4 {
+  padding-left: 24px;
+}
+
+@media (hover: hover) {
+  .field-post__toc-link:hover {
+    color: var(--st-c-link);
+    transform: translateX(2px);
+  }
+}
+
+.field-post__content :is(h2, h3, h4) {
+  scroll-margin-top: 92px;
+}
+
 .field-markdown-link {
   display: inline-flex;
   align-items: center;
@@ -1911,6 +2023,10 @@ html:not(.dark) .field-hero__copy {
 
   .field-post__aside .field-author {
     display: none;
+  }
+
+  .field-post__toc-card {
+    max-width: 680px;
   }
 
   .field-post__pager {
@@ -2558,6 +2674,11 @@ html:not(.dark) .field-hero__copy {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .field-snowlin,
+  .field-feature-guide {
+    display: none;
+  }
+
   .argus-album-card,
   .argus-album-card__cover,
   .argus-album-grid__item,
@@ -2726,6 +2847,61 @@ html:not(.dark) .field-hero__copy {
 
   88% {
     translate: -4px 8px;
+  }
+}
+
+@keyframes field-snowlin-fly-by {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.88);
+  }
+
+  9% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(calc(100vw + 240px), -24px, 0) scale(0.88);
+  }
+}
+
+@keyframes field-snowlin-rest {
+  from,
+  to {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0) scale(0.94);
+  }
+
+  12%,
+  88% {
+    opacity: 0.84;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes field-feature-guide-route {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--guide-start-x), var(--guide-start-y), 0) scale(0.72);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate3d(var(--guide-end-x), var(--guide-end-y), 0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(var(--guide-end-x), calc(var(--guide-end-y) - 12px), 0) scale(0.86);
   }
 }
 

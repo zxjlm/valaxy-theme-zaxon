@@ -19,6 +19,11 @@ export const defaultThemeConfig: ThemeConfig = {
     primary: '#5E918D',
   },
 
+  snowlin: {
+    enable: true,
+    frequency: 'normal',
+  },
+
   hero: {
     desktopLight: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-desktop-light.png',
     desktopDark: 'https://raw.githubusercontent.com/zxjlm/my-static-files/main/img/hero-field-desktop-dark.png',
