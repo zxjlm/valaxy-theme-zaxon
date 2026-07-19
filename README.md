@@ -109,7 +109,8 @@ export default defineConfig<ThemeConfig>({
       devCategories: ['Dev Log', 'Engineering'],
     },
 
-    // Daytime snowlin easter egg. `debug` plays every 5 seconds for local verification.
+    // Daytime snowlin easter egg. Intervals: low 60s, normal 30s, high 10s;
+    // `debug` plays every 3 seconds for local verification.
     snowlin: {
       enable: true,
       frequency: 'normal', // 'low' | 'normal' | 'high' | 'debug'

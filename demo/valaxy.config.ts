@@ -10,7 +10,7 @@ export default defineConfig<ThemeConfig>({
 
   themeConfig: {
     snowlin: {
-      frequency: 'debug',
+      frequency: 'normal',
     },
 
     // colors: {

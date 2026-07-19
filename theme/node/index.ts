@@ -76,6 +76,20 @@ export function markdownSourcePathForUrl(url: string, userRoot: string): string 
   return join(userRoot, 'pages', ...segments)
 }
 
+export function articleUrlForPath(path: string, siteUrl: string): string {
+  return new URL(path, siteUrl).href
+}
+
+export function appendArticleNotice(source: string, articleUrl: string): string {
+  const notice = [
+    '## 文章声明',
+    '',
+    `除特别注明外，本博客文章均为个人原创。转载、摘录、总结、改编或引用相关内容时，请注明作者及来源，并附原文链接：[${articleUrl}](${articleUrl})。未经许可，不得用于商业用途或歪曲原意。`,
+  ].join('\n')
+
+  return `${source.trimEnd()}\n\n${notice}\n`
+}
+
 function markdownFilesInPosts(userRoot: string): string[] {
   const postsDir = join(userRoot, 'pages', 'posts')
   if (!existsSync(postsDir))
@@ -107,6 +121,7 @@ function isDraftMarkdown(source: string): boolean {
 // https://vitejs.dev/guide/api-plugin.html
 export function themePlugin(options: ResolvedValaxyOptions<ThemeConfig>): Plugin {
   const themeConfig = options.config.themeConfig || {}
+  const siteUrl = options.config.siteConfig.url
 
   return {
     name: 'valaxy-theme-zaxon',
@@ -136,7 +151,8 @@ export function themePlugin(options: ResolvedValaxyOptions<ThemeConfig>): Plugin
 
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/markdown; charset=utf-8')
-        res.end(readFileSync(sourcePath, 'utf-8'))
+        const pathname = new URL(req.url || '', 'http://valaxy.local').pathname
+        res.end(appendArticleNotice(readFileSync(sourcePath, 'utf-8'), articleUrlForPath(pathname.replace(/\.md$/, ''), siteUrl)))
       })
     },
 
@@ -148,10 +164,11 @@ export function themePlugin(options: ResolvedValaxyOptions<ThemeConfig>): Plugin
         if (isDraftMarkdown(source))
           continue
 
+        const relativePath = relative(pagesDir, file).split(sep).join('/')
         this.emitFile({
           type: 'asset',
-          fileName: relative(pagesDir, file).split(sep).join('/'),
-          source,
+          fileName: relativePath,
+          source: appendArticleNotice(source, articleUrlForPath(`/${relativePath.replace(/\.md$/, '')}`, siteUrl)),
         })
       }
     },

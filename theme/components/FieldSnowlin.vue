@@ -68,12 +68,12 @@ const isEnabled = computed(() => themeConfig.value.snowlin?.enable !== false)
 const frequency = computed(() => themeConfig.value.snowlin?.frequency || 'normal')
 const frequencyTiming = computed(() => {
   if (frequency.value === 'debug')
-    return { initial: 5000, min: 5000, max: 5000 }
+    return { initial: 3000, delay: 3000 }
   if (frequency.value === 'low')
-    return { initial: 28000, min: 100000, max: 150000 }
+    return { initial: 60000, delay: 60000 }
   if (frequency.value === 'high')
-    return { initial: 8000, min: 28000, max: 46000 }
-  return { initial: 16000, min: 52000, max: 82000 }
+    return { initial: 10000, delay: 10000 }
+  return { initial: 30000, delay: 30000 }
 })
 const frameStyle = computed(() => ({
   left: `${frame.value.crop.x / 256 * 100}%`,
@@ -167,9 +167,7 @@ function scheduleNextScene(initial = false) {
     return
 
   const timing = frequencyTiming.value
-  const delay = initial
-    ? timing.initial
-    : timing.min + Math.floor(Math.random() * (timing.max - timing.min))
+  const delay = initial ? timing.initial : timing.delay
   nextSceneTimer = globalThis.setTimeout(playScene, delay)
 }
 

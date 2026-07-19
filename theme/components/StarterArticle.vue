@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFrontmatter, usePostList } from 'valaxy'
+import { useFrontmatter, usePostList, useSiteConfig } from 'valaxy'
 import { computed, nextTick, onMounted, ref, watch, watchEffect } from 'vue'
 
 import { useRoute } from 'vue-router'
@@ -8,6 +8,7 @@ import travelerWriting from '../assets/field-notes/traveler-writing.png'
 import { markdownPathForRoute } from '../composables'
 
 const frontmatter = useFrontmatter()
+const siteConfig = useSiteConfig()
 
 const route = useRoute()
 const posts = usePostList()
@@ -44,6 +45,7 @@ watchEffect(() => {
 })
 
 const markdownUrl = computed(() => markdownPathForRoute(route.path))
+const articleUrl = computed(() => new URL(route.path, siteConfig.value.url).href)
 const nextPost = computed(() => posts.value[findCurrentIndex() - 1])
 const prevPost = computed(() => posts.value[findCurrentIndex() + 1])
 
@@ -147,6 +149,14 @@ watch(() => route.fullPath, refreshToc)
         </blockquote>
 
         <slot />
+
+        <section class="field-article-notice" aria-label="文章声明">
+          <h2>文章声明</h2>
+          <p>
+            除特别注明外，本博客文章均为个人原创。转载、摘录、总结、改编或引用相关内容时，请注明作者及来源，并附原文链接：
+            <a :href="articleUrl">{{ articleUrl }}</a>。未经许可，不得用于商业用途或歪曲原意。
+          </p>
+        </section>
       </div>
 
       <footer class="field-post__pager">
