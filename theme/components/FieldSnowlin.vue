@@ -67,6 +67,8 @@ const sceneClass = computed(() => `field-snowlin--${scene.value}`)
 const isEnabled = computed(() => themeConfig.value.snowlin?.enable !== false)
 const frequency = computed(() => themeConfig.value.snowlin?.frequency || 'normal')
 const frequencyTiming = computed(() => {
+  if (frequency.value === 'debug')
+    return { initial: 5000, min: 5000, max: 5000 }
   if (frequency.value === 'low')
     return { initial: 28000, min: 100000, max: 150000 }
   if (frequency.value === 'high')

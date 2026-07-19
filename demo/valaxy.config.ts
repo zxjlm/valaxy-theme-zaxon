@@ -9,6 +9,10 @@ export default defineConfig<ThemeConfig>({
   theme: 'zaxon',
 
   themeConfig: {
+    snowlin: {
+      frequency: 'debug',
+    },
+
     // colors: {
     //   primary: 'red',
     // },

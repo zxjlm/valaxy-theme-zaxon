@@ -96,8 +96,8 @@ export interface ThemeConfig extends DefaultTheme.Config {
   snowlin?: Partial<{
     /** 是否启用雪绒彩蛋与功能指路。 @default true */
     enable: boolean
-    /** 随机环境演出的频率。 @default 'normal' */
-    frequency: 'low' | 'normal' | 'high'
+    /** 随机环境演出的频率。`debug` 每 5 秒触发一次，仅用于本地验证。 @default 'normal' */
+    frequency: 'low' | 'normal' | 'high' | 'debug'
   }>
 
   /**
