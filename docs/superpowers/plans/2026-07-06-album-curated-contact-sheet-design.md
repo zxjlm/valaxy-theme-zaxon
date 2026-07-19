@@ -32,6 +32,7 @@ The referenced design note `design/harumonia-field-notes-theme-spec.md` is not p
 ## Task 1: Public-Safe Album Metadata Contract
 
 **Files:**
+
 - Modify: `theme/types/albums.d.ts`
 - Modify: `theme/composables/albums.ts`
 - Modify: `theme/composables/albums.spec.ts`
@@ -72,10 +73,10 @@ Add these fields to the expected normalized `photo-2` object in the same test:
 After the existing `expect(detail).toEqual({ ... })` assertion, add:
 
 ```ts
-    expect(detail.photos[0]).not.toHaveProperty('latitude')
-    expect(detail.photos[0]).not.toHaveProperty('longitude')
-    expect(detail.photos[0]).not.toHaveProperty('rawExif')
-    expect(detail.photos[0]).not.toHaveProperty('sourceStorageKey')
+expect(detail.photos[0]).not.toHaveProperty('latitude')
+expect(detail.photos[0]).not.toHaveProperty('longitude')
+expect(detail.photos[0]).not.toHaveProperty('rawExif')
+expect(detail.photos[0]).not.toHaveProperty('sourceStorageKey')
 ```
 
 - [ ] **Step 2: Run the targeted test to verify it fails**
@@ -98,10 +99,10 @@ In `theme/types/albums.d.ts`, add these optional manifest fields after `lens_mod
 Add these normalized fields after `lens: string` in `ArgusAlbumPhoto`:
 
 ```ts
-  focalLength: string
-  aperture: string
-  shutterSpeed: string
-  iso: string
+focalLength: string
+aperture: string
+shutterSpeed: string
+iso: string
 ```
 
 - [ ] **Step 4: Normalize the new fields**
@@ -133,6 +134,7 @@ git commit -m "feat: normalize public album exif fields"
 ## Task 2: Album List Contact-Sheet Tiles
 
 **Files:**
+
 - Modify: `theme/layouts/albums.vue`
 - Modify: `theme/styles/layout.scss`
 
@@ -156,10 +158,15 @@ In `theme/layouts/albums.vue`, replace the existing `div v-else class="argus-alb
               <span class="field-chip" data-kind="life">Album</span>
               <span>{{ album.photoCount }} photos</span>
             </div>
-            <h2>{{ album.title }}</h2>
+
+            <h2>
+{{ album.title }}
+</h2>
+
             <p v-if="album.description">
               {{ album.description }}
             </p>
+
             <time v-if="album.publishedAt || album.updatedAt" :datetime="album.publishedAt || album.updatedAt">
               {{ formatDate(album.publishedAt || album.updatedAt) }}
             </time>
@@ -218,7 +225,12 @@ In `theme/styles/layout.scss`, replace the current `.argus-albums__list`, `.argu
   gap: 6px;
   padding: 10px;
   background:
-    linear-gradient(90deg, transparent 0 47%, color-mix(in srgb, var(--st-border-default) 54%, transparent) 47% 53%, transparent 53%),
+    linear-gradient(
+      90deg,
+      transparent 0 47%,
+      color-mix(in srgb, var(--st-border-default) 54%, transparent) 47% 53%,
+      transparent 53%
+    ),
     color-mix(in srgb, var(--st-bg-soft) 92%, var(--st-life-soft));
 }
 
@@ -228,12 +240,11 @@ In `theme/styles/layout.scss`, replace the current `.argus-albums__list`, `.argu
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--st-border-default) 82%, transparent);
   border-radius: var(--st-radius-sm);
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      color-mix(in srgb, var(--st-bg-canvas) 94%, transparent) 0 8px,
-      color-mix(in srgb, var(--st-bg-soft) 96%, transparent) 8px 16px
-    );
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--st-bg-canvas) 94%, transparent) 0 8px,
+    color-mix(in srgb, var(--st-bg-soft) 96%, transparent) 8px 16px
+  );
 }
 
 .argus-album-card__frame img {
@@ -295,6 +306,7 @@ git commit -m "feat: restyle album list as contact sheets"
 ## Task 3: Album Detail Summary And Thumbnail Grid
 
 **Files:**
+
 - Modify: `theme/layouts/album.vue`
 - Modify: `theme/components/ArgusAlbumGrid.vue`
 - Modify: `theme/styles/layout.scss`
@@ -455,6 +467,7 @@ git commit -m "feat: refine album detail contact sheet"
 ## Task 4: Editorial Single-Photo View
 
 **Files:**
+
 - Modify: `theme/components/ArgusAlbumLightbox.vue`
 - Modify: `theme/styles/layout.scss`
 
@@ -463,17 +476,17 @@ git commit -m "feat: refine album detail contact sheet"
 In `theme/components/ArgusAlbumLightbox.vue`, replace the `metadata` computed return array with:
 
 ```ts
-  return [
-    ['Date', current.capturedAt.slice(0, 10)],
-    ['Place', current.city],
-    ['Camera', current.camera],
-    ['Lens', current.lens],
-    ['Focal length', current.focalLength],
-    ['Aperture', current.aperture],
-    ['Shutter', current.shutterSpeed],
-    ['ISO', current.iso],
-    ['Tags', current.tags.join(', ')],
-  ].filter((item): item is [string, string] => Boolean(item[1]))
+return [
+  ['Date', current.capturedAt.slice(0, 10)],
+  ['Place', current.city],
+  ['Camera', current.camera],
+  ['Lens', current.lens],
+  ['Focal length', current.focalLength],
+  ['Aperture', current.aperture],
+  ['Shutter', current.shutterSpeed],
+  ['ISO', current.iso],
+  ['Tags', current.tags.join(', ')],
+].filter((item): item is [string, string] => Boolean(item[1]))
 ```
 
 - [ ] **Step 2: Add semantic wrappers for the editorial layout**
@@ -656,6 +669,7 @@ git commit -m "feat: add editorial album photo viewer"
 ## Task 5: Demo Fixture Metadata
 
 **Files:**
+
 - Modify: `demo/public/argus-albums/kyoto-walk/album.json`
 
 - [ ] **Step 1: Add representative EXIF fields to all demo photos**
@@ -709,6 +723,7 @@ git commit -m "test: add public exif album fixture data"
 ## Task 6: Full Verification And Browser Pass
 
 **Files:**
+
 - No planned source edits.
 
 - [ ] **Step 1: Run all static checks**
@@ -736,6 +751,7 @@ Expected: Valaxy prints a local URL, typically `http://localhost:4859/` or anoth
 Open the local URL at `/albums/` with a 1280px-wide viewport.
 
 Expected:
+
 - The one album card stays near its comfortable card width and does not stretch across the content frame.
 - The card reads as a contact-sheet album object with thin frames and restrained metadata.
 - The empty/error copy is not visible when the manifest loads.
@@ -745,6 +761,7 @@ Expected:
 Open `/albums/kyoto-walk/` with a 1280px-wide viewport.
 
 Expected:
+
 - Header shows title, description, photo count, date summary, and place summary.
 - The grid uses thumbnail URLs from `/argus-albums/kyoto-walk/thumbnail/...`.
 - Captions are compact and do not cover most of the photo.
@@ -755,6 +772,7 @@ Expected:
 Click the first thumbnail.
 
 Expected:
+
 - Dialog opens with the preview URL from `/argus-albums/kyoto-walk/preview/...`.
 - Metadata note shows journal excerpt, Date, Place, Camera, Lens, Focal length, Aperture, Shutter, ISO, and Tags when present.
 - Original image URLs, exact coordinates, raw EXIF, storage keys, credentials, and workflow fields are absent.
@@ -767,6 +785,7 @@ Expected:
 Repeat `/albums/`, `/albums/kyoto-walk/`, and the single-photo view at 375px width.
 
 Expected:
+
 - The album card fits without horizontal overflow.
 - Grid captions remain inside each tile.
 - The lightbox stacks image above metadata.
@@ -791,6 +810,7 @@ If no files changed during verification, do not create a commit.
 ## Self-Review
 
 Spec coverage:
+
 - Album-first `/albums/` browsing is covered by Task 2.
 - Stable one-album card sizing is covered by Task 2 and Task 6.
 - Thumbnail usage for list/grid and preview usage for lightbox is covered by Task 2, Task 3, Task 4, and Task 6.
@@ -801,9 +821,11 @@ Spec coverage:
 - Argus repository export tests are outside this repository and should be handled in a separate Argus plan.
 
 Placeholder scan:
+
 - No banned placeholder terms, future implementation placeholders, or unspecified test requests remain.
 
 Type consistency:
+
 - Manifest fields use snake_case: `focal_length`, `aperture`, `shutter_speed`, `iso`.
 - Normalized UI fields use camelCase: `focalLength`, `aperture`, `shutterSpeed`, `iso`.
 - Component references match the normalized `ArgusAlbumPhoto` fields.

@@ -24,12 +24,12 @@
 
 ## 2. 受影响的字段
 
-| Manifest 文件 | 字段 | 说明 |
-| --- | --- | --- |
-| `index.json` | `albums[].cover` | 相册封面缩略图 |
-| `index.json` | `albums[].preview_thumbnails`(如启用) | 封面轮换缩略图数组 |
-| `album.json` | `photos[].preview_path` | 灯箱大图 |
-| `album.json` | `photos[].thumbnail_path` | 网格缩略图 |
+| Manifest 文件 | 字段                                  | 说明               |
+| ------------- | ------------------------------------- | ------------------ |
+| `index.json`  | `albums[].cover`                      | 相册封面缩略图     |
+| `index.json`  | `albums[].preview_thumbnails`(如启用) | 封面轮换缩略图数组 |
+| `album.json`  | `photos[].preview_path`               | 灯箱大图           |
+| `album.json`  | `photos[].thumbnail_path`             | 网格缩略图         |
 
 `manifest_path` **不属于图片字段**,它指向 JSON 本身,仍是站点根相对路径(如 `/albums/kyoto-walk/album.json`),不要改成 R2 URL。
 

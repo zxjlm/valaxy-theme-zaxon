@@ -153,35 +153,35 @@ export default defineConfig<ThemeConfig>({
 
 ### Configuration Reference
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `colors.primary` | `string` | `#5E918D` | Primary theme color passed into theme SCSS. |
-| `nav` | `{ text: string, link: string, icon?: string }[]` | Built-in Home / Development / Life / Archive / About links | Main navigation items. The current UI renders `text` and `link`. |
-| `content.lifeCategories` | `string[]` | `[]` | Category names treated as life entries for `/notes/`. |
-| `content.devCategories` | `string[]` | `[]` | Category names treated as development entries, preventing them from appearing in `/notes/`. |
-| `hero.desktopLight` | `string` | Built-in GitHub Raw URL | Required full-resolution image for desktop light mode. |
-| `hero.desktopDark` | `string` | Built-in GitHub Raw URL | Required full-resolution image for desktop dark mode. |
-| `hero.mobileLight` | `string` | Built-in GitHub Raw URL | Required full-resolution image for mobile light mode. |
-| `hero.mobileDark` | `string` | Built-in GitHub Raw URL | Required full-resolution image for mobile dark mode. |
-| `hero.desktopLightPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
-| `hero.desktopDarkPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
-| `hero.mobileLightPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
-| `hero.mobileDarkPreview` | `string?` | Built-in GitHub Raw URL | Optional WebP preview. Omit or set to `''` to load the full image directly. |
-| `albums.enable` | `boolean` | `true` | Enable the Argus static album routes. When disabled, the composables skip loading album manifests. |
-| `albums.indexPath` | `string` | `/albums/index.json` | Public URL of the generated album index manifest. |
-| `albums.title` | `string` | `相册` | Heading shown on `/albums/`. |
-| `albums.description` | `string` | `从 Argus 发布的照片记录。` | Intro copy shown below the album heading. |
-| `albums.featured.enable` | `boolean` | `false` | Reserved for a future featured-photo surface. Phase 1 does not render featured photos on the home page or `/notes/`. |
-| `albums.featured.limit` | `number` | `6` | Reserved maximum number of featured photos to consume later. |
-| `footer.since` | `number` | `2022` | First copyright year. |
-| `footer.icon.name` | `string` | `i-ri-seedling-line` | Iconify / UnoCSS icon class used between the year and author name. |
-| `footer.icon.animated` | `boolean` | `true` | Reserved in config for animated footer icons. |
-| `footer.icon.color` | `string` | `var(--st-accent-lantern)` | Footer icon color. |
-| `footer.icon.url` | `string` | `/` | Footer icon link target. |
-| `footer.icon.title` | `string` | `Zaxon` | Footer icon title. |
-| `footer.powered` | `boolean` | `true` | Show the Valaxy and theme powered-by line. |
-| `footer.beian.enable` | `boolean` | `false` | Show ICP record in the footer. |
-| `footer.beian.icp` | `string` | `''` | ICP record text. |
+| Option                     | Type                                              | Default                                                    | Description                                                                                                          |
+| -------------------------- | ------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `colors.primary`           | `string`                                          | `#5E918D`                                                  | Primary theme color passed into theme SCSS.                                                                          |
+| `nav`                      | `{ text: string, link: string, icon?: string }[]` | Built-in Home / Development / Life / Archive / About links | Main navigation items. The current UI renders `text` and `link`.                                                     |
+| `content.lifeCategories`   | `string[]`                                        | `[]`                                                       | Category names treated as life entries for `/notes/`.                                                                |
+| `content.devCategories`    | `string[]`                                        | `[]`                                                       | Category names treated as development entries, preventing them from appearing in `/notes/`.                          |
+| `hero.desktopLight`        | `string`                                          | Built-in GitHub Raw URL                                    | Required full-resolution image for desktop light mode.                                                               |
+| `hero.desktopDark`         | `string`                                          | Built-in GitHub Raw URL                                    | Required full-resolution image for desktop dark mode.                                                                |
+| `hero.mobileLight`         | `string`                                          | Built-in GitHub Raw URL                                    | Required full-resolution image for mobile light mode.                                                                |
+| `hero.mobileDark`          | `string`                                          | Built-in GitHub Raw URL                                    | Required full-resolution image for mobile dark mode.                                                                 |
+| `hero.desktopLightPreview` | `string?`                                         | Built-in GitHub Raw URL                                    | Optional WebP preview. Omit or set to `''` to load the full image directly.                                          |
+| `hero.desktopDarkPreview`  | `string?`                                         | Built-in GitHub Raw URL                                    | Optional WebP preview. Omit or set to `''` to load the full image directly.                                          |
+| `hero.mobileLightPreview`  | `string?`                                         | Built-in GitHub Raw URL                                    | Optional WebP preview. Omit or set to `''` to load the full image directly.                                          |
+| `hero.mobileDarkPreview`   | `string?`                                         | Built-in GitHub Raw URL                                    | Optional WebP preview. Omit or set to `''` to load the full image directly.                                          |
+| `albums.enable`            | `boolean`                                         | `true`                                                     | Enable the Argus static album routes. When disabled, the composables skip loading album manifests.                   |
+| `albums.indexPath`         | `string`                                          | `/albums/index.json`                                       | Public URL of the generated album index manifest.                                                                    |
+| `albums.title`             | `string`                                          | `相册`                                                     | Heading shown on `/albums/`.                                                                                         |
+| `albums.description`       | `string`                                          | `从 Argus 发布的照片记录。`                                | Intro copy shown below the album heading.                                                                            |
+| `albums.featured.enable`   | `boolean`                                         | `false`                                                    | Reserved for a future featured-photo surface. Phase 1 does not render featured photos on the home page or `/notes/`. |
+| `albums.featured.limit`    | `number`                                          | `6`                                                        | Reserved maximum number of featured photos to consume later.                                                         |
+| `footer.since`             | `number`                                          | `2022`                                                     | First copyright year.                                                                                                |
+| `footer.icon.name`         | `string`                                          | `i-ri-seedling-line`                                       | Iconify / UnoCSS icon class used between the year and author name.                                                   |
+| `footer.icon.animated`     | `boolean`                                         | `true`                                                     | Reserved in config for animated footer icons.                                                                        |
+| `footer.icon.color`        | `string`                                          | `var(--st-accent-lantern)`                                 | Footer icon color.                                                                                                   |
+| `footer.icon.url`          | `string`                                          | `/`                                                        | Footer icon link target.                                                                                             |
+| `footer.icon.title`        | `string`                                          | `Zaxon`                                                    | Footer icon title.                                                                                                   |
+| `footer.powered`           | `boolean`                                         | `true`                                                     | Show the Valaxy and theme powered-by line.                                                                           |
+| `footer.beian.enable`      | `boolean`                                         | `false`                                                    | Show ICP record in the footer.                                                                                       |
+| `footer.beian.icp`         | `string`                                          | `''`                                                       | ICP record text.                                                                                                     |
 
 ## Argus Static Albums
 

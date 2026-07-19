@@ -155,35 +155,35 @@ export default defineConfig<ThemeConfig>({
 
 ### 配置项说明
 
-| 配置项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| `colors.primary` | `string` | `#5E918D` | 主题主色，会传入主题 SCSS。 |
-| `nav` | `{ text: string, link: string, icon?: string }[]` | 内置首页 / 开发 / 生活 / 归档 / 关于 | 主导航项目。目前界面会渲染 `text` 与 `link`。 |
-| `content.lifeCategories` | `string[]` | `[]` | 归入 `/notes/` 生活流的分类名。 |
-| `content.devCategories` | `string[]` | `[]` | 归为开发内容的分类名，用于避免进入 `/notes/`。 |
-| `hero.desktopLight` | `string` | 内置 GitHub Raw 地址 | 桌面端浅色模式的必填高清图。 |
-| `hero.desktopDark` | `string` | 内置 GitHub Raw 地址 | 桌面端深色模式的必填高清图。 |
-| `hero.mobileLight` | `string` | 内置 GitHub Raw 地址 | 移动端浅色模式的必填高清图。 |
-| `hero.mobileDark` | `string` | 内置 GitHub Raw 地址 | 移动端深色模式的必填高清图。 |
-| `hero.desktopLightPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
-| `hero.desktopDarkPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
-| `hero.mobileLightPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
-| `hero.mobileDarkPreview` | `string?` | 内置 GitHub Raw 地址 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。 |
-| `albums.enable` | `boolean` | `true` | 是否启用 Argus 静态相册路由。关闭后，相册 composable 不会加载 manifest。 |
-| `albums.indexPath` | `string` | `/albums/index.json` | Argus 生成的相册索引 manifest 的公开路径。 |
-| `albums.title` | `string` | `相册` | `/albums/` 页面的标题。 |
-| `albums.description` | `string` | `从 Argus 发布的照片记录。` | 相册标题下方的说明文字。 |
-| `albums.featured.enable` | `boolean` | `false` | 为未来的精选照片入口预留；Phase 1 不会在首页或 `/notes/` 渲染精选照片。 |
-| `albums.featured.limit` | `number` | `6` | 为未来精选照片入口预留的数量上限。 |
-| `footer.since` | `number` | `2022` | 版权起始年份。 |
-| `footer.icon.name` | `string` | `i-ri-seedling-line` | 年份与作者之间展示的 Iconify / UnoCSS 图标类名。 |
-| `footer.icon.animated` | `boolean` | `true` | 为动态图标预留的配置项。 |
-| `footer.icon.color` | `string` | `var(--st-accent-lantern)` | 页脚图标颜色。 |
-| `footer.icon.url` | `string` | `/` | 页脚图标链接。 |
-| `footer.icon.title` | `string` | `Zaxon` | 页脚图标标题。 |
-| `footer.powered` | `boolean` | `true` | 是否展示 Valaxy 与主题 Powered by 信息。 |
-| `footer.beian.enable` | `boolean` | `false` | 是否在页脚展示 ICP 备案号。 |
-| `footer.beian.icp` | `string` | `''` | ICP 备案号文本。 |
+| 配置项                     | 类型                                              | 默认值                               | 说明                                                                     |
+| -------------------------- | ------------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------ |
+| `colors.primary`           | `string`                                          | `#5E918D`                            | 主题主色，会传入主题 SCSS。                                              |
+| `nav`                      | `{ text: string, link: string, icon?: string }[]` | 内置首页 / 开发 / 生活 / 归档 / 关于 | 主导航项目。目前界面会渲染 `text` 与 `link`。                            |
+| `content.lifeCategories`   | `string[]`                                        | `[]`                                 | 归入 `/notes/` 生活流的分类名。                                          |
+| `content.devCategories`    | `string[]`                                        | `[]`                                 | 归为开发内容的分类名，用于避免进入 `/notes/`。                           |
+| `hero.desktopLight`        | `string`                                          | 内置 GitHub Raw 地址                 | 桌面端浅色模式的必填高清图。                                             |
+| `hero.desktopDark`         | `string`                                          | 内置 GitHub Raw 地址                 | 桌面端深色模式的必填高清图。                                             |
+| `hero.mobileLight`         | `string`                                          | 内置 GitHub Raw 地址                 | 移动端浅色模式的必填高清图。                                             |
+| `hero.mobileDark`          | `string`                                          | 内置 GitHub Raw 地址                 | 移动端深色模式的必填高清图。                                             |
+| `hero.desktopLightPreview` | `string?`                                         | 内置 GitHub Raw 地址                 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。                     |
+| `hero.desktopDarkPreview`  | `string?`                                         | 内置 GitHub Raw 地址                 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。                     |
+| `hero.mobileLightPreview`  | `string?`                                         | 内置 GitHub Raw 地址                 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。                     |
+| `hero.mobileDarkPreview`   | `string?`                                         | 内置 GitHub Raw 地址                 | 可选 WebP 预览图；省略或设为 `''` 时直接加载高清图。                     |
+| `albums.enable`            | `boolean`                                         | `true`                               | 是否启用 Argus 静态相册路由。关闭后，相册 composable 不会加载 manifest。 |
+| `albums.indexPath`         | `string`                                          | `/albums/index.json`                 | Argus 生成的相册索引 manifest 的公开路径。                               |
+| `albums.title`             | `string`                                          | `相册`                               | `/albums/` 页面的标题。                                                  |
+| `albums.description`       | `string`                                          | `从 Argus 发布的照片记录。`          | 相册标题下方的说明文字。                                                 |
+| `albums.featured.enable`   | `boolean`                                         | `false`                              | 为未来的精选照片入口预留；Phase 1 不会在首页或 `/notes/` 渲染精选照片。  |
+| `albums.featured.limit`    | `number`                                          | `6`                                  | 为未来精选照片入口预留的数量上限。                                       |
+| `footer.since`             | `number`                                          | `2022`                               | 版权起始年份。                                                           |
+| `footer.icon.name`         | `string`                                          | `i-ri-seedling-line`                 | 年份与作者之间展示的 Iconify / UnoCSS 图标类名。                         |
+| `footer.icon.animated`     | `boolean`                                         | `true`                               | 为动态图标预留的配置项。                                                 |
+| `footer.icon.color`        | `string`                                          | `var(--st-accent-lantern)`           | 页脚图标颜色。                                                           |
+| `footer.icon.url`          | `string`                                          | `/`                                  | 页脚图标链接。                                                           |
+| `footer.icon.title`        | `string`                                          | `Zaxon`                              | 页脚图标标题。                                                           |
+| `footer.powered`           | `boolean`                                         | `true`                               | 是否展示 Valaxy 与主题 Powered by 信息。                                 |
+| `footer.beian.enable`      | `boolean`                                         | `false`                              | 是否在页脚展示 ICP 备案号。                                              |
+| `footer.beian.icp`         | `string`                                          | `''`                                 | ICP 备案号文本。                                                         |
 
 ## Argus 静态相册
 

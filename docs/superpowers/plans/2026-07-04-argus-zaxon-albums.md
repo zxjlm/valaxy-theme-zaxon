@@ -37,6 +37,7 @@ This repository contains the Zaxon Valaxy theme and demo site only. Argus servic
 ## Task 1: Album Types And Theme Config
 
 **Files:**
+
 - Create: `theme/types/albums.d.ts`
 - Modify: `theme/types/index.d.ts`
 
@@ -185,6 +186,7 @@ git commit -m "feat: add Argus album types"
 ## Task 2: Album Composable With Tests
 
 **Files:**
+
 - Create: `theme/composables/albums.ts`
 - Create: `theme/composables/albums.spec.ts`
 - Modify: `theme/composables/index.ts`
@@ -360,9 +362,9 @@ import type {
   ArgusAlbumManifest,
   ArgusAlbumPhoto,
   ArgusAlbumPhotoManifest,
-  ArgusAlbumSummary,
   ArgusAlbumsConfig,
   ArgusAlbumsState,
+  ArgusAlbumSummary,
 } from '../types/albums'
 import { computed, onMounted, ref } from 'vue'
 import { useThemeConfig } from './config'
@@ -584,6 +586,7 @@ git commit -m "feat: add album manifest composable"
 ## Task 3: Album Grid Component
 
 **Files:**
+
 - Create: `theme/components/ArgusAlbumGrid.vue`
 
 - [ ] **Step 1: Create the grid component**
@@ -649,6 +652,7 @@ git commit -m "feat: add album photo grid"
 ## Task 4: Album Lightbox Component
 
 **Files:**
+
 - Create: `theme/components/ArgusAlbumLightbox.vue`
 
 - [ ] **Step 1: Create the lightbox component**
@@ -777,6 +781,7 @@ git commit -m "feat: add album lightbox"
 ## Task 5: Album Route Layouts
 
 **Files:**
+
 - Create: `theme/layouts/albums.vue`
 - Create: `theme/layouts/album.vue`
 
@@ -933,6 +938,7 @@ git commit -m "feat: add album layouts"
 ## Task 6: Album Styling
 
 **Files:**
+
 - Modify: `theme/styles/layout.scss`
 
 - [ ] **Step 1: Add album styles**
@@ -1228,6 +1234,7 @@ git commit -m "feat: style album pages"
 ## Task 7: Demo Fixture And Routes
 
 **Files:**
+
 - Modify: `demo/valaxy.config.ts`
 - Create: `demo/pages/albums/index.md`
 - Create: `demo/pages/albums/kyoto-walk.md`
@@ -1462,6 +1469,7 @@ git commit -m "feat: add demo album fixture"
 ## Task 8: Final Verification
 
 **Files:**
+
 - Verify all files changed in Tasks 1-7.
 
 - [ ] **Step 1: Run focused tests**

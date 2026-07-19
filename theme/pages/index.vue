@@ -12,8 +12,8 @@ import lifeIcon from '../assets/field-notes/icon-life.png'
 import notebookIcon from '../assets/field-notes/icon-notebook.png'
 import {
   albumPreviewPhotos,
-  heroVariant,
   heroPreviewUrl,
+  heroVariant,
   isCurrentHeroRequest,
   pickRandomItems,
   shouldLoadHeroQuality,

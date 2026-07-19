@@ -71,6 +71,10 @@ const prevPost = computed(() => posts.value[findCurrentIndex() + 1])
           <img :src="notebookIcon" alt="" loading="lazy">
           <span>阅读札记</span>
           <p>正文保持安静，代码、引用和图片使用统一的手帐边界。</p>
+          <a class="field-markdown-link" :href="markdownUrl">
+            <span>view as markdown</span>
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </aside>
 
@@ -87,12 +91,6 @@ const prevPost = computed(() => posts.value[findCurrentIndex() + 1])
         </blockquote>
 
         <slot />
-
-        <div class="field-post__markdown-action">
-          <a class="field-markdown-link" :href="markdownUrl">
-            view as markdown
-          </a>
-        </div>
       </div>
 
       <footer class="field-post__pager">

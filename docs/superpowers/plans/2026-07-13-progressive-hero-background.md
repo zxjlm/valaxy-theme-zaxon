@@ -19,18 +19,19 @@
 
 ## File Structure
 
-| File | Responsibility |
-| --- | --- |
-| `theme/composables/hero-background.ts` | Variant selection, network policy, and stale-token comparison. |
-| `theme/composables/hero-background.spec.ts` | Vitest tests for all pure policy behavior. |
-| `theme/composables/index.ts` | Public helper export. |
-| `theme/pages/index.vue` | Asset maps, image scheduling, and preview/full layers. |
-| `theme/styles/layout.scss` | Layer geometry, fade, breeze animation, reduced-motion behavior. |
-| `theme/assets/field-notes/hero-field-*-low.webp` | Four derived previews. |
+| File                                             | Responsibility                                                   |
+| ------------------------------------------------ | ---------------------------------------------------------------- |
+| `theme/composables/hero-background.ts`           | Variant selection, network policy, and stale-token comparison.   |
+| `theme/composables/hero-background.spec.ts`      | Vitest tests for all pure policy behavior.                       |
+| `theme/composables/index.ts`                     | Public helper export.                                            |
+| `theme/pages/index.vue`                          | Asset maps, image scheduling, and preview/full layers.           |
+| `theme/styles/layout.scss`                       | Layer geometry, fade, breeze animation, reduced-motion behavior. |
+| `theme/assets/field-notes/hero-field-*-low.webp` | Four derived previews.                                           |
 
 ### Task 1: Test and implement the pure loading policy
 
 **Files:**
+
 - Create: `theme/composables/hero-background.ts`
 - Create: `theme/composables/hero-background.spec.ts`
 - Modify: `theme/composables/index.ts`
@@ -79,8 +80,8 @@ Expected: FAIL because `./hero-background` is missing.
 ```ts
 export type HeroTheme = 'light' | 'dark'
 export type HeroViewport = 'desktop' | 'mobile'
-export interface HeroVariant { theme: HeroTheme; viewport: HeroViewport }
-export interface ConnectionInfo { saveData?: boolean; effectiveType?: string }
+export interface HeroVariant { theme: HeroTheme, viewport: HeroViewport }
+export interface ConnectionInfo { saveData?: boolean, effectiveType?: string }
 export function heroVariant(isDark: boolean, isMobile: boolean): HeroVariant {
   return { theme: isDark ? 'dark' : 'light', viewport: isMobile ? 'mobile' : 'desktop' }
 }
@@ -108,6 +109,7 @@ git commit -m "feat: add hero background loading policy"
 ### Task 2: Generate and check the preview assets
 
 **Files:**
+
 - Create: `theme/assets/field-notes/hero-field-desktop-dark-low.webp`
 - Create: `theme/assets/field-notes/hero-field-desktop-light-low.webp`
 - Create: `theme/assets/field-notes/hero-field-mobile-dark-low.webp`
@@ -143,6 +145,7 @@ git commit -m "feat: add low-quality hero previews"
 ### Task 3: Render preview-first progressive hero layers
 
 **Files:**
+
 - Modify: `theme/pages/index.vue:4-114,119-121`
 - Modify: `theme/styles/layout.scss:561-594`
 
@@ -172,6 +175,7 @@ Insert the following before `.field-hero__overlay`:
 
 ```vue
 <img class="field-hero__image field-hero__image--preview" :src="previewHeroImage" alt="" aria-hidden="true">
+
 <img
   v-if="fullHeroImage"
   class="field-hero__image field-hero__image--full"
