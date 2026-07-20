@@ -221,6 +221,7 @@ describe('album manifest composable', () => {
           tags: ['field', 'light', 'journal'],
           previewPath: '/albums/field/photo-1.jpg',
           thumbnailPath: '/albums/field/photo-1.jpg',
+          livePhoto: null,
           featured: true,
           featuredOrder: null,
           journalExcerpt: '',
@@ -241,6 +242,7 @@ describe('album manifest composable', () => {
           tags: ['green'],
           previewPath: '/albums/field/photo-2.jpg',
           thumbnailPath: '/albums/field/thumb-2.jpg',
+          livePhoto: null,
           featured: false,
           featuredOrder: 4,
           journalExcerpt: 'Soft rain',
@@ -252,6 +254,35 @@ describe('album manifest composable', () => {
     expect(detail.photos[0]).not.toHaveProperty('longitude')
     expect(detail.photos[0]).not.toHaveProperty('rawExif')
     expect(detail.photos[0]).not.toHaveProperty('sourceStorageKey')
+  })
+
+  it('normalizes public Live Photo playback data without making it required', () => {
+    const detail = normalizeAlbumDetail({
+      schema_version: 1,
+      album_id: 'field',
+      slug: 'field-notes',
+      title: 'Field Notes',
+      photos: [
+        {
+          id: 'live',
+          preview_path: '/albums/field/live.jpg',
+          live_photo: {
+            video_path: '/albums/field/live.mov',
+            duration_ms: 1850,
+          },
+        },
+        {
+          id: 'invalid-live',
+          preview_path: '/albums/field/still.jpg',
+          live_photo: { duration_ms: 1850 },
+        },
+      ],
+    })
+
+    expect(detail.photos.map(photo => photo.livePhoto)).toEqual([
+      { videoPath: '/albums/field/live.mov', durationMs: 1850 },
+      null,
+    ])
   })
 
   it('rejects unsupported album detail schema and missing photos', () => {

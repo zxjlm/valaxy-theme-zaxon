@@ -201,11 +201,27 @@ public/albums/index.json
 public/albums/<slug>/album.json
 public/albums/<slug>/preview/<ordered-photo-name>.<ext>
 public/albums/<slug>/thumbnail/<ordered-photo-name>.<ext>
+public/albums/<slug>/live/<ordered-photo-name>.mp4
 pages/albums/index.md
 pages/albums/<slug>.md
 ```
 
 The Markdown files are thin route entries. Use `layout: albums` for the index page and `layout: album` for each detail page so the theme can render the list, photo grid, and keyboard-accessible lightbox.
+
+For a Live Photo, Argus keeps the still `preview_path` and `thumbnail_path`, then optionally adds a browser-playable video derivative. The grid never requests this video; it is only attached to the lightbox after a visitor opens that photo.
+
+```json
+{
+  "preview_path": "/albums/kyoto/preview/0001.webp",
+  "thumbnail_path": "/albums/kyoto/thumbnail/0001.webp",
+  "live_photo": {
+    "video_path": "/albums/kyoto/live/0001.mp4",
+    "duration_ms": 1800
+  }
+}
+```
+
+`live_photo` is optional. Publish a standard MP4 (rather than private HEIC/MOV originals) for cross-browser playback; if playback fails, the theme falls back to the still preview.
 
 ```md
 ---

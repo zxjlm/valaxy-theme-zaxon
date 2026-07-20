@@ -60,6 +60,21 @@ function normalizeStringList(value: unknown): string[] {
     .filter(Boolean)
 }
 
+function normalizeLivePhoto(value: unknown): ArgusAlbumPhoto['livePhoto'] {
+  if (!isRecord(value))
+    return null
+
+  const videoPath = asString(value.video_path)
+  if (!videoPath)
+    return null
+
+  const durationMs = asNumber(value.duration_ms)
+  return {
+    videoPath,
+    ...(durationMs && durationMs > 0 ? { durationMs } : {}),
+  }
+}
+
 function normalizeAlbumSummary(album: ArgusAlbumSummaryManifest): ArgusAlbumSummary {
   return {
     id: asString(album.id),
@@ -112,6 +127,7 @@ function normalizeAlbumPhoto(photo: ArgusAlbumPhotoManifest): ArgusAlbumPhoto {
     tags: normalizeTags(photo),
     previewPath,
     thumbnailPath: asString(photo.thumbnail_path) || previewPath,
+    livePhoto: normalizeLivePhoto(photo.live_photo),
     featured: photo.featured === true,
     featuredOrder: asNumber(photo.featured_order) ?? null,
     journalExcerpt: asString(photo.journal_excerpt),

@@ -15,6 +15,7 @@ const emit = defineEmits<{
 const isOpen = computed(() => props.activeIndex >= 0 && props.activeIndex < props.photos.length)
 const photo = computed(() => isOpen.value ? props.photos[props.activeIndex] : null)
 const dialog = ref<HTMLElement | null>(null)
+const videoLoadFailed = ref(false)
 let previousFocusedElement: HTMLElement | null = null
 
 const imageStyle = computed(() => {
@@ -41,6 +42,7 @@ const metadata = computed(() => {
     ['Aperture', current.aperture],
     ['Shutter', current.shutterSpeed],
     ['ISO', current.iso],
+    ['Live Photo', current.livePhoto?.durationMs ? `${(current.livePhoto.durationMs / 1000).toFixed(1)}s` : current.livePhoto ? 'Available' : ''],
     ['Tags', current.tags.join(', ')],
   ].filter((item): item is [string, string] => Boolean(item[1]))
 })
@@ -161,6 +163,9 @@ function trapFocus(event: KeyboardEvent) {
 
 watch(isOpen, syncBodyClass, { immediate: true })
 watch(isOpen, syncFocus, { immediate: true })
+watch(photo, () => {
+  videoLoadFailed.value = false
+})
 
 if (typeof window !== 'undefined')
   window.addEventListener('keydown', onKeydown)
@@ -197,7 +202,21 @@ onBeforeUnmount(() => {
 
         <div class="argus-lightbox__image">
           <div class="argus-lightbox__image-frame" :style="imageStyle">
+            <video
+              v-if="photo.livePhoto && !videoLoadFailed"
+              class="argus-lightbox__video"
+              :src="photo.livePhoto.videoPath"
+              :poster="photo.previewPath"
+              :width="photo.width"
+              :height="photo.height"
+              controls
+              playsinline
+              preload="metadata"
+              :aria-label="`${photo.originalFilename || 'Album photo'} 的实况照片`"
+              @error="videoLoadFailed = true"
+            />
             <img
+              v-else
               :src="photo.previewPath"
               :alt="photo.originalFilename || 'Album photo'"
               :width="photo.width"

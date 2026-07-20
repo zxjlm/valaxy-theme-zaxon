@@ -47,6 +47,10 @@ export interface ArgusAlbumPhotoManifest {
   manual_tags?: string[]
   preview_path: string
   thumbnail_path?: string | null
+  live_photo?: {
+    video_path?: string | null
+    duration_ms?: number | null
+  } | null
   featured?: boolean
   featured_order?: number | null
   journal_excerpt?: string | null
@@ -82,6 +86,10 @@ export interface ArgusAlbumPhoto {
   tags: string[]
   previewPath: string
   thumbnailPath: string
+  livePhoto: {
+    videoPath: string
+    durationMs?: number
+  } | null
   featured: boolean
   featuredOrder: number | null
   journalExcerpt: string

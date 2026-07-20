@@ -16,7 +16,7 @@ function aspectStyle(photo: ArgusAlbumPhoto) {
 }
 
 function photoLabel(photo: ArgusAlbumPhoto, index: number) {
-  return [photo.originalFilename || `照片 ${index + 1}`, photo.city, photo.capturedAt.slice(0, 10)]
+  return [photo.originalFilename || `照片 ${index + 1}`, photo.livePhoto ? 'Live Photo' : '', photo.city, photo.capturedAt.slice(0, 10)]
     .filter(Boolean)
     .join(' · ')
 }
@@ -38,6 +38,9 @@ function photoLabel(photo: ArgusAlbumPhoto, index: number) {
       @click="emit('select', index)"
     >
       <img :src="photo.thumbnailPath" :alt="photo.originalFilename || `Album photo ${index + 1}`" loading="lazy">
+      <span v-if="photo.livePhoto" class="argus-album-grid__live" aria-hidden="true">
+        Live
+      </span>
     </button>
   </div>
 </template>
