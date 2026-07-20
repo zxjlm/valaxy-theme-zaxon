@@ -117,7 +117,6 @@ watch(() => route.fullPath, refreshToc)
         <div class="field-post__toc-card">
           <img :src="notebookIcon" alt="" loading="lazy">
           <span>阅读札记</span>
-          <p>正文保持安静，代码、引用和图片使用统一的手帐边界。</p>
           <nav v-if="tocItems.length" class="field-post__toc" aria-label="文章目录" data-field-guide="table-of-contents">
             <a
               v-for="item in tocItems"
