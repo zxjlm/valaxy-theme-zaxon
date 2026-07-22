@@ -102,7 +102,7 @@ html:not(.dark) .field-shell::after {
   opacity: 0.32;
 }
 
-.field-wind {
+.field-fireflies {
   position: fixed;
   inset: 0;
   z-index: 3;
@@ -110,66 +110,7 @@ html:not(.dark) .field-shell::after {
   pointer-events: none;
 }
 
-.field-wind__line {
-  position: absolute;
-  top: var(--wind-top);
-  left: -24vw;
-  width: var(--wind-width);
-  height: 2px;
-  background:
-    linear-gradient(90deg, transparent, color-mix(in srgb, var(--st-accent-sky) 28%, transparent), transparent),
-    linear-gradient(90deg, transparent 18%, rgb(233 227 211 / 18%) 42%, transparent 74%);
-  image-rendering: pixelated;
-  opacity: 0;
-  transform: translate3d(-12vw, 0, 0);
-  animation: field-wind-cross var(--wind-duration) linear infinite;
-  animation-delay: var(--wind-delay);
-}
-
-.field-wind__bit {
-  position: absolute;
-  top: var(--bit-top);
-  left: var(--bit-left);
-  width: var(--bit-size);
-  height: var(--bit-size);
-  background: var(--bit-image) center / contain no-repeat;
-  image-rendering: pixelated;
-  opacity: 0.34;
-  transform: translate3d(0, 0, 0);
-  animation: field-wind-drift var(--bit-duration) var(--st-ease-enter) infinite;
-  animation-delay: var(--bit-delay);
-}
-
-.field-wind__lantern {
-  position: absolute;
-  right: clamp(18px, 5vw, 68px);
-  bottom: clamp(48px, 9vh, 92px);
-  width: 44px;
-  height: 44px;
-  background: var(--lantern-image) center / contain no-repeat;
-  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--st-accent-lantern) 44%, transparent));
-  image-rendering: pixelated;
-  opacity: 0.42;
-  transform: translate3d(0, 0, 0);
-  animation: field-lantern-breathe 4.8s var(--st-ease-standard) infinite;
-}
-
-html:not(.dark) .field-wind__line {
-  background:
-    linear-gradient(90deg, transparent, color-mix(in srgb, var(--st-accent-sky) 22%, transparent), transparent),
-    linear-gradient(90deg, transparent 18%, rgb(36 48 57 / 12%) 42%, transparent 74%);
-  opacity: 0;
-}
-
-html:not(.dark) .field-wind__bit {
-  opacity: 0.22;
-}
-
-html:not(.dark) .field-wind__lantern {
-  display: none;
-}
-
-.field-wind__firefly {
+.field-fireflies__firefly {
   position: absolute;
   top: var(--fly-top);
   left: var(--fly-left);
@@ -179,7 +120,7 @@ html:not(.dark) .field-wind__lantern {
   animation-delay: var(--fly-wander-delay);
 }
 
-.field-wind__firefly::before {
+.field-fireflies__firefly::before {
   content: '';
   position: absolute;
   width: 24px;
@@ -201,7 +142,7 @@ html:not(.dark) .field-wind__lantern {
   animation-delay: var(--fly-blink-delay);
 }
 
-html:not(.dark) .field-wind__firefly {
+html:not(.dark) .field-fireflies {
   display: none;
 }
 
@@ -709,7 +650,7 @@ html:not(.dark) .field-companion--notebook {
     transition-duration: 1ms !important;
   }
 
-  .field-wind {
+  .field-fireflies {
     display: none;
   }
 
@@ -1526,16 +1467,7 @@ html:not(.dark) .field-hero__copy {
 }
 
 @media (max-width: 640px) {
-  .field-wind__line:nth-child(n + 3),
-  .field-wind__bit:nth-of-type(n + 6) {
-    display: none;
-  }
-
-  .field-wind__lantern {
-    display: none;
-  }
-
-  .field-wind__firefly {
+  .field-fireflies__firefly {
     display: none;
   }
 
@@ -2828,53 +2760,6 @@ html:not(.dark) .field-footer::before {
 }
 
 /* ── end collection pages ── */
-
-@keyframes field-wind-cross {
-  0% {
-    opacity: 0;
-    transform: translate3d(-16vw, 0, 0);
-  }
-
-  10%,
-  58% {
-    opacity: 0.38;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(132vw, -10px, 0);
-  }
-}
-
-@keyframes field-wind-drift {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0);
-  }
-
-  18%,
-  68% {
-    opacity: 0.34;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(-42vw, 22px, 0);
-  }
-}
-
-@keyframes field-lantern-breathe {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    opacity: 0.48;
-    transform: translate3d(0, -2px, 0) scale(1.04);
-  }
-}
 
 @keyframes firefly-blink {
   0%,

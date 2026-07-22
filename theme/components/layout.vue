@@ -3,8 +3,8 @@ import { defineAsyncComponent, onMounted, ref } from 'vue'
 
 const FieldCompanions = defineAsyncComponent(() => import('./FieldCompanions.vue'))
 const FieldFeatureGuide = defineAsyncComponent(() => import('./FieldFeatureGuide.vue'))
+const FieldFireflies = defineAsyncComponent(() => import('./FieldFireflies.vue'))
 const FieldSnowlin = defineAsyncComponent(() => import('./FieldSnowlin.vue'))
-const FieldWind = defineAsyncComponent(() => import('./FieldWind.vue'))
 
 const showAmbientLayers = ref(false)
 
@@ -28,7 +28,7 @@ onMounted(() => {
   <div class="field-shell antialiased">
     <a class="field-skip-link" href="#main-content">跳到正文</a>
     <template v-if="showAmbientLayers">
-      <FieldWind />
+      <FieldFireflies />
       <FieldCompanions />
       <FieldSnowlin />
       <FieldFeatureGuide />
