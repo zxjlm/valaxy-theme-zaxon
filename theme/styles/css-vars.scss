@@ -4,7 +4,16 @@
 );
 
 :root {
+  --un-prose-body: var(--st-text-primary);
+  --un-prose-headings: var(--st-text-primary);
   --un-prose-links: var(--st-c-link);
+  --un-prose-bold: var(--st-text-primary);
+  --un-prose-quotes: var(--st-text-secondary);
+  --un-prose-invert-body: var(--st-text-primary);
+  --un-prose-invert-headings: var(--st-text-primary);
+  --un-prose-invert-links: var(--st-c-link);
+  --un-prose-invert-bold: var(--st-text-primary);
+  --un-prose-invert-quotes: var(--st-text-secondary);
 
   @include set-css-var-from-map($common);
   @include set-css-var-from-map($z-index, 'z');
@@ -30,6 +39,15 @@ html.dark {
   --va-c-text-dark: var(--st-text-primary);
   --va-c-divider: var(--st-border-default);
   --va-c-primary: var(--st-c-brand);
+  --va-c-brand: var(--st-c-brand);
+  --va-c-brand-1: var(--st-c-brand);
+  --va-c-brand-2: var(--st-dev-primary);
+  --va-c-brand-3: var(--st-accent-lantern);
+  --va-c-brand-soft: color-mix(in srgb, var(--st-c-brand) 14%, transparent);
+  --va-c-link: var(--st-c-link);
+  --va-c-primary-dark: var(--st-c-brand);
+  --va-c-primary-light: var(--st-dev-primary);
+  --va-c-primary-lighter: var(--st-dev-primary);
   color-scheme: light;
 }
 

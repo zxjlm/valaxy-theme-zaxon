@@ -26,8 +26,9 @@ a {
   touch-action: manipulation;
 }
 
-a {
+html a {
   color: inherit;
+  font-weight: inherit;
   text-decoration: none;
 }
 
@@ -309,10 +310,14 @@ html:not(.dark) .field-companion--notebook {
   min-height: 44px;
   align-items: center;
   gap: 10px;
+  color: var(--st-text-primary);
   font-family: var(--st-font-serif);
   font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.012em;
+  transition:
+    color var(--st-duration-fast) var(--st-ease-standard),
+    transform var(--st-duration-fast) var(--st-ease-standard);
 }
 
 .field-brand__sprite {
@@ -338,6 +343,7 @@ html:not(.dark) .field-companion--notebook {
   min-height: 40px;
   align-items: center;
   padding-inline: 2px;
+  color: var(--st-text-secondary);
   transition:
     color var(--st-duration-fast) var(--st-ease-standard),
     transform var(--st-duration-fast) var(--st-ease-standard);
@@ -451,9 +457,14 @@ html:not(.dark) .field-companion--notebook {
 }
 
 @media (hover: hover) {
+  .field-brand:hover,
   .field-icon-button:hover,
   .field-nav__link:hover {
     transform: translateY(-1px);
+  }
+
+  .field-brand:hover {
+    color: var(--st-text-primary);
   }
 
   .field-icon-button:hover {
@@ -1925,10 +1936,20 @@ html:not(.dark) .field-footer::before {
   margin-top: 8px;
 }
 
+.field-footer a {
+  color: inherit;
+}
+
 .field-footer__icon {
   display: inline-flex;
   align-items: center;
   color: var(--st-accent-lantern);
+}
+
+@media (hover: hover) {
+  .field-footer a:hover {
+    color: var(--st-accent-lantern);
+  }
 }
 
 .field-helper {
