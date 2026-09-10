@@ -28,7 +28,8 @@ html.dark {
   @include set-css-var-from-map($dark);
 }
 
-:root {
+html:root,
+html.dark {
   --va-font-family-base:
     var(--st-font-sans), 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --va-c-bg: var(--st-bg-canvas);
@@ -48,6 +49,9 @@ html.dark {
   --va-c-primary-dark: var(--st-c-brand);
   --va-c-primary-light: var(--st-dev-primary);
   --va-c-primary-lighter: var(--st-dev-primary);
+}
+
+:root {
   color-scheme: light;
 }
 
