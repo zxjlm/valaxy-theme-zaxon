@@ -13,6 +13,7 @@ Preview: [Zaxon Blog](https://blog.harumonia.moe/)
 ## Features
 
 - Field Notes visual direction with responsive pixel-art assets, day/night hero imagery, and a calm handwritten-notebook atmosphere.
+- Editorial serif for reading (Source Serif 4 + system CJK serifs) paired with 11px pixel UI fonts (Departure Mono + Cubic 11), following the same split as pi.dev docs.
 - Built-in light and dark mode using Valaxy's dark-mode transition support.
 - Responsive navigation with desktop links, mobile menu, archive shortcut, and theme toggle.
 - Home feed article cards with automatic DEV / LIFE / NOTE labels based on post metadata.
@@ -368,3 +369,5 @@ The publishable theme lives in `theme/`. The local showcase site lives in `demo/
 ## Credits
 
 Created by Harumonia, built on Valaxy.
+
+Typography: [Source Serif 4](https://github.com/adobe-fonts/source-serif) (Adobe, SIL OFL), [Departure Mono](https://departuremono.com/) (Helena Zhang, SIL OFL), and [Cubic 11](https://github.com/ACh-K/Cubic-11) (俐方體11號, SIL OFL). Pairing inspired by [pi.dev docs](https://pi.dev/docs/latest).

@@ -21,7 +21,8 @@ html.dark {
 
 :root {
   --va-font-family-base:
-    var(--st-font-sans), 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    var(--st-font-serif), 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --va-font-family-mono: var(--st-font-mono);
   --va-c-bg: var(--st-bg-canvas);
   --va-c-bg-soft: var(--st-bg-surface);
   --va-c-bg-mute: var(--st-bg-elevated);
