@@ -15,6 +15,8 @@ export default antfu(
       'demo/public/valaxy-fuse-list.json',
       // Planning documents contain partial code excerpts, not standalone source files.
       'docs/superpowers/**',
+      // Keep bundled OFL license texts unmodified.
+      'theme/assets/fonts/**',
     ],
   },
 )
