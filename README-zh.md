@@ -15,6 +15,7 @@ Zaxon 是 [Valaxy](https://valaxy.site) 自定义主题。它的视觉核心是�
 ## 功能特性
 
 - Field Notes 视觉风格：响应式像素素材、明暗模式首屏图与安静的手帐氛围。
+- 排版采用与 [pi.dev 文档](https://pi.dev/docs/latest) 相同的分工：正文用衬线体阅读（Source Serif 4 + 系统中文宋体），界面与代码用 11px 像素字体（Departure Mono + 俐方體11號）。
 - 基于 Valaxy 明暗模式能力，内置 light / dark 切换与过渡效果。
 - 响应式导航：桌面导航、移动端菜单、归档快捷入口与主题切换按钮。
 - 首页文章卡片会根据文章元信息自动显示 DEV / LIFE / NOTE 标签。
@@ -347,3 +348,5 @@ pnpm build
 ## 致谢
 
 Created by Harumonia, built on Valaxy.
+
+排版：[Source Serif 4](https://github.com/adobe-fonts/source-serif)（Adobe，SIL OFL）、[Departure Mono](https://departuremono.com/)（Helena Zhang，SIL OFL）、[俐方體11號 / Cubic 11](https://github.com/ACh-K/Cubic-11)（SIL OFL）。搭配方式参考 [pi.dev 文档](https://pi.dev/docs/latest)。
