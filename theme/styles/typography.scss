@@ -22,14 +22,9 @@
 }
 
 .field-skip-link,
-.field-brand,
-.field-nav__links,
-.field-nav__link,
 .field-nav__more-link,
-.field-nav__mobile-more summary,
 .field-button,
 .field-kicker,
-.field-hero__trail span,
 .field-gate__eyebrow,
 .field-gate__tags span,
 .field-tag,
@@ -57,22 +52,20 @@
   @include pixel-type;
 }
 
-.field-brand {
-  @include pixel-ui;
-}
-
-.field-nav__links,
-.field-nav__link,
-.field-nav__mobile-more summary,
 .field-button,
 .field-timeline__year {
   @include pixel-ui;
 }
 
+.field-nav__links,
+.field-nav__link,
+.field-nav__mobile-more summary {
+  font-family: var(--st-font-sans);
+}
+
 .field-skip-link,
 .field-nav__more-link,
 .field-kicker,
-.field-hero__trail span,
 .field-gate__eyebrow,
 .field-gate__tags span,
 .field-tag,
@@ -105,7 +98,6 @@
 }
 
 .field-chip,
-.field-hero__trail span,
 .argus-album-grid__live {
   text-transform: uppercase;
 }
@@ -147,15 +139,15 @@
 @media (max-width: 1100px) {
   .field-nav__links,
   .field-nav__link {
-    font-size: 11px;
-    letter-spacing: 0.06em;
+    font-size: 14px;
+    letter-spacing: 0;
   }
 }
 
 @media (max-width: 760px) {
   .field-nav__link,
   .field-nav__mobile-more summary {
-    font-size: 22px;
-    letter-spacing: 0.04em;
+    font-size: 15px;
+    letter-spacing: 0.01em;
   }
 }

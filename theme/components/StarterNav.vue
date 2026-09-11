@@ -75,10 +75,6 @@ const moreNavItems = [
           <div i-ri-rss-line />
         </a>
 
-        <RouterLink class="field-icon-button field-nav__archive" to="/archives/" aria-label="查看归档">
-          <div i-ri-archive-line />
-        </RouterLink>
-
         <button class="field-icon-button" type="button" aria-label="切换明暗主题" data-field-guide="theme-toggle" @click="appStore.toggleDarkWithTransition">
           <div v-if="!appStore.isDark" i-ri-sun-line />
           <div v-else i-ri-moon-line />

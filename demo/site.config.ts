@@ -2,7 +2,7 @@ import { defineSiteConfig } from 'valaxy'
 
 export default defineSiteConfig({
   lang: 'zh-CN',
-  title: 'Zaxon',
+  title: 'Harumonia',
   subtitle: '代码、日常与旅途中的观察记录',
   url: 'https://blog.harumonia.moe/',
   author: {

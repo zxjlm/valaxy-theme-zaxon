@@ -438,8 +438,8 @@ html:not(.dark) .field-companion--notebook {
 
 .field-icon-button {
   display: inline-grid;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   border: 1px solid var(--st-border-default);
   border-radius: var(--st-radius-md);
@@ -604,10 +604,6 @@ html:not(.dark) .field-companion--notebook {
     display: inline-grid;
   }
 
-  .field-nav__archive {
-    display: none;
-  }
-
   .field-nav__mobile {
     display: grid;
     grid-template-rows: 0fr;
@@ -683,7 +679,7 @@ html:not(.dark) .field-companion--notebook {
 .field-hero {
   position: relative;
   display: grid;
-  min-height: clamp(540px, 70vh, 720px);
+  min-height: clamp(520px, 64vh, 660px);
   align-items: center;
   margin-top: -32px;
   overflow: hidden;
@@ -734,8 +730,17 @@ html:not(.dark) .field-companion--notebook {
 
 html:not(.dark) .field-hero__overlay {
   background:
-    radial-gradient(circle at 50% 38%, rgb(255 253 247 / 28%), transparent 22rem),
-    linear-gradient(180deg, rgb(244 241 232 / 2%), var(--st-bg-canvas) 100%);
+    radial-gradient(ellipse at 50% 40%, rgb(255 253 247 / 38%), rgb(255 253 247 / 18%) 15rem, transparent 31rem),
+    linear-gradient(
+      180deg,
+      transparent 0 68%,
+      color-mix(in srgb, var(--st-bg-canvas) 52%, transparent) 88%,
+      var(--st-bg-canvas) 100%
+    );
+}
+
+html:not(.dark) .field-hero__image {
+  filter: saturate(0.94) contrast(1.08);
 }
 
 .field-hero__content {
@@ -743,7 +748,7 @@ html:not(.dark) .field-hero__overlay {
   z-index: 2;
   width: min(100% - 36px, 1120px);
   margin: 0 auto;
-  padding: 86px 0 128px;
+  padding: 64px 0 104px;
   text-align: center;
 }
 
@@ -789,35 +794,6 @@ html:not(.dark) .field-hero__title {
   font-size: 16px;
   line-height: 1.75;
   text-wrap: pretty;
-}
-
-.field-hero__trail {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.field-hero__trail span {
-  display: inline-flex;
-  min-height: 26px;
-  align-items: center;
-  border: 1px solid rgb(233 227 211 / 16%);
-  border-radius: var(--st-radius-sm);
-  padding: 3px 8px;
-  background: rgb(8 19 32 / 34%);
-  color: rgb(233 227 211 / 78%);
-  font-family: var(--st-font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-html:not(.dark) .field-hero__trail span {
-  border-color: rgb(36 48 57 / 16%);
-  background: rgb(255 253 247 / 54%);
-  color: #4f5960;
 }
 
 html:not(.dark) .field-hero__subtitle,
@@ -1497,11 +1473,11 @@ html:not(.dark) .field-hero__copy {
   }
 
   .field-hero {
-    min-height: 560px;
+    min-height: 520px;
   }
 
   .field-hero__content {
-    padding: 78px 0 150px;
+    padding: 60px 0 104px;
     text-align: center;
   }
 
@@ -1519,12 +1495,6 @@ html:not(.dark) .field-hero__copy {
 
   .field-hero__copy {
     font-size: 15px;
-  }
-
-  .field-hero__trail {
-    max-width: 18rem;
-    margin-inline: auto;
-    justify-content: center;
   }
 
   .field-hero__actions {

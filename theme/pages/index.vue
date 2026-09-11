@@ -135,7 +135,7 @@ onBeforeUnmount(() => {
       <div class="field-hero__overlay" />
       <div class="field-hero__content">
         <p class="field-kicker">
-          Zaxon / field notes theme
+          Field notes
         </p>
         <h1 id="field-hero-title" class="field-hero__title">
           {{ siteConfig.title || 'Zaxon' }}
@@ -146,11 +146,6 @@ onBeforeUnmount(() => {
         <p class="field-hero__copy">
           思考、记录、无限进步。
         </p>
-        <div class="field-hero__trail" aria-label="内容比例">
-          <span>DEV</span>
-          <span>LIFE</span>
-          <span>NOTES / PHOTOS / QUOTES</span>
-        </div>
         <div class="field-hero__actions">
           <RouterLink class="field-button field-button--dev" to="/tech/">
             DEV LOG
