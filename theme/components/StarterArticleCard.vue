@@ -2,6 +2,7 @@
 import type { Post } from 'valaxy'
 import { formatDate } from 'valaxy'
 import { computed } from 'vue'
+import { isTravelPost } from '../composables'
 
 const props = defineProps<{
   post: Post
@@ -21,6 +22,9 @@ const postText = computed(() => [
 ].join(' ').toLowerCase())
 
 const kind = computed(() => {
+  if (isTravelPost(props.post))
+    return 'life'
+
   const text = postText.value
   if (/photo|life|生活|旅行|摄影|阅读|随笔|音乐/.test(text))
     return 'life'
@@ -30,6 +34,8 @@ const kind = computed(() => {
 })
 
 const kindLabel = computed(() => {
+  if (isTravelPost(props.post))
+    return 'TRAVEL'
   if (kind.value === 'life')
     return 'LIFE'
   if (kind.value === 'note')

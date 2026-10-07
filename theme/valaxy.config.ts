@@ -2,6 +2,7 @@ import type { Plugin } from 'vite'
 import type { ThemeConfig } from './types'
 import { defineTheme } from 'valaxy'
 import { defaultThemeConfig, generateSafelist, themePlugin } from './node'
+import { travelStopsPlugin } from './node/travel-markdown'
 
 const preloadableDependency = /\.(?:js|mjs|css)$/i
 const katexFontFace = /@font-face\{[^{}]*font-family:KaTeX[^{}]*\}/g
@@ -34,6 +35,13 @@ function stripKatexFontPreloads(): Plugin {
 export default defineTheme<ThemeConfig>((options) => {
   return {
     themeConfig: defaultThemeConfig,
+    markdown: {
+      // Valaxy's config merge recurses when theme and site both define the same hook,
+      // and sites usually add markdown-it plugins through `config`.
+      preConfig(md) {
+        md.use(travelStopsPlugin)
+      },
+    },
     vite: {
       build: {
         modulePreload: {

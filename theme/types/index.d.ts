@@ -104,6 +104,24 @@ export interface ThemeConfig extends DefaultTheme.Config {
    * Argus static album publishing integration.
    */
   albums?: Partial<ArgusAlbumsConfig>
+
+  /**
+   * 游记（`layout: travel`）的背景地图。
+   */
+  travel?: Partial<TravelConfig>
+}
+
+export interface TravelConfig {
+  /** MapLibre style URL for light mode. @default OpenFreeMap Positron */
+  style: string
+  /** MapLibre style URL for dark mode. @default OpenFreeMap Fiord */
+  darkStyle: string
+  /** Attribution shown on top of the map; must satisfy the tile provider's terms. */
+  attribution: string
+  /** Zoom level used when the camera rests on a stop. @default 14 */
+  zoom: number
+  /** Map layer opacity, 0–1. @default 0.42 */
+  opacity: number
 }
 
 export interface HeroConfig {

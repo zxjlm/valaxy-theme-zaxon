@@ -19,4 +19,12 @@ export default antfu(
       'theme/assets/fonts/**',
     ],
   },
+  {
+    // Trailing double spaces are Markdown hard breaks, and CJK prose uses ideographic spaces.
+    files: ['**/*.md'],
+    rules: {
+      'no-irregular-whitespace': 'off',
+      'style/no-trailing-spaces': 'off',
+    },
+  },
 )

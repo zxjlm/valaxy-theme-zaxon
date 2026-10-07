@@ -24,7 +24,8 @@
   "types": "types/index.d.ts",
   "dependencies": {
     "@iconify-json/ant-design": "catalog:",
-    "@iconify-json/simple-icons": "catalog:"
+    "@iconify-json/simple-icons": "catalog:",
+    "maplibre-gl": "catalog:"
   },
   "devDependencies": {
     "valaxy": "catalog:"

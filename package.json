@@ -15,10 +15,12 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
+    "@types/markdown-it": "catalog:",
     "@unocss/eslint-plugin": "catalog:",
     "bumpp": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-format": "catalog:",
+    "markdown-it": "catalog:",
     "typescript": "catalog:",
     "valaxy-theme-zaxon": "workspace:*",
     "vitest": "catalog:",

@@ -2,7 +2,7 @@ import type { Post } from 'valaxy'
 import { computed } from 'vue'
 import { useThemeConfig } from './config'
 
-export type EntryKind = 'article' | 'life' | 'note' | 'photo' | 'quote'
+export type EntryKind = 'article' | 'life' | 'note' | 'photo' | 'quote' | 'travel'
 
 const ENTRY_LABELS: Record<EntryKind, string> = {
   article: 'ARTICLE',
@@ -10,6 +10,7 @@ const ENTRY_LABELS: Record<EntryKind, string> = {
   note: 'NOTE',
   photo: 'PHOTO',
   quote: 'QUOTE',
+  travel: 'TRAVEL',
 }
 
 function asArray(value: unknown): string[] {
@@ -42,7 +43,14 @@ function postText(post: Post): string {
 /**
  * 基于关键词的细分类型，用于首页 chips / 文案，不依赖站点配置。
  */
+export function isTravelPost(post: Post): boolean {
+  return fieldValue(post, 'layout') === 'travel'
+}
+
 export function entryKind(post: Post): EntryKind {
+  if (isTravelPost(post))
+    return 'travel'
+
   const text = postText(post)
 
   if (/photo|摄影|旅行|照片|胶片/.test(text))
@@ -77,7 +85,7 @@ export function useFieldEntries() {
     if (devCategories.value.length && cats.some(cat => devCategories.value.includes(cat)))
       return false
 
-    return ['life', 'photo', 'quote'].includes(entryKind(post))
+    return ['life', 'photo', 'quote', 'travel'].includes(entryKind(post))
   }
 
   return {

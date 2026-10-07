@@ -107,6 +107,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/kansai-day-1': RouteRecordInfo<
+      '/posts/kansai-day-1',
+      '/posts/kansai-day-1',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/lake-after-rain': RouteRecordInfo<
       '/posts/lake-after-rain',
       '/posts/lake-after-rain',
@@ -238,6 +245,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/i18n.md': {
       routes:
         | '/posts/i18n'
+      views:
+        | never
+    }
+    'pages/posts/kansai-day-1.md': {
+      routes:
+        | '/posts/kansai-day-1'
       views:
         | never
     }

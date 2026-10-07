@@ -133,6 +133,7 @@ watch(() => route.fullPath, refreshToc)
             <span aria-hidden="true">↗</span>
           </a>
         </div>
+        <slot name="aside" />
       </aside>
 
       <div ref="content" class="field-post__content">

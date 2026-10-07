@@ -54,6 +54,14 @@ export const defaultThemeConfig: ThemeConfig = {
   },
 
   nav: [],
+
+  travel: {
+    style: 'https://tiles.openfreemap.org/styles/positron',
+    darkStyle: 'https://tiles.openfreemap.org/styles/fiord',
+    attribution: 'OpenFreeMap © OpenMapTiles · Data © OpenStreetMap contributors',
+    zoom: 14,
+    opacity: 0.42,
+  },
 }
 
 export function markdownSourcePathForUrl(url: string, userRoot: string): string | null {
