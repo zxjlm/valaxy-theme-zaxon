@@ -1,16 +1,31 @@
 <script setup lang="ts">
-import type { GeoJSONSourceSpecification, Map as MapLibreMap, PaddingOptions } from 'maplibre-gl'
-import type { TravelCamera, TravelStop } from '../composables'
+import type { GeoJSONSourceSpecification, Map as MapLibreMap, VectorTileSource } from 'maplibre-gl'
+import type { TravelCamera, TravelStop, TravelViewport } from '../composables'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import { useAppStore } from 'valaxy'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { easeWithin, flyInterpolator, overviewCamera, readingPosition, TRAVEL_READING_LINE, useThemeConfig } from '../composables'
+import {
+  cameraTiles,
+  easeWithin,
+  flyInterpolator,
+  overviewCamera,
+  readingPosition,
+  sharedTileScheduler,
+  TRAVEL_READING_LINE,
+  useThemeConfig,
+} from '../composables'
 
 const props = defineProps<{
   stops: TravelStop[]
 }>()
 
 const active = defineModel<number>('active', { default: -1 })
+
+interface TileSource {
+  tiles: string[]
+  minzoom: number
+  maxzoom: number
+}
 
 /** The camera arrives at a stop within this share of the section leading to it. */
 const ARRIVE_BY = 0.55
@@ -19,6 +34,12 @@ const LEAVE_FROM = 0.35
 const DESKTOP_MIN_WIDTH = 860
 const OVERVIEW_MARGIN = 56
 const ROUTE_SOURCE = 'zaxon-travel-route'
+const TILE_PROTOCOL = 'zaxon-tile'
+const VECTOR_TILE_URL = /^https?:\/\/.+\.(?:pbf|mvt)(?:\?|$)/
+/** Sections ahead of the reader whose tiles are fetched while the network is idle. */
+const PREFETCH_SECTIONS = 2
+const PREFETCH_SAMPLES = [0.25, 0.5, 0.75, 1]
+const PREFETCH_LIMIT = 96
 
 const themeConfig = useThemeConfig()
 const appStore = useAppStore()
@@ -35,22 +56,81 @@ let styleLoaded = false
 let disposed = false
 let keyframes: number[] = []
 let segments: Array<(t: number) => TravelCamera> = []
+let view: TravelViewport | undefined
+let tileSources: TileSource[] | undefined
+let prefetchedSegment = -1
 let frame = 0
 let resizeObserver: ResizeObserver | undefined
 let reducedMotion: MediaQueryList | undefined
 
-function focusBox(): { width: number, height: number, padding: PaddingOptions } {
-  const width = window.innerWidth
-  const height = window.innerHeight
+/**
+ * The canvas covers less than the window (see travel.scss); the camera focuses
+ * on the left 45% of the window on desktop, and between the nav and 60% of the
+ * window height on mobile.
+ */
+function measureView(): TravelViewport {
+  const width = canvas.value?.clientWidth || window.innerWidth
+  const height = canvas.value?.clientHeight || window.innerHeight
   const nav = document.querySelector('.field-nav')?.getBoundingClientRect().height ?? 0
 
-  if (width >= DESKTOP_MIN_WIDTH) {
-    const right = Math.round(width * 0.55)
-    return { width: width - right, height: height - nav, padding: { top: nav, right, bottom: 0, left: 0 } }
+  if (window.innerWidth >= DESKTOP_MIN_WIDTH) {
+    const right = Math.max(0, width - Math.round(window.innerWidth * 0.45))
+    return { width, height, padding: { top: nav, right, bottom: 0, left: 0 } }
   }
 
-  const bottom = Math.round(height * 0.4)
-  return { width, height: height - nav - bottom, padding: { top: nav, right: 0, bottom, left: 0 } }
+  const bottom = Math.max(0, height - Math.round(window.innerHeight * 0.6))
+  return { width, height, padding: { top: nav, right: 0, bottom, left: 0 } }
+}
+
+function saveData() {
+  return Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData)
+}
+
+function readTileSources() {
+  const sources: TileSource[] = []
+  if (!map || !styleLoaded)
+    return sources
+
+  for (const id of Object.keys(map.getStyle().sources)) {
+    const source = map.getSource(id) as VectorTileSource | undefined
+    if (source?.type !== 'vector' || source.tileSize !== 512 || source.scheme === 'tms' || !source.tiles?.length)
+      continue
+    // Only plain {z}/{x}/{y} templates can be expanded the same way MapLibre does.
+    if (source.tiles.some(template => /\{(?![xyz]\})/.test(template)))
+      continue
+    sources.push({ tiles: source.tiles, minzoom: source.minzoom, maxzoom: source.maxzoom })
+  }
+  return sources
+}
+
+function invalidateTileSources() {
+  tileSources = undefined
+  prefetchedSegment = -1
+  schedule()
+}
+
+function prefetchAhead(segment: number) {
+  tileSources ??= readTileSources()
+  const sources = tileSources
+  if (!view || !segments.length || !sources.length || saveData())
+    return
+
+  prefetchedSegment = segment
+  const urls = new Set<string>()
+  for (const fly of segments.slice(segment, segment + PREFETCH_SECTIONS + 1)) {
+    for (const t of PREFETCH_SAMPLES) {
+      const camera = fly(t)
+      for (const source of sources) {
+        for (const { z, x, y } of cameraTiles(camera, view, source.minzoom, source.maxzoom)) {
+          urls.add(source.tiles[(x + y) % source.tiles.length]
+            .replace(/\{z\}/g, String(z))
+            .replace(/\{x\}/g, String(x))
+            .replace(/\{y\}/g, String(y)))
+        }
+      }
+    }
+  }
+  sharedTileScheduler().prefetch([...urls].slice(0, PREFETCH_LIMIT))
 }
 
 function documentTop(el: Element) {
@@ -68,12 +148,16 @@ function measure() {
   const maxAnchor = document.documentElement.scrollHeight - viewportHeight + viewportHeight * TRAVEL_READING_LINE
   keyframes = [start, ...offsets, Math.max(maxAnchor, offsets.at(-1)! + 1)]
 
-  const box = focusBox()
-  map.setPadding(box.padding)
-  const overview = overviewCamera(props.stops, box.width - OVERVIEW_MARGIN * 2, box.height - OVERVIEW_MARGIN * 2, stopZoom.value - 1)
+  view = measureView()
+  const { padding } = view
+  const focusWidth = view.width - padding.left - padding.right
+  const focusHeight = view.height - padding.top - padding.bottom
+  map.setPadding(padding)
+  const overview = overviewCamera(props.stops, focusWidth - OVERVIEW_MARGIN * 2, focusHeight - OVERVIEW_MARGIN * 2, stopZoom.value - 1)
   const cameras = [overview, ...props.stops.map(stop => ({ lng: stop.lng, lat: stop.lat, zoom: stopZoom.value })), overview]
-  const viewportSize = Math.max(box.width, box.height)
+  const viewportSize = Math.max(focusWidth, focusHeight)
   segments = cameras.slice(1).map((to, index) => flyInterpolator(cameras[index], to, viewportSize))
+  prefetchedSegment = -1
 
   schedule()
 }
@@ -95,6 +179,9 @@ function update() {
   // Segment k flies from stop k - 1 to stop k; the first and last legs involve the overview.
   const nearest = t >= 0.5 ? segment : segment - 1
   active.value = Math.min(Math.max(nearest, 0), props.stops.length - 1)
+
+  if (segment !== prefetchedSegment)
+    prefetchAhead(segment)
 }
 
 function schedule() {
@@ -194,7 +281,14 @@ onMounted(async () => {
     if (disposed || !canvas.value || !styleUrl.value)
       return
 
+    const tiles = sharedTileScheduler()
+    const protocolPrefix = `${TILE_PROTOCOL}://`
     maplibre.setWorkerUrl(workerUrl)
+    // Every scroll frame moves the camera, so MapLibre requests and cancels tiles
+    // for views that only last a frame. The scheduler delays, deduplicates and
+    // caches those requests; see travel-tiles.ts.
+    maplibre.addProtocol(TILE_PROTOCOL, (params, controller) =>
+      tiles.request(params.url.slice(protocolPrefix.length), controller.signal))
     map = new maplibre.Map({
       container: canvas.value,
       style: styleUrl.value,
@@ -203,11 +297,19 @@ onMounted(async () => {
       interactive: false,
       attributionControl: false,
       pixelRatio: Math.min(window.devicePixelRatio, 1.5),
+      transformRequest: (url, type) => (type as string) === 'Tile' && VECTOR_TILE_URL.test(url)
+        ? { url: protocolPrefix + url }
+        : undefined,
     })
     map.on('style.load', () => {
       styleLoaded = true
       quietBasemap()
       drawRoute()
+      invalidateTileSources()
+    })
+    map.on('sourcedata', (event) => {
+      if (event.sourceDataType === 'metadata')
+        invalidateTileSources()
     })
     map.once('load', () => {
       ready.value = true
@@ -250,6 +352,7 @@ watch(active, () => {
 watch(styleUrl, (url) => {
   if (map && url) {
     styleLoaded = false
+    tileSources = undefined
     map.setStyle(url)
   }
 })

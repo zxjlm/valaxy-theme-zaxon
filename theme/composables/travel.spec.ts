@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { easeWithin, flyInterpolator, overviewCamera, readingPosition, stopLabel } from './travel'
+import { cameraTiles, easeWithin, flyInterpolator, overviewCamera, readingPosition, stopLabel } from './travel'
 
 const kansaiAirport = { lng: 135.242278, lat: 34.436444, zoom: 14 }
 const gojo = { lng: 135.759739, lat: 34.995172, zoom: 14 }
@@ -51,6 +51,31 @@ describe('overviewCamera', () => {
 
   it('caps the zoom for a single point', () => {
     expect(overviewCamera([hotel], 600, 800, 13).zoom).toBe(13)
+  })
+})
+
+describe('cameraTiles', () => {
+  const noPadding = { top: 0, right: 0, bottom: 0, left: 0 }
+
+  it('covers the viewport around the camera at the integer zoom', () => {
+    const tiles = cameraTiles(gojo, { width: 1024, height: 512, padding: noPadding }, 0, 14)
+    expect(new Set(tiles.map(tile => tile.z))).toEqual(new Set([14]))
+    // A 1024×512 viewport spans 2×1 tiles, plus one partial tile on each axis.
+    expect(tiles.length).toBeGreaterThanOrEqual(2)
+    expect(tiles.length).toBeLessThanOrEqual(6)
+    const xs = tiles.map(tile => tile.x)
+    expect(Math.max(...xs) - Math.min(...xs)).toBeLessThanOrEqual(2)
+    expect(tiles).toContainEqual({ z: 14, x: 14370, y: 6489 })
+  })
+
+  it('shifts coverage with the padded focus', () => {
+    const centred = cameraTiles(gojo, { width: 2048, height: 512, padding: noPadding }, 0, 14)
+    const focusLeft = cameraTiles(gojo, { width: 2048, height: 512, padding: { ...noPadding, right: 1536 } }, 0, 14)
+    expect(Math.max(...focusLeft.map(tile => tile.x))).toBeGreaterThan(Math.max(...centred.map(tile => tile.x)))
+  })
+
+  it('clamps to the source zoom range', () => {
+    expect(cameraTiles({ ...gojo, zoom: 16.4 }, { width: 512, height: 512, padding: noPadding }, 0, 14)[0].z).toBe(14)
   })
 })
 

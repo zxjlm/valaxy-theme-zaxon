@@ -127,6 +127,39 @@ export function overviewCamera(points: Array<{ lng: number, lat: number }>, widt
   }
 }
 
+export interface TravelViewport {
+  width: number
+  height: number
+  padding: { top: number, right: number, bottom: number, left: number }
+}
+
+/**
+ * Vector tiles (512px) a map of `viewport` needs to draw `camera`; the camera
+ * centre sits in the middle of the padded area, as in MapLibre.
+ */
+export function cameraTiles(camera: TravelCamera, viewport: TravelViewport, minZoom: number, maxZoom: number) {
+  const z = Math.min(Math.max(Math.floor(camera.zoom), minZoom), maxZoom)
+  const worldSize = TILE_SIZE * 2 ** camera.zoom
+  const [mx, my] = toMercator(camera.lng, camera.lat)
+  const { width, height, padding } = viewport
+  const focusX = padding.left + (width - padding.left - padding.right) / 2
+  const focusY = padding.top + (height - padding.top - padding.bottom) / 2
+  const scale = 2 ** z / worldSize
+  const count = 2 ** z
+
+  const left = Math.floor((mx * worldSize - focusX) * scale)
+  const right = Math.floor((mx * worldSize + width - focusX) * scale)
+  const top = Math.max(0, Math.floor((my * worldSize - focusY) * scale))
+  const bottom = Math.min(count - 1, Math.floor((my * worldSize + height - focusY) * scale))
+
+  const tiles: Array<{ z: number, x: number, y: number }> = []
+  for (let x = left; x <= right; x += 1) {
+    for (let y = top; y <= bottom; y += 1)
+      tiles.push({ z, x: ((x % count) + count) % count, y })
+  }
+  return tiles
+}
+
 /**
  * Locates the reading anchor between ascending keyframe offsets.
  */
