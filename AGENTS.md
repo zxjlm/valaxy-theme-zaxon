@@ -39,4 +39,4 @@ Pull requests should include a summary, commands run, linked issues, and screens
 
 ## Security & Configuration Tips
 
-Do not commit npm tokens or deployment secrets. GitHub Actions expects release credentials such as `NPM_TOKEN` to be configured as repository secrets. Keep generated directories such as `node_modules`, `dist`, and `.valaxy` out of commits.
+Do not commit npm tokens or deployment secrets. Releases publish through npm trusted publishing (GitHub OIDC) on the package settings for workflow `release.yml` — long-lived `NPM_TOKEN` secrets are not used by the release workflow. Keep generated directories such as `node_modules`, `dist`, and `.valaxy` out of commits.
