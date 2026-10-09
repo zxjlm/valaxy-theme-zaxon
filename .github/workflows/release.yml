@@ -7,34 +7,46 @@ on:
 
 permissions:
   contents: write
+  # Required for npm trusted publishing via GitHub OIDC.
+  # Configure on https://www.npmjs.com/package/valaxy-theme-zaxon → Settings → Trusted Publisher:
+  #   Organization or user: zxjlm
+  #   Repository: valaxy-theme-zaxon
+  #   Workflow filename: release.yml
+  #   Allowed actions: enable npm publish (required for direct publish)
+  id-token: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           run_install: true
 
-      # after pnpm
-      - name: Use Node.js LTS
-        uses: actions/setup-node@v3
+      # Node 24 ships a recent enough npm for trusted publishing (needs npm >= 11.5.1).
+      # Do not set registry-url: setup-node would write an empty _authToken line that
+      # prevents the OIDC publish flow from running.
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
-          registry-url: https://registry.npmjs.org/
+          node-version: '24'
           cache: pnpm
 
+      - name: Ensure npm supports trusted publishing
+        run: npm install -g npm@latest
+
       - run: pnpm run build
-      # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-      - run: pnpm ci:publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      # Auth via npm trusted publishing (OIDC). Do not pass NODE_AUTH_TOKEN here:
+      # a stale/expired NPM_TOKEN secret would short-circuit OIDC and fail with E404.
+      - name: Publish to npm
+        run: pnpm ci:publish
 
       - run: npx changelogithub
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

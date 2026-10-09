@@ -12,7 +12,10 @@
   "homepage": "https://blog.harumonia.moe",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zxjlm/valaxy-theme-zaxon"
+    "url": "git+https://github.com/zxjlm/valaxy-theme-zaxon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zxjlm/valaxy-theme-zaxon/issues"
   },
   "keywords": [
     "valaxy",
@@ -20,6 +23,10 @@
     "zaxon",
     "vue"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "client/index.ts",
   "types": "types/index.d.ts",
   "dependencies": {
