@@ -79,6 +79,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/79ee39fe-312d-4ffe-9397-3d602da52f9e': RouteRecordInfo<
+      '/posts/79ee39fe-312d-4ffe-9397-3d602da52f9e',
+      '/posts/79ee39fe-312d-4ffe-9397-3d602da52f9e',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/draft': RouteRecordInfo<
       '/posts/draft',
       '/posts/draft',
@@ -103,13 +110,6 @@ declare module 'vue-router/auto-routes' {
     '/posts/i18n': RouteRecordInfo<
       '/posts/i18n',
       '/posts/i18n',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/posts/kansai-day-1': RouteRecordInfo<
-      '/posts/kansai-day-1',
-      '/posts/kansai-day-1',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -224,6 +224,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/79ee39fe-312d-4ffe-9397-3d602da52f9e.md': {
+      routes:
+        | '/posts/79ee39fe-312d-4ffe-9397-3d602da52f9e'
+      views:
+        | never
+    }
     'pages/posts/draft.md': {
       routes:
         | '/posts/draft'
@@ -245,12 +251,6 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/i18n.md': {
       routes:
         | '/posts/i18n'
-      views:
-        | never
-    }
-    'pages/posts/kansai-day-1.md': {
-      routes:
-        | '/posts/kansai-day-1'
       views:
         | never
     }
