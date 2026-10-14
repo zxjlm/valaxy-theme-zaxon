@@ -26,6 +26,7 @@ Zaxon 是 [Valaxy](https://valaxy.site) 自定义主题。它的视觉核心是�
 - 支持 Argus 静态相册：通过隐私安全的 JSON manifest 和本地缩略图 / 预览图渲染 `/albums/` 与 `/albums/<slug>/`。
 - 页脚支持版权年份、图标、Powered by 信息与可选 ICP 备案号。
 - 从 `valaxy-theme-zaxon` 导出 TypeScript 主题配置类型。
+- 游记地图支持预生成沿途 WebP 画面，随阅读进度连续平移、缩放并预载前方路线；见[游记地图加速](./docs/travel-map-performance.md)。
 
 ## 安装
 

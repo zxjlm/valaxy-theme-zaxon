@@ -42,6 +42,9 @@ jobs:
       - name: Typecheck
         run: pnpm run typecheck
 
+      - name: Test
+        run: pnpm test
+
   # check windows build
   build:
     runs-on: ${{ matrix.os }}

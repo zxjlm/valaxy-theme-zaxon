@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import type { ComponentPublicInstance } from 'vue'
 import type { TravelStop } from '../composables'
-import { nextTick, onMounted, ref, shallowRef, watch } from 'vue'
+import type { StaticTravelMap } from '../node/travel-static'
+import { useFrontmatter } from 'valaxy'
+import { computed, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { collectTravelStops } from '../composables'
+import { collectTravelStops, useThemeConfig } from '../composables'
 
 const route = useRoute()
+const frontmatter = useFrontmatter()
+const config = useThemeConfig()
+const staticMap = computed(() => config.value.travel?.rendering === 'live' ? undefined : frontmatter.value.travelMap as StaticTravelMap | undefined)
 const article = ref<ComponentPublicInstance>()
 const stops = shallowRef<TravelStop[]>([])
 const active = ref(-1)
@@ -34,6 +39,9 @@ watch(active, (index, previous) => {
         <TravelItinerary :stops="stops" :active="active" />
       </template>
     </StarterArticle>
-    <TravelMapBackdrop v-if="stops.length" v-model:active="active" :stops="stops" />
+    <template v-if="stops.length">
+      <TravelStaticBackdrop v-if="staticMap" :key="`${route.path}:${staticMap.key}`" v-model:active="active" :stops="stops" :map="staticMap" />
+      <TravelMapBackdrop v-else-if="config.travel?.rendering !== 'static'" :key="route.path" v-model:active="active" :stops="stops" />
+    </template>
   </Layout>
 </template>

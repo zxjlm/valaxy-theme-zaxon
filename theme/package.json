@@ -29,10 +29,28 @@
   },
   "main": "client/index.ts",
   "types": "types/index.d.ts",
+  "bin": {
+    "zaxon-travel-maps": "bin/travel-maps.mjs"
+  },
+  "peerDependencies": {
+    "@maplibre/maplibre-gl-native": ">=6.4.1",
+    "sharp": ">=0.35.5"
+  },
+  "peerDependenciesMeta": {
+    "@maplibre/maplibre-gl-native": {
+      "optional": true
+    },
+    "sharp": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "@iconify-json/ant-design": "catalog:",
     "@iconify-json/simple-icons": "catalog:",
-    "maplibre-gl": "catalog:"
+    "gray-matter": "catalog:",
+    "jiti": "catalog:",
+    "maplibre-gl": "catalog:",
+    "markdown-it": "catalog:"
   },
   "devDependencies": {
     "valaxy": "catalog:"

@@ -112,6 +112,10 @@ export interface ThemeConfig extends DefaultTheme.Config {
 }
 
 export interface TravelConfig {
+  /** Use pre-generated images when available. `static` never loads live tiles. @default auto */
+  rendering?: 'auto' | 'static' | 'live'
+  /** Optional CDN root containing travel-maps/, e.g. https://images.example.com/. */
+  staticBaseUrl?: string
   /** MapLibre style URL for light mode. @default OpenFreeMap Positron */
   style: string
   /** MapLibre style URL for dark mode. @default OpenFreeMap Fiord */

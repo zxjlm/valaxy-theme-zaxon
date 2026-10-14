@@ -9,6 +9,9 @@ export default defineConfig<ThemeConfig>({
   theme: 'zaxon',
 
   themeConfig: {
+    travel: {
+      rendering: 'static',
+    },
     snowlin: {
       frequency: 'normal',
     },

@@ -1,0 +1,2762 @@
+{
+  "version": 2,
+  "renderer": "maplibre-native",
+  "key": "2cb18dabc42a29db2248",
+  "points": [
+    {
+      "lat": 34.436444,
+      "lng": 135.242278
+    },
+    {
+      "lat": 34.435911,
+      "lng": 135.243492
+    },
+    {
+      "lat": 34.3971,
+      "lng": 135.3354
+    },
+    {
+      "lat": 34.3971,
+      "lng": 135.3354
+    },
+    {
+      "lat": 34.720211,
+      "lng": 135.503339
+    },
+    {
+      "lat": 34.995172,
+      "lng": 135.759739
+    },
+    {
+      "lat": 34.995037,
+      "lng": 135.769775
+    },
+    {
+      "lat": 34.995037,
+      "lng": 135.769775
+    },
+    {
+      "lat": 34.995037,
+      "lng": 135.769775
+    }
+  ],
+  "attribution": "OpenFreeMap © OpenMapTiles · Data © OpenStreetMap contributors",
+  "scenes": {
+    "desktop": {
+      "light": [
+        "travel-maps/2cb18dabc42a29db2248/cb2de1a57712bece27ed.webp",
+        "travel-maps/2cb18dabc42a29db2248/dc7c02efa2de0df69376.webp",
+        "travel-maps/2cb18dabc42a29db2248/62fa6f8a1dba30133dc9.webp",
+        "travel-maps/2cb18dabc42a29db2248/f2aa342e8d20fc12c16e.webp",
+        "travel-maps/2cb18dabc42a29db2248/f2aa342e8d20fc12c16e.webp",
+        "travel-maps/2cb18dabc42a29db2248/5104f8d681ae9009e50b.webp",
+        "travel-maps/2cb18dabc42a29db2248/c8df7991c6e606a20812.webp",
+        "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+        "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+        "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp"
+      ],
+      "dark": [
+        "travel-maps/2cb18dabc42a29db2248/714925ff4e050c5d84ed.webp",
+        "travel-maps/2cb18dabc42a29db2248/bceb6d891f31b1891300.webp",
+        "travel-maps/2cb18dabc42a29db2248/fe0c645148c0ac6981af.webp",
+        "travel-maps/2cb18dabc42a29db2248/fd11ac118a063c125439.webp",
+        "travel-maps/2cb18dabc42a29db2248/fd11ac118a063c125439.webp",
+        "travel-maps/2cb18dabc42a29db2248/9ef3711617fa6852649d.webp",
+        "travel-maps/2cb18dabc42a29db2248/24239a26cc94f86ee809.webp",
+        "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp",
+        "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp",
+        "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp"
+      ]
+    },
+    "mobile": {
+      "light": [
+        "travel-maps/2cb18dabc42a29db2248/af5fea321a2f4a733ba9.webp",
+        "travel-maps/2cb18dabc42a29db2248/6bbc469de5cadb6d1437.webp",
+        "travel-maps/2cb18dabc42a29db2248/ce6ebd85aaa96276f040.webp",
+        "travel-maps/2cb18dabc42a29db2248/a9570a2e00b48d5200e6.webp",
+        "travel-maps/2cb18dabc42a29db2248/a9570a2e00b48d5200e6.webp",
+        "travel-maps/2cb18dabc42a29db2248/fd457eaa1323c96d4436.webp",
+        "travel-maps/2cb18dabc42a29db2248/34d5054afa2714bbcf8b.webp",
+        "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+        "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+        "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp"
+      ],
+      "dark": [
+        "travel-maps/2cb18dabc42a29db2248/d3c5883fa01ecaf074e9.webp",
+        "travel-maps/2cb18dabc42a29db2248/07c4ad9a2aeb2df86001.webp",
+        "travel-maps/2cb18dabc42a29db2248/ded8a24717006b85bc8c.webp",
+        "travel-maps/2cb18dabc42a29db2248/664cb31505ad370d52e4.webp",
+        "travel-maps/2cb18dabc42a29db2248/664cb31505ad370d52e4.webp",
+        "travel-maps/2cb18dabc42a29db2248/d46ce0e899183f31e407.webp",
+        "travel-maps/2cb18dabc42a29db2248/35979c87ee62d12cd4d1.webp",
+        "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp",
+        "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp",
+        "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp"
+      ]
+    }
+  },
+  "motion": {
+    "desktop": {
+      "viewport": {
+        "width": 1000,
+        "height": 1100,
+        "padding": {
+          "top": 64,
+          "right": 318,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "overscan": 0.24,
+      "segments": [
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lng": 135.50602650000002,
+              "lat": 34.69667627607705,
+              "zoom": 9.569436411373438
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/cb2de1a57712bece27ed.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/714925ff4e050c5d84ed.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.4408079260632,
+              "lat": 34.63240298907753,
+              "zoom": 9.651271847949497
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/15d1701b896834b8fdca.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8392495813a0a14116d3.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.38513520562736,
+              "lat": 34.57749776544541,
+              "zoom": 9.797748725053813
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2d323d3160cdfc789f5c.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/03fea01766ce2d6b25e8.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.34133190991565,
+              "lat": 34.53427282585096,
+              "zoom": 9.997203009171638
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/93cb00d056df4470d42f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/6fc43fb218a466743587.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.30902653945344,
+              "lat": 34.502379612516904,
+              "zoom": 10.237014126488486
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b4cfcc7f83be5de2006a.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c003923e7d8c04e6fdf4.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.27089507885063,
+              "lat": 34.464718931789974,
+              "zoom": 10.79482766806381
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c889bda73b9489dd37e5.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/19dadff82e7ee0e9ecf2.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.26065726365493,
+              "lat": 34.4546046200669,
+              "zoom": 11.097255617479773
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/831291943cd641afbd5c.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d211ccd25f8fe7886a57.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.2539668244204,
+              "lat": 34.447994228722195,
+              "zoom": 11.40856270386965
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/784e1d79db2574b21bf2.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/9e7b09e0868482e95ef0.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.24963878511198,
+              "lat": 34.443717693626034,
+              "zoom": 11.725642943783138
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c26cb052a71f05579f23.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/567ea89ee78a6e57e82f.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.2468573475059,
+              "lat": 34.44096923991903,
+              "zoom": 12.046445562973975
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/e41389a9c613591808f9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/67b602ded7612b6d347d.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.2450773954804,
+              "lat": 34.439210348152,
+              "zoom": 12.369635329601339
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a8c262289d49aedd8b79.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fbca294a8d5bde916d17.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.2439414187648,
+              "lat": 34.43808779287162,
+              "zoom": 12.694350656344621
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/fa35620ee35f032d124e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/e10d3b84e7a62e912aab.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.24321768557905,
+              "lat": 34.43737260264619,
+              "zoom": 13.020038762639748
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/247aac6f2940725b5c19.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7e89512d54ecf43b8fbc.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.24275710221752,
+              "lat": 34.43691745283203,
+              "zoom": 13.346346286969183
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b2fea297a738be7b4200.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/1cec8878c91aa1b5dd55.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.24246419308253,
+              "lat": 34.436627997885346,
+              "zoom": 13.673047870127501
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/df3bf3f688f32c489eeb.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/77e671a0c0676885753e.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.436444,
+              "lng": 135.242278,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/dc7c02efa2de0df69376.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/bceb6d891f31b1891300.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.436444,
+              "lng": 135.242278,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/dc7c02efa2de0df69376.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/bceb6d891f31b1891300.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.435911,
+              "lng": 135.243492,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/62fa6f8a1dba30133dc9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fe0c645148c0ac6981af.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.435911,
+              "lng": 135.243492,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/62fa6f8a1dba30133dc9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fe0c645148c0ac6981af.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.2479423503707,
+              "lat": 34.43403211670518,
+              "zoom": 13.496278586068762
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/4c54d5df5be095626638.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/3964ef9603e8a70e9d62.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.2515655699849,
+              "lat": 34.43250240666659,
+              "zoom": 13.268456936955797
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5f6dc7b0cf7de0843b6d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/acb2af39bd96e06187f7.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.25645160881783,
+              "lat": 34.43043949464592,
+              "zoom": 13.06488551075892
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/33a9c465dfdd211bc5c6.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/ce5f820edb1fa70d66c8.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.2627883378114,
+              "lat": 34.427764017557834,
+              "zoom": 12.893383950452577
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/34be1ebaa1ed22d7b942.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f212360a3373dd0d01bd.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.2706030036502,
+              "lat": 34.42446441192897,
+              "zoom": 12.762439643294968
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/cb3a6fc40691e6b2423a.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/1f515cab32ce851f1a25.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.27966341800106,
+              "lat": 34.42063864780361,
+              "zoom": 12.67999110510906
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c9b24b527ede4d827785.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/29ad6d7f80f96a04a6e7.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.289446,
+              "lat": 34.41650775151486,
+              "zoom": 12.651801374374456
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/8c9604606e8ef55281fc.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/4cbd85eb9d1c1d001ccb.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.29922858199893,
+              "lat": 34.41237665116269,
+              "zoom": 12.67999110510906
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/1524de6ee6cca13e5326.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7ce47acd1f604cb7207a.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.3082889963498,
+              "lat": 34.408550333992245,
+              "zoom": 12.762439643294968
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/45ad58a27e867f9cdda3.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/52170e5cdb57772c2444.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.3161036621886,
+              "lat": 34.405249970159026,
+              "zoom": 12.893383950452577
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/370f01909f8a0606d35d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/6134a64c3ffdf994beba.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.32244039118217,
+              "lat": 34.40257368704558,
+              "zoom": 13.06488551075892
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/e2e8d6e77671793fad1e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/97bccfb7ca7f733fcc50.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.32732643001515,
+              "lat": 34.400510036598774,
+              "zoom": 13.268456936955797
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ffb95c7335c635487990.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c4d9b8d6b1f4162f4db0.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.3309496496293,
+              "lat": 34.398979713241445,
+              "zoom": 13.496278586068764
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/8248c515b8c92c16e208.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/9dfd18475a237bbba19f.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f2aa342e8d20fc12c16e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fd11ac118a063c125439.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f2aa342e8d20fc12c16e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fd11ac118a063c125439.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f2aa342e8d20fc12c16e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fd11ac118a063c125439.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f2aa342e8d20fc12c16e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fd11ac118a063c125439.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.3358885763048,
+              "lat": 34.398041829278014,
+              "zoom": 13.469379618750558
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a42a574504d095894052.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/a6a9d9534d6863e4a562.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.3369048784199,
+              "lat": 34.40000092243796,
+              "zoom": 12.943326467558908
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/9748a69d8bbb1805d7a1.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/e442688ad7fc52b5bdb8.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.33899847180908,
+              "lat": 34.40403653105192,
+              "zoom": 12.426727679112187
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/8d1c2e452928c81cc8d9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5bd350af07c6daa3cc1d.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.34322623884418,
+              "lat": 34.412185377320945,
+              "zoom": 11.929411860196941
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/05f41c3e3eade5fbdb6e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/4af1efcaac6bb909bc3e.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.35143040294128,
+              "lat": 34.427996299609326,
+              "zoom": 11.470267212020378
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/80e974bb1886e767fafc.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f1f0014637ee1fea4766.webp"
+            }
+          },
+          {
+            "t": 0.34375,
+            "camera": {
+              "lng": 135.35782310107027,
+              "lat": 34.440314123619984,
+              "zoom": 11.26470172716632
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/eb991fc5711c6eaa3e1b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7c91603a5837e70a6090.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.36618748857614,
+              "lat": 34.45642837170337,
+              "zoom": 11.082432280910771
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/e6ff8eca406526bd6606.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f1b498ddfa41913a8bc5.webp"
+            }
+          },
+          {
+            "t": 0.40625,
+            "camera": {
+              "lng": 135.3767353225901,
+              "lat": 34.47674466362061,
+              "zoom": 10.930086759508791
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/37a1d8ea938cbfc61e22.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/69825d4f0c44903ae352.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.3894347758589,
+              "lat": 34.50119864973854,
+              "zoom": 10.814612666356222
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5d3a91ce08f5702d2c0b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2c3cb6769f6de5d844cf.webp"
+            }
+          },
+          {
+            "t": 0.46875,
+            "camera": {
+              "lng": 135.40389948137164,
+              "lat": 34.52904305824751,
+              "zoom": 10.74231619586926
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f574d50fbbbe06443956.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/979ef51df58097cd600d.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.41936949999996,
+              "lat": 34.55881238416776,
+              "zoom": 10.717674684039581
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/16f16cf8066beb79d404.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/82c2468c7465ef2b8f44.webp"
+            }
+          },
+          {
+            "t": 0.53125,
+            "camera": {
+              "lng": 135.43483951862834,
+              "lat": 34.58857106010511,
+              "zoom": 10.74231619586926
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/539e8db6fd4d405236b7.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/b074a76c350311d86951.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.4493042241411,
+              "lat": 34.616386242041536,
+              "zoom": 10.814612666356222
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/149e8fbae763a6e2061d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/07096ef6ee272eaca05c.webp"
+            }
+          },
+          {
+            "t": 0.59375,
+            "camera": {
+              "lng": 135.46200367740988,
+              "lat": 34.64079921697107,
+              "zoom": 10.930086759508791
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6ac051b0775bde1237da.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/e5c2017d3d53c3091aa0.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.47255151142383,
+              "lat": 34.66107053415435,
+              "zoom": 11.082432280910771
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ecef775b7823871269fb.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/85f58a9c33050d0e94dd.webp"
+            }
+          },
+          {
+            "t": 0.65625,
+            "camera": {
+              "lng": 135.4809158989297,
+              "lat": 34.677142077979696,
+              "zoom": 11.26470172716632
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b8ef58463bc030d82f47.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/25b903c5f51133ce6454.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.4873085970587,
+              "lat": 34.689423066110194,
+              "zoom": 11.470267212020378
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/454b7989926a825d1a16.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/36c2df8d9b966c06ea56.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.4955127611558,
+              "lat": 34.70518138539956,
+              "zoom": 11.92941186019694
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/14c22ec5b6f372daf4f9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7eec95f018c0d0c532a8.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.4997405281909,
+              "lat": 34.71330078541419,
+              "zoom": 12.426727679112187
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6218ce3b69f5d6410f89.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fba02dfd3dcf8cacb297.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.5018341215801,
+              "lat": 34.71732122329173,
+              "zoom": 12.943326467558908
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/927b611874b6cb960da0.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/0c4af17397039e2861c9.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.50285042369518,
+              "lat": 34.719272811409006,
+              "zoom": 13.469379618750558
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/35a91ee763965d24d66f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/b4e199020a457af567cb.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.720211,
+              "lng": 135.503339,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5104f8d681ae9009e50b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/9ef3711617fa6852649d.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.720211,
+              "lng": 135.503339,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5104f8d681ae9009e50b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/9ef3711617fa6852649d.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.50409790221494,
+              "lat": 34.72102619507675,
+              "zoom": 13.471501096948435
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/afa4eb6830273932909b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/56d5f8a703b4a3de0bad.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.50567182320611,
+              "lat": 34.722716838712955,
+              "zoom": 12.947622789247616
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/8564872638a83668e817.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8b43d355237c38400672.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.50890417403753,
+              "lat": 34.72618879364052,
+              "zoom": 12.433280425010905
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ab347846010ca41f5b45.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8a8fbcc69e3be6297795.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.5154106667067,
+              "lat": 34.73317715015506,
+              "zoom": 11.93832651557767
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/968ff2e5133670e19062.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/87bb821716660bb295d5.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.52799479237723,
+              "lat": 34.7466915660012,
+              "zoom": 11.481627413659137
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/4a89cc5f26ad05d9e1ea.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/bc1cccad1d7886b115d0.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.55055491638223,
+              "lat": 34.77091392829533,
+              "zoom": 11.096156501144954
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2735f77f01fb67e9dd88.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/10fe8a3a302b41719d95.webp"
+            }
+          },
+          {
+            "t": 0.40625,
+            "camera": {
+              "lng": 135.56664429975189,
+              "lat": 34.78818444162845,
+              "zoom": 10.944839236356424
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/d207e1cf571bfbd06265.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/4710e7f3245fd6367b8c.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.5859908454991,
+              "lat": 34.808946439394944,
+              "zoom": 10.8301895349452
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c73ac2b453e22bcca93e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5f81ce3c43135c191a78.webp"
+            }
+          },
+          {
+            "t": 0.46875,
+            "camera": {
+              "lng": 135.6080058070021,
+              "lat": 34.832565721249544,
+              "zoom": 10.758430916484697
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2a826da3840cea964685.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5946546fb4e5d895b382.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.63153899999998,
+              "lat": 34.85780638406748,
+              "zoom": 10.73397677684281
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2564fc889f70e34ffdba.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/391f1cd261cb86e7bae1.webp"
+            }
+          },
+          {
+            "t": 0.53125,
+            "camera": {
+              "lng": 135.6550721929978,
+              "lat": 34.883039304471765,
+              "zoom": 10.758430916484699
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/69d9e68baf080a38083b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/003258ff7ed3e006e7d7.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.67708715450084,
+              "lat": 34.90663732485727,
+              "zoom": 10.830189534945202
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2a9896bcfbfd6149af2a.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c5cb6a4aa3cf0d55232f.webp"
+            }
+          },
+          {
+            "t": 0.59375,
+            "camera": {
+              "lng": 135.69643370024806,
+              "lat": 34.92736945123678,
+              "zoom": 10.944839236356426
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5de6530b60861a9974f5.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/0caa2e9243352c80d5cc.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.71252308361767,
+              "lat": 34.944607151594944,
+              "zoom": 11.096156501144955
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/8c132c4483d892217034.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8fe31258443b5b7bdfb0.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.73508320762267,
+              "lat": 34.968771314537875,
+              "zoom": 11.48162741365914
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/112792d4b7db7dbb03ad.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/1994ef7d95ff0564862e.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.74766733329318,
+              "lat": 34.98224708371,
+              "zoom": 11.938326515577673
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/134f632f46e65b8c326e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7bb6754e125af2ba5de7.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.75417382596243,
+              "lat": 34.98921372185001,
+              "zoom": 12.433280425010908
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/d217c115617bd21bb139.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5e754b0d32cf66584685.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.75740617679384,
+              "lat": 34.992674447254615,
+              "zoom": 12.947622789247617
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/61e70c74742c5394b15c.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/0bdb37605339d3b5a315.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.758980097785,
+              "lat": 34.9943595171707,
+              "zoom": 13.471501096948439
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/1424ecf1f9bb77daa41f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/97fc7d945f07b6c718c4.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995172,
+              "lng": 135.759739,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c8df7991c6e606a20812.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/24239a26cc94f86ee809.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995172,
+              "lng": 135.759739,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c8df7991c6e606a20812.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/24239a26cc94f86ee809.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.76475699999997,
+              "lat": 34.99510450002783,
+              "zoom": 13.963565111384932
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2246208c1502c66c4105.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/953bb59ccffea4020c97.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/67c4960a938685ece1c8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2d73c953d0180091e145.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.76959823299103,
+              "lat": 34.994837397981854,
+              "zoom": 13.66598845331855
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/df28e85995615e404e23.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/ae3e8039cf40038cd5e8.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.769317421248,
+              "lat": 34.994520309584566,
+              "zoom": 13.332245773511493
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/0def726619a72cdce6bb.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d53fad5b09bd8e571c6b.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.7688715393565,
+              "lat": 34.99401682393403,
+              "zoom": 12.998930112123427
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/718daebc4bcaef6664e0.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/b736924f0f61e3692b9d.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.76816409574565,
+              "lat": 34.993217978887195,
+              "zoom": 12.666292224708334
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/06e95ec203e539d573f1.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/b672edf94dabb3bd74ab.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.76704301660732,
+              "lat": 34.991952040797855,
+              "zoom": 12.3347290517716
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c95886e3550531daf6ab.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c55d060e4ea30eda505a.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.76526986853605,
+              "lat": 34.989949737464315,
+              "zoom": 12.004867330719426
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/df56e4fbdfb7d4830d5f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/62dbcebf19f1170cfe62.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.76247389741746,
+              "lat": 34.986792325614026,
+              "zoom": 11.677692610738337
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/50eeb02a3a8c6e0c3025.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/3a3a866ce72b6fa54d4d.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.7580861755796,
+              "lat": 34.98183714876821,
+              "zoom": 11.354744720830563
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b7f813797028ca78776d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d2fe14b1ecdfad5aab7a.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.75125203681074,
+              "lat": 34.9741185676416,
+              "zoom": 11.038405136549047
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ef4e1b1aba58303dc5dc.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/591dac51311b5c5b9845.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.7407309940549,
+              "lat": 34.96223451866114,
+              "zoom": 10.73229846896509
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/88c0164a5537863253ef.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/a8b9135a1d37f314bf31.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.70140433541337,
+              "lat": 34.91779781021036,
+              "zoom": 10.17460356175174
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a41075cdc3d2827780d7.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/10d45b3949488723cf98.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.6682692319941,
+              "lat": 34.88033849341798,
+              "zoom": 9.941017320807926
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c328f95c093e9ca79eb8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/765cc4682f4e9a38b055.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.62390896655603,
+              "lat": 34.83016236502513,
+              "zoom": 9.753695985862537
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/d8ef0b4bb0b749dae5db.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/91ea9a7be949ad324b4f.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.56872658291246,
+              "lat": 34.76770258595182,
+              "zoom": 9.6260775426627
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/aa857713738079609d84.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/860bc8c94f896105ae49.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lng": 135.50602650000002,
+              "lat": 34.69667627607705,
+              "zoom": 9.569436411373438
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/cb2de1a57712bece27ed.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/714925ff4e050c5d84ed.webp"
+            }
+          }
+        ]
+      ]
+    },
+    "mobile": {
+      "viewport": {
+        "width": 640,
+        "height": 900,
+        "padding": {
+          "top": 64,
+          "right": 0,
+          "bottom": 150,
+          "left": 0
+        }
+      },
+      "overscan": 0.24,
+      "segments": [
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lng": 135.50602650000002,
+              "lat": 34.69667627607705,
+              "zoom": 9.115886561629155
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/af5fea321a2f4a733ba9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d3c5883fa01ecaf074e9.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.43865252172418,
+              "lat": 34.630277974473586,
+              "zoom": 9.177443869719115
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/7fd228c6069e54bb5d2b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/982c5c440896063c6fd2.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.3802624043912,
+              "lat": 34.57269041247484,
+              "zoom": 9.322353841057826
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/fc5cd0125ae1dd08ef5d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c7554015610947acd135.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.33471504695666,
+              "lat": 34.52774137623864,
+              "zoom": 9.53580072569094
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/0c7c42eca9cc04acc068.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/32d29fa55fb938f904e1.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.30201746774486,
+              "lat": 34.49545835193714,
+              "zoom": 9.800537366528207
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/e10f7760592e6f9814b5.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f9317706a939b17e4859.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.27991843125295,
+              "lat": 34.47363241541627,
+              "zoom": 10.101001084298204
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c96bd4906105a39f37f3.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/077846de61ebd85f21c6.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.2655848312338,
+              "lat": 34.459472897075834,
+              "zoom": 10.425119835051824
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f85729afa63b54aa2f9e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c87dab15c3af08ee4967.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.25653460684492,
+              "lat": 34.45053135073267,
+              "zoom": 10.764376618347669
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ae6819b13a2767145166.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/3476acf06b9c51f790dd.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.25091697133917,
+              "lat": 34.44498069205742,
+              "zoom": 11.113110377711076
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/71c0b0ea98b1f3a6a93f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/21477a18eab0cbce42d4.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.2474668570967,
+              "lat": 34.441571529327696,
+              "zoom": 11.4676955039855
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a07120c38aefa23d321f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/1e44822794ee1feed3bc.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.2453617524576,
+              "lat": 34.43949134312398,
+              "zoom": 11.82586256429188
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/0c0bb2740c057fd57644.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/a3bd4c321aea569642d7.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.2440824329209,
+              "lat": 34.43822714178144,
+              "zoom": 12.186210799197577
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/19696fca3150627f8442.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d96b5f6445afd77bc92a.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.2433068482241,
+              "lat": 34.43746071314427,
+              "zoom": 12.547882973876172
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/7e4ed3f06f7dd2498efa.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/4d8474adb76f47b94cc3.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.2428373440631,
+              "lat": 34.436996748234954,
+              "zoom": 12.91035719301877
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5355accde4bcf087095b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d823dc992f037d0c9dc2.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.24255338081912,
+              "lat": 34.43671613396427,
+              "zoom": 13.273316717308932
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6544f1cdb5f1292186fe.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f76d336138f5cdd89039.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.24238172821896,
+              "lat": 34.43654650532399,
+              "zoom": 13.636569682312315
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5ad86ea55a79b5914578.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f571454440b343fc1ed5.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.436444,
+              "lng": 135.242278,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6bbc469de5cadb6d1437.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/07c4ad9a2aeb2df86001.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.436444,
+              "lng": 135.242278,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6bbc469de5cadb6d1437.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/07c4ad9a2aeb2df86001.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.435911,
+              "lng": 135.243492,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ce6ebd85aaa96276f040.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/ded8a24717006b85bc8c.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.435911,
+              "lng": 135.243492,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ce6ebd85aaa96276f040.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/ded8a24717006b85bc8c.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.244607990151,
+              "lat": 34.435439846626295,
+              "zoom": 13.661022875963125
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/99c80fa236729225d9c5.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/1d3af13e0996801b3e9d.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.2463803603311,
+              "lat": 34.43469157453652,
+              "zoom": 13.332644335857077
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5ca4066ba9a59a9753d5.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/00a409d99d826e69915e.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.24914245583062,
+              "lat": 34.43352543968067,
+              "zoom": 13.020939633345424
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/7726632ecd060caa4fe7.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d65d60c32c8c6d5ce166.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.25332263842205,
+              "lat": 34.431760568732386,
+              "zoom": 12.734841576526632
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b241d8601d9635e273ae.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c60d32af830320fabea7.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.2593764890056,
+              "lat": 34.42920457004936,
+              "zoom": 12.486652526202896
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b2d35d968bfb8734344a.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/963f456b46340561f487.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.26760732039799,
+              "lat": 34.42572930204962,
+              "zoom": 12.291656480689161
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/84d28bda05b70ec8fa1b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5309bd54bb223e91bab6.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.27788696105875,
+              "lat": 34.42138877136124,
+              "zoom": 12.165972761285628
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a0e5ffe7e71802c94af7.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d7d0a9b74ba8a1390b78.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.289446,
+              "lat": 34.41650775151486,
+              "zoom": 12.122424862540724
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/bf9b49f54c07dd307580.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7850c776118b657f7d1b.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.30100503894124,
+              "lat": 34.411626446762455,
+              "zoom": 12.165972761285628
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a596f597acde2cfc6195.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c0e1588d41f5aa6ec864.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.311284679602,
+              "lat": 34.40728518400354,
+              "zoom": 12.291656480689161
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/9d65ae70598c83cf9fd8.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/0754f11a7de489eb243c.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.31951551099445,
+              "lat": 34.4038090049631,
+              "zoom": 12.486652526202894
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/0df4c658d25d390372a3.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/052004aa4aeedb918917.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.32556936157795,
+              "lat": 34.401252151801664,
+              "zoom": 12.734841576526632
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5903ade2155c1762dd5f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/191de0af2922efa0dcc3.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.32974954416943,
+              "lat": 34.39948659961407,
+              "zoom": 13.020939633345424
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/cdc5cb302590b56f5ae6.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/b6eef07d6e63a6222453.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.3325116396689,
+              "lat": 34.39831997373458,
+              "zoom": 13.332644335857076
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/1a275e46e95e4f26e623.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/3f50b7885953b4432172.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.33428400984906,
+              "lat": 34.39757136942961,
+              "zoom": 13.661022875963123
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/1a7c8afa50cf94db05f2.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d0f8046e5b6d4a38f438.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a9570a2e00b48d5200e6.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/664cb31505ad370d52e4.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a9570a2e00b48d5200e6.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/664cb31505ad370d52e4.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a9570a2e00b48d5200e6.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/664cb31505ad370d52e4.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.3971,
+              "lng": 135.3354,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a9570a2e00b48d5200e6.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/664cb31505ad370d52e4.webp"
+            }
+          },
+          {
+            "t": 0.03125,
+            "camera": {
+              "lng": 135.33550290178442,
+              "lat": 34.39729836480583,
+              "zoom": 13.696439896514145
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/bcb633546ec613e4fc18.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/58bc6d2e856b24abd7d9.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.33565959312818,
+              "lat": 34.39760041938363,
+              "zoom": 13.393342518223616
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b7198c1b60ff5a5ff423.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/c4d78c3ac3c270e0a370.webp"
+            }
+          },
+          {
+            "t": 0.09375,
+            "camera": {
+              "lng": 135.3358979983638,
+              "lat": 34.398059992091206,
+              "zoom": 13.090949459228447
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c89f57b2b758572117ad.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8cceff690ba88bf11362.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.3362602848714,
+              "lat": 34.398758365341564,
+              "zoom": 12.789627360006227
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ae9e441a1003e775700a.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8104aacb7d180ebf7ea3.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.33764092901305,
+              "lat": 34.40141975504331,
+              "zoom": 12.192697741326873
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/d877f6922a351b877bf1.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/a2c09b23ae73bf07b25a.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.34076564406325,
+              "lat": 34.40744277910779,
+              "zoom": 11.611244242406151
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/612ac11950baccf8dd6f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/84829a806a006ca5a4f4.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.34759716500707,
+              "lat": 34.420609322272526,
+              "zoom": 11.064215564102692
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/4e8918c4a134190499cb.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/45b27603e6d5de234bd5.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.36146572425645,
+              "lat": 34.44733213060975,
+              "zoom": 10.589705038452982
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/796465af5b4af4065548.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/56ab64f7374de0dddc76.webp"
+            }
+          },
+          {
+            "t": 0.40625,
+            "camera": {
+              "lng": 135.37222283899263,
+              "lat": 34.46805372764037,
+              "zoom": 10.39885549711746
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/32af25ca0644411bbb1f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/173f217358dab9f1f510.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.38581642338931,
+              "lat": 34.49423190378096,
+              "zoom": 10.252070289461027
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/9bbf533552ca4950f62e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2647d3b9b58f8b58892a.webp"
+            }
+          },
+          {
+            "t": 0.46875,
+            "camera": {
+              "lng": 135.4018675151379,
+              "lat": 34.52513210606994,
+              "zoom": 10.159109988892073
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f4779632996f0a3806a1.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2b38ee51464ca48d5ecd.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.41936949999996,
+              "lat": 34.55881238416778,
+              "zoom": 10.127223173820726
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b3dd75555db4fe46f52c.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/afcad906316fa003a086.webp"
+            }
+          },
+          {
+            "t": 0.53125,
+            "camera": {
+              "lng": 135.43687148486208,
+              "lat": 34.59247903082259,
+              "zoom": 10.159109988892064
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f16c6e1bf32b2fb8e52e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/bf56bbb867c3a76b2638.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.4529225766106,
+              "lat": 34.62334276524155,
+              "zoom": 10.252070289461011
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/e843b3c2fe24d1d1ca14.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/6c89d0fef54a85f17a62.webp"
+            }
+          },
+          {
+            "t": 0.59375,
+            "camera": {
+              "lng": 135.46651616100735,
+              "lat": 34.649472124192506,
+              "zoom": 10.398855497117438
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/8baa9c25419117cfe7f4.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f888247adfdac979121b.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.47727327574353,
+              "lat": 34.67014343373823,
+              "zoom": 10.589705038452955
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/dfc298c92d3c9d379cbe.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/2eba42d89484f7321850.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.4911418349929,
+              "lat": 34.69678621129835,
+              "zoom": 11.064215564102659
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/37dd5048fa38ca84c61d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/87eb312a0943d3813d8c.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.49797335593672,
+              "lat": 34.70990703915265,
+              "zoom": 11.611244242406116
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/e54e0d1f092056cf24cb.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/637229875e5e106a35a4.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.50109807098698,
+              "lat": 34.71590776877071,
+              "zoom": 12.192697741326834
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/966cc39d19cf19f3da20.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/0bf452e2334267095a2f.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.50247871512858,
+              "lat": 34.71855903094803,
+              "zoom": 12.78962736000619
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2fa3d769f665414ae669.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/709509c4ae6ee5f21051.webp"
+            }
+          },
+          {
+            "t": 0.90625,
+            "camera": {
+              "lng": 135.50284100163617,
+              "lat": 34.71925471859665,
+              "zoom": 13.090949459228408
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/77b43a64b7072ba396d3.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/323121c7e5f42cb3f4ce.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.5030794068718,
+              "lat": 34.71971251765199,
+              "zoom": 13.393342518223578
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/467f79576815dd086c75.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/387da2eed0afcdc1894a.webp"
+            }
+          },
+          {
+            "t": 0.96875,
+            "camera": {
+              "lng": 135.50323609821555,
+              "lat": 34.72001340374568,
+              "zoom": 13.696439896514107
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/d43a81bdecfa2bedfc27.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/208e1de14e3ae3ea433e.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.720211,
+              "lng": 135.503339,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/fd457eaa1323c96d4436.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d46ce0e899183f31e407.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.720211,
+              "lng": 135.503339,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/fd457eaa1323c96d4436.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d46ce0e899183f31e407.webp"
+            }
+          },
+          {
+            "t": 0.03125,
+            "camera": {
+              "lng": 135.5034990599637,
+              "lat": 34.72038293335245,
+              "zoom": 13.69748394615376
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/25d40ab5d972c5891e62.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/309f10e8d78202e68da2.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.50374243397982,
+              "lat": 34.720644360381755,
+              "zoom": 13.395437340852505
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/67ed4b59d3ea96773f65.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/564da52b6dc449d2e22b.webp"
+            }
+          },
+          {
+            "t": 0.09375,
+            "camera": {
+              "lng": 135.50411218518377,
+              "lat": 34.72104153743207,
+              "zoom": 13.094104247805209
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/224510a1e889ccbc42ce.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/369a36929a88a42afcca.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.50467323842696,
+              "lat": 34.72164420247402,
+              "zoom": 12.793854498713443
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f9614d5610072595ea68.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/63098b80add658f1c5c3.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.50680620896514,
+              "lat": 34.72393532956087,
+              "zoom": 12.199123311069313
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/252a368d2f8a5d8ae2a5.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/6efe2ee0df10d7bbd622.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.51161857792084,
+              "lat": 34.729104295185685,
+              "zoom": 11.61997128158755
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/03529c2eb9ac686ef128.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7fb50e804488724a4da7.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.52210541620565,
+              "lat": 34.74036708881621,
+              "zoom": 11.075362691702008
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6f5d093917bd0ac7e5e6.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/9935f016589b709888f7.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.54332313987072,
+              "lat": 34.76315008569647,
+              "zoom": 10.60328117606621
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6e81b555d78e824b7068.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/087ef8a1ba95defebb0e.webp"
+            }
+          },
+          {
+            "t": 0.40625,
+            "camera": {
+              "lng": 135.55974283619616,
+              "lat": 34.780776780857266,
+              "zoom": 10.413531622374487
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/f672e2f061d0eb544441.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5653033290f44f878e1a.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.58046329295513,
+              "lat": 34.803015007869156,
+              "zoom": 10.267652815511846
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/7d724007069ea7ade7c0.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/eacda4dc6ef78416f22b.webp"
+            }
+          },
+          {
+            "t": 0.46875,
+            "camera": {
+              "lng": 135.60490407165895,
+              "lat": 34.8292383596424,
+              "zoom": 10.175297176953976
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/07d86554f244a52a5961.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7333a2dd9246c13d4f1a.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.63153899999998,
+              "lat": 34.85780638406748,
+              "zoom": 10.143623667422158
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/07432d5410efeb55c303.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/1fb3882bfb75c7e8065b.webp"
+            }
+          },
+          {
+            "t": 0.53125,
+            "camera": {
+              "lng": 135.658173928341,
+              "lat": 34.8863644906385,
+              "zoom": 10.175297176953983
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/88bbcad6d339c7c93aab.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/f56a41a01a515a7e9afa.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.68261470704482,
+              "lat": 34.91256128963167,
+              "zoom": 10.26765281551186
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/4da31bcf4b5e70347a1f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/86b8bab9b6d94fd8dbb0.webp"
+            }
+          },
+          {
+            "t": 0.59375,
+            "camera": {
+              "lng": 135.70333516380379,
+              "lat": 34.93476392352503,
+              "zoom": 10.413531622374505
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/d691ef7e3e2acdb2f533.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5195a4c80dbb48c80ba4.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.71975486012917,
+              "lat": 34.952353887775814,
+              "zoom": 10.60328117606623
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a11fac939fe1391947c2.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/1348d14524093320267e.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.74097258379425,
+              "lat": 34.975078256269285,
+              "zoom": 11.075362691702036
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b77bdd3e81e4199c181d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/4e766b70494a5e0e3bed.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.7514594220791,
+              "lat": 34.986307424761335,
+              "zoom": 11.619971281587578
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ccb00cdf740d4d34e3f4.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7da2370bb567502125cc.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.7562717910348,
+              "lat": 34.99145993065202,
+              "zoom": 12.199123311069343
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/39b5cb005bdb1206ad43.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fa83f996eede7ee4b928.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.758404761573,
+              "lat": 34.993743555241124,
+              "zoom": 12.793854498713475
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/a6b788c7025318ec345d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/0fb540e9b15c76cf35f0.webp"
+            }
+          },
+          {
+            "t": 0.90625,
+            "camera": {
+              "lng": 135.75896581481612,
+              "lat": 34.99434422570701,
+              "zoom": 13.094104247805241
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/c2c81b350132a9336a41.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7f345c2944d9582fe0b5.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.75933556602013,
+              "lat": 34.99474008345942,
+              "zoom": 13.395437340852535
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/d2123329fdecd5f9dcaa.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/365e7f9178617961d532.webp"
+            }
+          },
+          {
+            "t": 0.96875,
+            "camera": {
+              "lng": 135.75957894003625,
+              "lat": 34.995000640027285,
+              "zoom": 13.697483946153792
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/ff5af127610a39194b7d.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/fb74fa8e7df45bd5937a.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995172,
+              "lng": 135.759739,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/34d5054afa2714bbcf8b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/35979c87ee62d12cd4d1.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995172,
+              "lng": 135.759739,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/34d5054afa2714bbcf8b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/35979c87ee62d12cd4d1.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.76217796596194,
+              "lat": 34.99513919208854,
+              "zoom": 13.939860233561726
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/7e3bc0100f6e7242144b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d67391d94b847f72635d.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.76475699999997,
+              "lat": 34.99510450002783,
+              "zoom": 13.919438810263353
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/5ae72bbf31172468dc9c.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8ae4ba1dec9b58044fde.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.767336034038,
+              "lat": 34.99506980795242,
+              "zoom": 13.939860233561726
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b1344bf350d9161031fe.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/7bd3da93e4d91c1c178a.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp"
+            }
+          }
+        ],
+        [
+          {
+            "t": 0,
+            "camera": {
+              "lat": 34.995037,
+              "lng": 135.769775,
+              "zoom": 14
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/75565887b21deb3a87ee.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/27405968746d19aa6da3.webp"
+            }
+          },
+          {
+            "t": 0.0625,
+            "camera": {
+              "lng": 135.76967729490138,
+              "lat": 34.99492667328045,
+              "zoom": 13.628732329460624
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/2a76a33ef914bfdba340.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/cd73bf68bd01f99ac244.webp"
+            }
+          },
+          {
+            "t": 0.125,
+            "camera": {
+              "lng": 135.7695138444065,
+              "lat": 34.994742107790394,
+              "zoom": 13.257652008566705
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/e788af5df566e761eece.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/11c2e6e9720c2b278df0.webp"
+            }
+          },
+          {
+            "t": 0.1875,
+            "camera": {
+              "lng": 135.7692405035674,
+              "lat": 34.99443345508205,
+              "zoom": 12.886885049811788
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/46faad4e5b7341d14f7f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/41127b5621c9d4c4df99.webp"
+            }
+          },
+          {
+            "t": 0.25,
+            "camera": {
+              "lng": 135.7687836565761,
+              "lat": 34.99391758715715,
+              "zoom": 12.516641979461403
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/716b89e2f3c1349c94d9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/597e9cabef36776af920.webp"
+            }
+          },
+          {
+            "t": 0.3125,
+            "camera": {
+              "lng": 135.76802084749403,
+              "lat": 34.99305622206866,
+              "zoom": 12.14727408319324
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/1c70622b5f6d0732a935.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/74e92320e873500fe86f.webp"
+            }
+          },
+          {
+            "t": 0.375,
+            "camera": {
+              "lng": 135.76674922574205,
+              "lat": 34.99162028484604,
+              "zoom": 11.779366305162435
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/89f283cf186f591bc282.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/8f24c9895c71ee41b460.webp"
+            }
+          },
+          {
+            "t": 0.4375,
+            "camera": {
+              "lng": 135.76463510997013,
+              "lat": 34.98923293308507,
+              "zoom": 11.413889300380223
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/420d2fc22d4de2c13296.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/6d38d1f0ae6c19e3ee65.webp"
+            }
+          },
+          {
+            "t": 0.5,
+            "camera": {
+              "lng": 135.76113602866087,
+              "lat": 34.98528146483291,
+              "zoom": 11.052444498717607
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/6ff02efdb2153083336e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/ea7a359c96036bb2726c.webp"
+            }
+          },
+          {
+            "t": 0.5625,
+            "camera": {
+              "lng": 135.75538740438594,
+              "lat": 34.97878920211423,
+              "zoom": 10.697648749177104
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/3abbe9f41b7e3901e14e.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/b2cc1827b4cf8ab00a25.webp"
+            }
+          },
+          {
+            "t": 0.625,
+            "camera": {
+              "lng": 135.74605692868784,
+              "lat": 34.96825064618346,
+              "zoom": 10.353710603004098
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/072575a69df9734ae79f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/5d30cade6f47298c7074.webp"
+            }
+          },
+          {
+            "t": 0.6875,
+            "camera": {
+              "lng": 135.73120708039704,
+              "lat": 34.9514752908511,
+              "zoom": 10.027223098314833
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/b95d3f90ffdc5c33cc0b.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/41c353519e230a7fdfcd.webp"
+            }
+          },
+          {
+            "t": 0.75,
+            "camera": {
+              "lng": 135.70829548592127,
+              "lat": 34.92558612677361,
+              "zoom": 9.72808093230188
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/76d0f08ba79dfdaaed47.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/a539fb4bdb5e2c9cbaab.webp"
+            }
+          },
+          {
+            "t": 0.8125,
+            "camera": {
+              "lng": 135.67458581009936,
+              "lat": 34.88748071857149,
+              "zoom": 9.470138207914351
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/4b4208f27fe7d8d7e478.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/9c970bcae99141afa8c4.webp"
+            }
+          },
+          {
+            "t": 0.875,
+            "camera": {
+              "lng": 135.62830245029596,
+              "lat": 34.83513322273031,
+              "zoom": 9.27075008921042
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/893539fa65ff92b0539f.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/b6f311d38e37791ee6ce.webp"
+            }
+          },
+          {
+            "t": 0.9375,
+            "camera": {
+              "lng": 135.57044270143638,
+              "lat": 34.76964573725418,
+              "zoom": 9.1480717430752
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/86d9a4e60b7772ee01da.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/09ef1e062d25fa737133.webp"
+            }
+          },
+          {
+            "t": 1,
+            "camera": {
+              "lng": 135.50602650000002,
+              "lat": 34.69667627607705,
+              "zoom": 9.115886561629155
+            },
+            "images": {
+              "light": "travel-maps/2cb18dabc42a29db2248/af5fea321a2f4a733ba9.webp",
+              "dark": "travel-maps/2cb18dabc42a29db2248/d3c5883fa01ecaf074e9.webp"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

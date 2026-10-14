@@ -1,24 +1,32 @@
 catalogMode: prefer
 cleanupUnusedCatalogs: true
-
 shellEmulator: true
 trustPolicy: no-downgrade
-
 packages:
   - theme
   - demo
+overrides:
+  # Native's install/runtime do not use this legacy development utility.
+  '@maplibre/maplibre-gl-native>npm-run-all': '-'
 catalog:
   '@antfu/eslint-config': ^6.4.2
   '@iconify-json/ant-design': ^1.2.5
   '@iconify-json/simple-icons': ^1.2.61
+  '@maplibre/maplibre-gl-native': 6.4.1
   '@types/markdown-it': ^14.1.2
   '@unocss/eslint-plugin': ^66.5.10
   bumpp: ^10.3.2
   eslint: ^9.39.1
   eslint-plugin-format: ^1.1.0
+  gray-matter: ^4.0.3
+  jiti: ^2.6.1
   maplibre-gl: ^6.13.0
   markdown-it: ^14.1.0
+  sharp: 0.35.5
   typescript: ^5.9.3
   valaxy: ^0.26.10
   vitest: ^4.0.15
   vue-tsc: ^3.1.6
+onlyBuiltDependencies:
+  - '@maplibre/maplibre-gl-native'
+  - sharp

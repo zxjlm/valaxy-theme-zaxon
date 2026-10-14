@@ -3,6 +3,7 @@ import type { ThemeConfig } from './types'
 import { defineTheme } from 'valaxy'
 import { defaultThemeConfig, generateSafelist, themePlugin } from './node'
 import { travelStopsPlugin } from './node/travel-markdown'
+import { readStaticTravelMap, travelPoints } from './node/travel-static'
 
 const preloadableDependency = /\.(?:js|mjs|css)$/i
 const katexFontFace = /@font-face\{[^{}]*font-family:KaTeX[^{}]*\}/g
@@ -35,6 +36,16 @@ function stripKatexFontPreloads(): Plugin {
 export default defineTheme<ThemeConfig>((options) => {
   return {
     themeConfig: defaultThemeConfig,
+    extendMd(ctx) {
+      if (ctx.data.layout !== 'travel')
+        return
+      const config = (options.config.themeConfig as ThemeConfig).travel
+      const map = readStaticTravelMap(options.userRoot, travelPoints(ctx.content, ctx.data), config)
+      if (map)
+        ctx.route.addToMeta({ frontmatter: { travelMap: map } })
+      else if (config?.rendering === 'static')
+        console.warn(`[zaxon] Missing or outdated static travel map: ${ctx.path}. Run zaxon-travel-maps before building.`)
+    },
     markdown: {
       // Valaxy's config merge recurses when theme and site both define the same hook,
       // and sites usually add markdown-it plugins through `config`.

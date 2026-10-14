@@ -26,6 +26,14 @@ html.dark .travel-map--ready {
   height: 100%;
 }
 
+.travel-map__raster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 // Keep the shell's canvas-coloured fade underneath the map instead of over it.
 .field-shell:has(> .travel-map)::after {
   z-index: -3;
