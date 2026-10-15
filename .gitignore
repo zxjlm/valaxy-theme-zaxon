@@ -70,3 +70,9 @@ design
 todo
 fly-raw.md
 fly-raw.png
+
+# Generated map images are restored/generated before development and builds.
+# Keep the small map.json manifests in version control.
+**/public/travel-maps/**/*.webp
+**/public/travel-maps/**/*.tmp
+**/.cache/zaxon/

@@ -2,6 +2,9 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "predev": "node ../theme/bin/travel-maps.mjs --root .",
+    "prebuild:spa": "node ../theme/bin/travel-maps.mjs --root .",
+    "prebuild:ssg": "node ../theme/bin/travel-maps.mjs --root .",
     "build": "npm run build:ssg",
     "build:spa": "valaxy build",
     "build:ssg": "valaxy build --ssg",

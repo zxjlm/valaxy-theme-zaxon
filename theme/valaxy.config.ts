@@ -41,10 +41,15 @@ export default defineTheme<ThemeConfig>((options) => {
         return
       const config = (options.config.themeConfig as ThemeConfig).travel
       const map = readStaticTravelMap(options.userRoot, travelPoints(ctx.content, ctx.data), config)
-      if (map)
+      if (map) {
         ctx.route.addToMeta({ frontmatter: { travelMap: map } })
-      else if (config?.rendering === 'static')
-        console.warn(`[zaxon] Missing or outdated static travel map: ${ctx.path}. Run zaxon-travel-maps before building.`)
+      }
+      else if (config?.rendering === 'static' && travelPoints(ctx.content, ctx.data).length) {
+        const message = `[zaxon] Missing or outdated static travel map: ${ctx.path}. Run zaxon-travel-maps before building.`
+        if (options.mode === 'build')
+          throw new Error(message)
+        console.warn(message)
+      }
     },
     markdown: {
       // Valaxy's config merge recurses when theme and site both define the same hook,

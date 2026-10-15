@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "travel:maps": "node theme/bin/travel-maps.mjs --root demo",
+    "travel:maps:check": "node theme/bin/travel-maps.mjs --root demo --check",
     "release": "git add -A && cd theme && pnpm exec bumpp --all",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },

@@ -8,7 +8,7 @@
 
 现在根据文章坐标预生成完整相机路径：总览、地点，以及点到点之间的平移和缩放画面，包含桌面、手机、明暗四套版本。相机路径沿用原来的 fly 插值；远距离移动会先拉远，再移向目标并放大。
 
-运行时在 Canvas 2D 中对已解码的地图图片做连续 Web Mercator 投影，随阅读进度平移、缩放。一次滚动可以在同一张图片上连续移动；切换附近的预生成画面时短暂混合，两张地图使用同一个相机位置，避免地理位置跳动。路线底图提前绘制，当前地点高亮单独叠加。普通构建和读者访问不需要连接地图提供商，也不加载 MapLibre GL。
+运行时在 Canvas 2D 中对已解码的地图图片做连续 Web Mercator 投影，随阅读进度平移、缩放。一次滚动可以在同一张图片上连续移动；切换附近的预生成画面时短暂混合，两张地图使用同一个相机位置，避免地理位置跳动。路线底图提前绘制，当前地点高亮单独叠加。资源齐全或有可恢复缓存时，构建不连接地图提供商；读者访问不连接地图提供商，也不加载 MapLibre GL。
 
 每张图片在四周预留 24% 的范围，防止平移、缩放露出空白。路径按相机变化自适应采样，较远地点之间有更多画面；重复坐标直接复用。生成清单为 v2，旧的只有固定点位的生成结果不会被复用。
 
@@ -16,11 +16,10 @@
 
 生成器使用 MapLibre Native 直接绘制，sharp 编码 WebP，无需 Playwright、Chromium 或本地 HTTP 服务。推荐 Node.js 24；原生渲染器的预编译二进制与 Node ABI、操作系统、CPU 架构相关。
 
-在本仓库中安装依赖，然后生成所有游记地图并构建：
+在本仓库中安装依赖并构建。`pnpm build`、`pnpm build:demo` 和 `pnpm dev` 均在启动 Valaxy 前自动恢复或生成所有游记地图：
 
 ```bash
 pnpm install
-pnpm travel:maps
 pnpm build
 ```
 
@@ -28,6 +27,19 @@ pnpm build
 
 ```bash
 pnpm travel:maps --file pages/posts/79ee39fe-312d-4ffe-9397-3d602da52f9e.md
+```
+
+`pnpm travel:maps` 也可手动准备全部文章。命令首先校验本地图片；缺失或损坏时从 `demo/.cache/zaxon/travel-maps/` 恢复。缓存也不可用时才加载 Native 和 sharp 联网生成。每张图片都必须匹配文件名中的 SHA-256 内容摘要，恢复完成后再次校验。
+
+```bash
+# 只检查发布目录，缺失、损坏或过期时以非零状态退出，不恢复或生成
+pnpm travel:maps:check
+
+# 自定义持久缓存目录，目录不要放在 public/ 中
+pnpm travel:maps --cache-dir /path/to/map-cache
+
+# 绕过已有图片与缓存，更新底图
+pnpm travel:maps --force
 ```
 
 主题安装到其他 Valaxy 网站时：
@@ -38,13 +50,17 @@ pnpm exec zaxon-travel-maps --root .
 pnpm build
 ```
 
+其他站点需要把 `zaxon-travel-maps --root .` 接到自己的开发和构建命令之前。例如，使用 npm 运行 `build` 的站点可增加 `"prebuild": "zaxon-travel-maps --root ."`；使用 `pnpm run` 时建议在 `build` 命令中显式串联准备步骤，不依赖包管理器是否启用 pre/post 钩子。将 `public/travel-maps/**/*.webp`、`public/travel-maps/**/*.tmp` 和 `.cache/zaxon/` 加入站点的 `.gitignore`，小型 `map.json` 可继续提交。
+
 命令读取站点的 `valaxy.config.ts`，使用 `themeConfig.travel.style`、`darkStyle`、`zoom`、`attribution`。默认仍是 OpenFreeMap Positron / Fiord。自定义提供商应允许将生成的图片公开托管。
 
 本仓库已针对性允许原生库的安装脚本。其他 pnpm 站点如果阻止了安装脚本，需要允许 `@maplibre/maplibre-gl-native` 和 sharp 的脚本。Linux 无显示环境根据所用原生后端可能需要 OpenGL/Mesa 和 Xvfb，可使用 `xvfb-run -a pnpm travel:maps`；这次实际验收环境是 macOS arm64、Node.js 24.13.1。
 
 本仓库保留 `trustPolicy: no-downgrade`，并排除了 Native 包携带的旧开发工具 `npm-run-all`。已核对其安装脚本和运行入口，两者均不使用该工具；该排除项不影响下载官方预编译二进制。
 
-生成文件位于站点的 `public/travel-maps/`，需要随网站提交和部署；它们是发布资源，不是临时构建目录。只要坐标顺序和样式配置没有变化，重复执行会跳过已有结果，无须加载原生渲染库。文字、照片、地图透明度和 CDN 域名修改不会使地图失效。希望更新底图数据时执行 `pnpm travel:maps --force`。
+生成文件位于站点的 `public/travel-maps/`，需要随网站部署。WebP 是发布产物，不进入 Git；本仓库只跟踪小型 `map.json`。本地持久缓存位于站点的 `.cache/zaxon/`，同样不进入 Git。只要坐标顺序和样式配置没有变化，重复执行会校验并复用已有结果，无须加载原生渲染库。文字、照片、地图透明度和 CDN 域名修改不会使地图失效。希望更新底图数据时执行 `pnpm travel:maps --force`。
+
+已有 Git 图片需要一次性取消跟踪，单纯添加忽略规则无效。迁移不会删除本地图片，也不会重写已有 Git 历史。新的清单在所有资源写入后才发布；旧图片不会自动删除，以保留旧部署所引用的资源。
 
 生成器会在单次运行中复用瓦片、字体等资源，最多并发 6 个底图资源请求；网络错误会使生成失败，manifest 只在全部图片成功后更新。Native 相机没有 padding 接口，生成器通过 Web Mercator 偏移保持原有地图焦点位置。manifest 记录 `renderer: maplibre-native`，原来的浏览器生成结果不会被当成原生结果复用。
 
@@ -63,10 +79,14 @@ export default defineConfig<ThemeConfig>({
 ```
 
 - `auto`（默认）：有匹配的生成结果时使用图片，否则使用原来的实时地图。
-- `static`：只使用生成图片；缺失时构建提示重新生成，页面不启动实时地图。演示站点采用此模式。
+- `static`：只使用生成图片；含有效地点的文章缺失地图时，生产构建失败，开发时提示生成。页面不启动实时地图。演示站点采用此模式。
 - `live`：使用原来的实时地图。
 
-新增或修改游记坐标后，先执行生成命令，再构建。开发服务器启动前应完成生成；若已启动，需要重启才能重新接入生成结果。普通 CI 构建直接使用已提交资源，无须安装浏览器或联网生成地图。主题将 Native 与 sharp 声明为可选 peerDependencies，普通站点构建不加载这两个库。
+新增或修改游记坐标后，重新启动开发命令或执行构建会自动准备资源；若开发服务器已经运行，需要完成生成后重启。CI 在 Ubuntu 24.04、Node.js 24 下恢复 Actions 缓存，缓存不足时通过 Mesa/Xvfb 原生生成，再把验证后的资源作为构建产物交给 Linux 和 Windows 构建。构建任务无需重新渲染。缓存键包含文章、配置、生成器、清单和锁文件摘要；恢复其他缓存版本时仍按地图键和图片摘要逐项检查。
+
+首次检出且无资源缓存的构建需要访问地图提供商，并需要可运行的原生渲染环境；后续命中完整缓存时不需要。缓存可能失效，构建始终有重新生成路径；网络或原生渲染失败会中止准备步骤，后续构建不会继续。主题将 Native 与 sharp 声明为可选 peerDependencies，普通站点构建不加载这两个库。
+
+在 Cloudflare Pages 等托管构建平台上，构建命令仍为 `pnpm build`，Node.js 使用 24。需要确保冷构建环境支持原生库和所需图形运行库；若平台不支持，应在具备该环境的 CI 中生成、构建，再上传静态站点。GitHub 的 Actions 缓存不自动共享给其他托管平台。当前未连接任何远端资源存储；本地缓存与 GitHub CI 缓存已接入。
 
 ## Cloudflare
 

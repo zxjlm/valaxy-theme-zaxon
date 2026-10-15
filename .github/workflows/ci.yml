@@ -10,6 +10,41 @@ on:
       - main
 
 jobs:
+  travel-maps:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install map rendering libraries
+        run: sudo apt-get update && sudo apt-get install -y xvfb xauth libglfw3 libegl1 libopengl0 libuv1t64
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Restore map resource cache
+        uses: actions/cache@v4
+        with:
+          path: demo/.cache/zaxon
+          key: travel-maps-v1-${{ hashFiles('demo/pages/**/*.md', 'demo/public/travel-maps/**/map.json', 'demo/valaxy.config.ts', 'theme/node/travel*.ts', 'theme/node/generate-travel-maps.ts', 'theme/composables/travel*.ts', 'pnpm-lock.yaml') }}
+          restore-keys: travel-maps-v1-
+
+      - name: Restore or generate and verify maps
+        run: xvfb-run -a pnpm travel:maps
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+
+      - name: Share maps with build jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: travel-maps
+          path: demo/public/travel-maps
+          if-no-files-found: error
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +52,7 @@ jobs:
       - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: lts/*
+          node-version: 24
           cache: pnpm
 
       - name: Install
@@ -33,7 +68,7 @@ jobs:
       - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: lts/*
+          node-version: 24
           cache: pnpm
 
       - name: Install
@@ -47,11 +82,12 @@ jobs:
 
   # check windows build
   build:
+    needs: travel-maps
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        node-version: [lts/*]
+        node-version: [24]
         os: [ubuntu-latest, windows-latest]
       fail-fast: false
 
@@ -70,6 +106,12 @@ jobs:
 
       - name: Install
         run: pnpm install
+
+      - name: Restore prepared maps
+        uses: actions/download-artifact@v4
+        with:
+          name: travel-maps
+          path: demo/public/travel-maps
 
       - name: Build
         run: pnpm run build

@@ -2,6 +2,8 @@
 
 Zaxon 是 [Valaxy](https://valaxy.site) 自定义主题。它的视觉核心是「Field Notes」：技术长文、生活记录、旅行照片、短笔记与摘录被放进同一个低饱和像素手帐空间里。
 
+游记地图使用预生成 WebP，随阅读进度连续平移、缩放。演示站点开发与构建前会自动恢复或生成地图，并校验图片；生成图片不进入 Git。使用方式见[游记地图加速](./docs/travel-map-performance.md)。
+
 > English documentation: [README.md](./README.md).
 
 ## 预览

@@ -10,6 +10,7 @@ export default antfu(
     ignores: [
       '**/.valaxy/**',
       '**/dist/**',
+      '**/.cache/zaxon/**',
       'demo/public/atom.xml',
       'demo/public/feed.*',
       'demo/public/valaxy-fuse-list.json',

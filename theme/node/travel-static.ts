@@ -49,10 +49,14 @@ export function travelMapKey(points: TravelPoint[], config: Partial<TravelConfig
 }
 
 export function readStaticTravelMap(userRoot: string, points: TravelPoint[], config: Partial<TravelConfig> = {}): StaticTravelMap | undefined {
+  return readTravelMap(join(userRoot, 'public'), points, config)
+}
+
+/** Shared by the site reader and the publishing resource cache. */
+export function readTravelMap(publicRoot: string, points: TravelPoint[], config: Partial<TravelConfig> = {}): StaticTravelMap | undefined {
   if (!points.length || config.rendering === 'live')
     return
   const key = travelMapKey(points, config)
-  const publicRoot = join(userRoot, 'public')
   const path = join(publicRoot, 'travel-maps', key, 'map.json')
   if (!existsSync(path))
     return
@@ -60,7 +64,7 @@ export function readStaticTravelMap(userRoot: string, points: TravelPoint[], con
     const map: StaticTravelMap = JSON.parse(readFileSync(path, 'utf8'))
     if (map.version !== 2 || map.renderer !== 'maplibre-native' || map.key !== key || JSON.stringify(map.points) !== JSON.stringify(points))
       return
-    const imageExists = (image: string) => typeof image === 'string' && /^travel-maps\/[a-f\d]+\/[a-f\d]+\.webp$/.test(image) && existsSync(join(publicRoot, image))
+    const imageExists = (image: string) => typeof image === 'string' && image.startsWith(`travel-maps/${key}/`) && /^travel-maps\/[a-f\d]+\/[a-f\d]+\.webp$/.test(image) && existsSync(join(publicRoot, image))
     for (const size of ['desktop', 'mobile'] as const) {
       for (const mode of ['light', 'dark'] as const) {
         const images = map.scenes[size][mode]

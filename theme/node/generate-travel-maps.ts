@@ -8,14 +8,15 @@ import { Buffer } from 'node:buffer'
 import { createHash } from 'node:crypto'
 import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
-import { join, resolve } from 'node:path'
+import { join, resolve, sep } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
 import { loadConfigFromFile } from 'valaxy'
 import { travelMotionPlan } from '../composables/travel-motion'
+import { copyTravelMap, prepareCachedTravelMap, verifiedTravelMap } from './travel-map-cache'
 import { createMapResourceLoader } from './travel-map-resources'
 import { mapResourceUrl, nativeCameraCenter, nativeTravelStyle, TRAVEL_MAP_SIZES } from './travel-native'
-import { readStaticTravelMap, travelMapDefaults, travelMapKey, travelPoints } from './travel-static'
+import { travelMapDefaults, travelMapKey, travelPoints } from './travel-static'
 
 const require = createRequire(import.meta.url)
 
@@ -30,19 +31,31 @@ async function markdownFiles(dir: string): Promise<string[]> {
 export async function generateTravelMaps() {
   const { values } = parseArgs({
     options: {
-      root: { type: 'string', default: '.' },
-      file: { type: 'string' },
-      force: { type: 'boolean', default: false },
-      help: { type: 'boolean', default: false },
+      'root': { type: 'string', default: '.' },
+      'file': { type: 'string' },
+      'force': { type: 'boolean', default: false },
+      'check': { type: 'boolean', default: false },
+      'cache-dir': { type: 'string' },
+      'help': { type: 'boolean', default: false },
     },
   })
   if (values.help) {
-    console.log('zaxon-travel-maps [--root <Valaxy site>] [--file <Markdown path relative to root>] [--force]')
+    console.log('zaxon-travel-maps [--root <Valaxy site>] [--file <Markdown path relative to root>] [--force] [--check] [--cache-dir <directory>]')
     return
   }
   const root = resolve(values.root!)
+  const publicRoot = join(root, 'public')
+  const cacheRoot = resolve(values['cache-dir'] || join(root, '.cache', 'zaxon'))
+  if (resolve(publicRoot) === cacheRoot || cacheRoot.startsWith(`${resolve(publicRoot)}${sep}`))
+    throw new Error('--cache-dir must be outside the site public directory')
+  if (values.check && values.force)
+    throw new Error('--check and --force cannot be used together')
   const { config: site } = await loadConfigFromFile<{ themeConfig?: ThemeConfig }>('valaxy', { cwd: root })
   const config = { ...travelMapDefaults, ...site?.themeConfig?.travel }
+  if (config.rendering === 'live') {
+    console.log('[zaxon] Live travel maps enabled; no static resources required.')
+    return
+  }
   if (!Number.isFinite(config.zoom) || config.zoom < 0 || config.zoom > 20)
     throw new Error('travel.zoom must be between 0 and 20')
   const files = values.file ? [resolve(root, values.file)] : await markdownFiles(join(root, 'pages'))
@@ -54,8 +67,15 @@ export async function generateTravelMaps() {
       continue
     if (points.some(point => Math.abs(point.lat) > 85.051129))
       throw new Error(`${file}: static maps require latitudes within Web Mercator bounds (±85.051129)`)
-    if (!values.force && readStaticTravelMap(root, points, { ...config, rendering: 'auto' })) {
-      console.log(`[zaxon] Cached: ${file}`)
+    if (values.check) {
+      if (!await verifiedTravelMap(publicRoot, points, config))
+        throw new Error(`Missing, outdated, or corrupt travel map: ${file}. Run zaxon-travel-maps before building.`)
+      console.log(`[zaxon] Verified: ${file}`)
+      continue
+    }
+    const cached = !values.force && await prepareCachedTravelMap(publicRoot, cacheRoot, points, config)
+    if (cached) {
+      console.log(`[zaxon] ${cached === 'restored' ? 'Restored' : 'Cached and verified'}: ${file}`)
       continue
     }
     // Native libraries are optional publishing tools, loaded only for a cache miss.
@@ -151,6 +171,10 @@ export async function generateTravelMaps() {
     // Publish only after every scene succeeded; ordinary builds read this manifest offline.
     await writeFile(join(out, 'map.json.tmp'), `${JSON.stringify(manifest, null, 2)}\n`)
     await rename(join(out, 'map.json.tmp'), join(out, 'map.json'))
+    const verified = await verifiedTravelMap(publicRoot, points, config)
+    if (!verified)
+      throw new Error(`Generated map failed verification: ${file}`)
+    await copyTravelMap(verified, publicRoot, cacheRoot)
     generated += 1
     console.log(`[zaxon] Saved route endpoints and motion samples to ${out}`)
   }

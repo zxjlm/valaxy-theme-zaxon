@@ -2,7 +2,7 @@
 
 Zaxon is a custom [Valaxy](https://valaxy.site) theme by Harumonia. It is designed around a quiet "Field Notes" concept: long-form technical articles, life logs, travel photos, short notes, and quotes share one low-saturation pixel-art notebook space.
 
-Travel maps follow reading progress with continuous pan and zoom using pre-rendered WebP camera samples, including the paths between stops. Run `pnpm travel:maps` before building the demo; see the [travel map guide](./docs/travel-map-performance.md) for generation, publishing, and Cloudflare caching.
+Travel maps follow reading progress with continuous pan and zoom using pre-rendered WebP camera samples, including the paths between stops. Demo development and builds automatically restore or generate verified map resources. Generated images stay out of Git; see the [travel map guide](./docs/travel-map-performance.md) for generation, publishing, and Cloudflare caching.
 
 > 中文文档见 [README-zh.md](./README-zh.md).
 
